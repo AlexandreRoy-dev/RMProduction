@@ -86,15 +86,23 @@
             Roy Marketing<span class="text-brand">.</span>
         </a>
         
-        <div class="hidden md:flex gap-12">
+        <div class="hidden md:flex gap-12 absolute left-1/2 -translate-x-1/2">
             <a href="#expertise" class="text-xs uppercase tracking-luxury text-stone-900 hover:text-brand transition-colors font-medium">Expertises</a>
             <a href="#portfolio" class="text-xs uppercase tracking-luxury text-stone-900 hover:text-brand transition-colors font-medium">Travaux</a>
             <a href="#agency" class="text-xs uppercase tracking-luxury text-stone-900 hover:text-brand transition-colors font-medium">Agence</a>
         </div>
 
-        <a href="#contact" class="hidden md:block text-xs uppercase tracking-luxury border-b border-stone-900 text-stone-900 pb-1 hover:border-brand hover:text-brand transition-colors font-medium">
-            Démarrer un projet
-        </a>
+        <div class="hidden md:flex items-center gap-8">
+            
+            <div class="hidden lg:flex flex-col items-end text-xs font-medium tracking-widest text-stone-500 leading-snug">
+                <a href="tel:+18194521975" class="hover:text-brand transition-colors">(819) 452-1975</a>
+                <a href="mailto:info@roymarketing.ca" class="hover:text-brand transition-colors">info@roymarketing.ca</a>
+            </div>
+
+            <a href="#contact" class="text-xs uppercase tracking-luxury border-b border-stone-900 text-stone-900 pb-1 hover:border-brand hover:text-brand transition-colors font-medium">
+                Démarrer un projet
+            </a>
+        </div>
 
         <button class="md:hidden text-stone-900" id="mobile-menu-btn">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -124,12 +132,14 @@
     <div class="max-w-[1800px] mx-auto px-6 w-full relative z-20 grid md:grid-cols-2">
         <div class="md:pr-12">
             <div class="reveal delay-100">
-                <span class="block text-brand text-xs font-bold tracking-luxury uppercase mb-6">Sherbrooke - Montréal - Québec</span>
-                <h1 class="font-display font-medium text-6xl lg:text-8xl leading-[0.95] tracking-tight mb-8 text-stone-900">
-                    L'ART DE LA<br>
-                    <span class="font-bold">STRATÉGIE<span style="color: #0f4b3a;">.</span></span>
-                </h1>
-            </div>
+    <span class="block text-brand text-xs font-bold tracking-luxury uppercase mb-6">Sherbrooke - Montréal - Québec</span>
+    
+    <h1 class="font-display font-medium text-5xl lg:text-7xl leading-[0.95] tracking-tight mb-8 text-stone-900 uppercase">
+        Stratégie<br>
+        Commerciale,<br>
+        <span class="font-bold">Web et Publicité<span style="color: #0f4b3a;">.</span></span>
+    </h1>
+</div>
             <div class="reveal delay-300 h-px w-24 bg-brand mb-8"></div>
             <p class="reveal delay-500 text-lg max-w-lg font-light leading-relaxed mb-10">
                 On s'occupe de tout : <strong>stratégie de croissance</strong>, création de <strong>site web performant</strong> et <strong>publicité numérique</strong>.
@@ -358,30 +368,28 @@
 </section>
 
 
-<section id="portfolio" class="py-24 bg-stone-900 text-stone-100 overflow-hidden">
+<section id="portfolio" class="py-24 bg-stone-900 text-stone-100 overflow-hidden relative group/section">
     <div class="max-w-[1800px] mx-auto px-6 mb-16 flex justify-between items-end reveal">
         <div>
             <span class="text-xs font-bold text-brand uppercase tracking-luxury">Portfolio</span>
             <h2 class="font-display text-4xl mt-4">Nos Clients & Réalisations</h2>
         </div>
         <div class="hidden md:flex gap-4">
-            <button id="scrollLeft" class="p-4 border border-stone-700 hover:border-white transition-colors rounded-full z-10 bg-stone-900">
+            <button id="scrollLeft" class="p-4 border border-stone-700 hover:border-white transition-colors rounded-full z-10 bg-stone-900 active:bg-stone-800">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path></svg>
             </button>
-            <button id="scrollRight" class="p-4 border border-stone-700 hover:border-white transition-colors rounded-full z-10 bg-stone-900">
+            <button id="scrollRight" class="p-4 border border-stone-700 hover:border-white transition-colors rounded-full z-10 bg-stone-900 active:bg-stone-800">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path></svg>
             </button>
         </div>
     </div>
 
-    <div id="portfolio-track" class="flex gap-8 overflow-x-auto px-6 pb-12 no-scrollbar scroll-smooth">
+    <div id="portfolio-track" class="flex gap-8 overflow-x-auto px-6 pb-12 no-scrollbar scroll-smooth snap-x snap-mandatory touch-pan-x">
         
-        <a href="https://melaniefafardimmo.com" target="_blank" class="min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block">
+        <a href="https://melaniefafardimmo.com" target="_blank" class="portfolio-item snap-center min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block">
             <div class="overflow-hidden mb-6 relative rounded-lg bg-stone-800 aspect-video border border-stone-800 group-hover:border-stone-600 transition-colors">
                 <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                <img src="melanie.webp" 
-                     class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105" 
-                     alt="Site web courtier immobilier Mélanie Fafard">
+                <img src="melanie.webp" class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105" alt="Site web courtier immobilier Mélanie Fafard">
             </div>
             <div class="flex justify-between items-start pt-2">
                 <div>
@@ -392,12 +400,10 @@
             </div>
         </a>
 
-        <a href="https://axrconstruction.com" target="_blank" class="min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block">
+        <a href="https://axrconstruction.com" target="_blank" class="portfolio-item snap-center min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block">
             <div class="overflow-hidden mb-6 relative rounded-lg bg-stone-800 aspect-video border border-stone-800 group-hover:border-stone-600 transition-colors">
                 <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                <img src="axr.webp" 
-                     class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105" 
-                     alt="Vitrine web AXR Construction Génie Civil">
+                <img src="axr.webp" class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105" alt="Vitrine web AXR Construction Génie Civil">
             </div>
             <div class="flex justify-between items-start pt-2">
                 <div>
@@ -408,12 +414,10 @@
             </div>
         </a>
 
-        <a href="https://do-mar.com" target="_blank" class="min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block">
+        <a href="https://do-mar.com" target="_blank" class="portfolio-item snap-center min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block">
             <div class="overflow-hidden mb-6 relative rounded-lg bg-stone-800 aspect-video border border-stone-800 group-hover:border-stone-600 transition-colors">
                 <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                <img src="do-mar.webp" 
-                     class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105" 
-                     alt="Site web Do-Mar Services Industriels">
+                <img src="do-mar.webp" class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105" alt="Site web Do-Mar Services Industriels">
             </div>
             <div class="flex justify-between items-start pt-2">
                 <div>
@@ -424,12 +428,10 @@
             </div>
         </a>
 
-        <a href="https://chiassondefrancesco.ca" target="_blank" class="min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block">
+        <a href="https://chiassondefrancesco.ca" target="_blank" class="portfolio-item snap-center min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block">
             <div class="overflow-hidden mb-6 relative rounded-lg bg-stone-800 aspect-video border border-stone-800 group-hover:border-stone-600 transition-colors">
                 <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                <img src="cdf.webp" 
-                     class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105" 
-                     alt="Branding Chiasson de Francesco">
+                <img src="cdf.webp" class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105" alt="Branding Chiasson de Francesco">
             </div>
             <div class="flex justify-between items-start pt-2">
                 <div>
@@ -440,12 +442,10 @@
             </div>
         </a>
 
-        <a href="https://couillardimmobilier.ca/" target="_blank" class="min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block">
+        <a href="https://couillardimmobilier.ca/" target="_blank" class="portfolio-item snap-center min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block">
             <div class="overflow-hidden mb-6 relative rounded-lg bg-stone-800 aspect-video border border-stone-800 group-hover:border-stone-600 transition-colors">
                 <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                <img src="couillard.webp" 
-                     class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105" 
-                     alt="Marketing Immobilier de Luxe Couillard">
+                <img src="couillard.webp" class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105" alt="Marketing Immobilier de Luxe Couillard">
             </div>
             <div class="flex justify-between items-start pt-2">
                 <div>
@@ -457,6 +457,9 @@
         </a>
 
     </div>
+
+    <div class="flex justify-center gap-4 mt-6" id="portfolio-indicators"></div>
+
 </section>
 
 <section id="contact" class="py-24 bg-stone-50">
@@ -512,10 +515,17 @@
 
 <footer class="bg-white border-t border-stone-200 py-12">
     <div class="max-w-[1800px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        
         <div class="text-center md:text-left">
             <h4 class="font-display font-bold uppercase tracking-widest text-sm">Roy Marketing.</h4>
             <p class="text-xs text-stone-400 mt-2">© 2026 Tous droits réservés.</p>
         </div>
+
+        <div class="flex flex-col items-center md:items-end gap-1 text-xs font-medium tracking-widest text-stone-500">
+             <a href="tel:+18194521975" class="hover:text-brand transition-colors">(819) 452-1975</a>
+             <a href="mailto:info@roymarketing.ca" class="hover:text-brand transition-colors">info@roymarketing.ca</a>
+        </div>
+
     </div>
 </footer>
 
@@ -543,48 +553,72 @@
             }
         });
 
-        // 3. Portfolio Auto-Scroll & Controls
+        // 3. Portfolio Controls (Manual Swipe + Dots)
         const track = document.getElementById('portfolio-track');
+        const items = track ? track.querySelectorAll('.portfolio-item') : [];
         const btnLeft = document.getElementById('scrollLeft');
         const btnRight = document.getElementById('scrollRight');
-        if (track && btnLeft && btnRight) {
-            let scrollInterval;
-            const autoScrollDelay = 2000; 
-            const getScrollAmount = () => {
-                const card = track.querySelector('a'); 
-                return card ? card.offsetWidth + 32 : 600; 
-            };
-            const scrollCarousel = (direction) => {
-                const scrollAmount = getScrollAmount();
-                if (direction === 'left') {
-                    track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-                } else {
-                    const maxScrollLeft = track.scrollWidth - track.clientWidth;
-                    if (track.scrollLeft >= maxScrollLeft - 10) {
-                        track.scrollTo({ left: 0, behavior: 'smooth' });
-                    } else {
-                        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                    }
-                }
-            };
-            const startAutoScroll = () => {
-                if (scrollInterval) clearInterval(scrollInterval);
-                scrollInterval = setInterval(() => { scrollCarousel('right'); }, autoScrollDelay);
-            };
-            const stopAutoScroll = () => clearInterval(scrollInterval);
+        const indicatorsContainer = document.getElementById('portfolio-indicators');
+
+        if (track && items.length > 0 && indicatorsContainer) {
             
-            btnLeft.addEventListener('click', () => { scrollCarousel('left'); stopAutoScroll(); startAutoScroll(); });
-            btnRight.addEventListener('click', () => { scrollCarousel('right'); stopAutoScroll(); startAutoScroll(); });
-            track.addEventListener('mouseenter', stopAutoScroll);
-            track.addEventListener('mouseleave', startAutoScroll);
-            startAutoScroll();
+            // A. Generate Dots
+            items.forEach((_, index) => {
+                const dot = document.createElement('button');
+                // Styles: Circular dots (w-3 h-3) to match image
+                dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-stone-900 scale-110' : 'bg-stone-500/30 hover:bg-stone-500/50'}`;
+                dot.ariaLabel = `Go to slide ${index + 1}`;
+                
+                // Click to scroll
+                dot.addEventListener('click', () => {
+                    // Calculate scroll position based on item width + gap (32px)
+                    const itemWidth = items[0].offsetWidth + 32;
+                    track.scrollTo({ left: itemWidth * index, behavior: 'smooth' });
+                });
+                
+                indicatorsContainer.appendChild(dot);
+            });
+
+            const dots = indicatorsContainer.querySelectorAll('button');
+
+            // B. Update Dots on Scroll
+            const updateDots = () => {
+                const itemWidth = items[0].offsetWidth + 32;
+                const scrollPosition = track.scrollLeft;
+                const activeIndex = Math.round(scrollPosition / itemWidth);
+
+                dots.forEach((dot, index) => {
+                    if (index === activeIndex) {
+                        dot.className = 'w-3 h-3 rounded-full transition-all duration-300 bg-stone-900 scale-110';
+                    } else {
+                        dot.className = 'w-3 h-3 rounded-full transition-all duration-300 bg-stone-500/30 hover:bg-stone-500/50';
+                    }
+                });
+            };
+            
+            track.addEventListener('scroll', updateDots);
+
+            // C. Button Logic
+            const scrollAmount = () => items[0].offsetWidth + 32;
+
+            if(btnLeft) {
+                btnLeft.addEventListener('click', () => {
+                    track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+                });
+            }
+            if(btnRight) {
+                btnRight.addEventListener('click', () => {
+                    track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+                });
+            }
         }
 
         // 4. Mobile Menu
         const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const mobileMenu = document.getElementById('mobile-menu'); // Ensure this ID exists in your HTML
+        const mobileLinks = document.querySelectorAll('.mobile-link'); // Ensure class exists on links
         let isMenuOpen = false;
+        
         if (mobileBtn && mobileMenu) {
             mobileBtn.addEventListener('click', () => {
                 isMenuOpen = !isMenuOpen;
