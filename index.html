@@ -2,7 +2,7 @@
 <html lang="fr-CA" class="scroll-smooth">
 <head>
     <title>Roy Marketing | Agence Marketing à Sherbrooke, Montréal & Québec | Stratégie Commerciale</title>
-    <meta name="description" content="Agence de marketing et stratégie commerciale à Sherbrooke, Montréal et Québec. Services web, publicité numérique et croissance d'entreprise. Contactez-nous au (819) 452-1975.">
+    <meta name="description" content="Agence de marketing et stratégie commerciale à Sherbrooke, Montréal et Québec. Services web, publicité numérique et croissance d'entreprise. Contactez-nous au (819) 201-9042.">
     <meta name="keywords" content="agence marketing Sherbrooke, marketing numérique Montréal, stratégie commerciale Québec, agence web Estrie, consultant marketing Sherbrooke, publicité numérique Québec, SEO Sherbrooke, Google Ads Montréal">
     <meta name="author" content="Roy Marketing">
     <meta name="robots" content="index, follow">
@@ -177,7 +177,7 @@
       "url": "https://roymarketing.ca",
       "logo": "https://roymarketing.ca/logo.png",
       "description": "Agence spécialisée en stratégie commerciale, conception web et publicité numérique desservant Sherbrooke, Montréal et Québec.",
-      "telephone": "+18194521975",
+      "telephone": "+18192019042",
       "email": "info@roymarketing.ca",
       "address": {
         "@type": "PostalAddress",
@@ -273,6 +273,7 @@
       }
     }
     </script>
+    <link rel="stylesheet" href="consent.css">
 </head>
 <body class="antialiased bg-stone-50 text-stone-900 font-sans selection:bg-brand selection:text-white">
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-brand focus:text-white focus:rounded">Aller au contenu principal</a>
@@ -292,7 +293,7 @@
         <div class="hidden md:flex items-center gap-8">
             
             <div class="hidden lg:flex flex-col items-end text-xs font-medium tracking-widest text-stone-500 leading-snug">
-                <a href="tel:+18194521975" class="hover:text-brand transition-colors" aria-label="Appeler Roy Marketing au (819) 452-1975">(819) 452-1975</a>
+                <a href="tel:+18192019042" class="hover:text-brand transition-colors" aria-label="Appeler Roy Marketing au (819) 201-9042">(819) 201-9042</a>
                 <a href="mailto:info@roymarketing.ca" class="hover:text-brand transition-colors" aria-label="Envoyer un courriel à info@roymarketing.ca">info@roymarketing.ca</a>
             </div>
 
@@ -762,6 +763,8 @@
                 <span class="error-message text-xs text-red-600 mt-1 hidden" role="alert" aria-live="polite"></span>
             </div>
             <div class="pt-8 text-center">
+                <p class="text-xs text-stone-500 font-light leading-relaxed max-w-md mx-auto mb-6">En soumettant ce formulaire, vous acceptez notre <a href="politique-de-confidentialite.html" class="text-stone-900 underline underline-offset-2 hover:text-brand">politique de confidentialité</a>.</p>
+
                 <button type="submit" class="btn-premium bg-stone-900 text-white px-12 py-5 uppercase tracking-widest text-xs font-bold hover:bg-brand transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-premium" aria-label="Envoyer le formulaire de contact">
                     Envoyer la demande
                 </button>
@@ -778,8 +781,10 @@
             <p class="text-xs text-stone-400 mt-2">© 2026 Tous droits réservés.</p>
         </div>
         <div class="flex flex-col items-center md:items-end gap-1 text-xs font-medium tracking-widest text-stone-500">
-             <a href="tel:+18194521975" class="hover:text-brand transition-colors" aria-label="Appeler Roy Marketing au (819) 452-1975">(819) 452-1975</a>
+             <a href="tel:+18192019042" class="hover:text-brand transition-colors" aria-label="Appeler Roy Marketing au (819) 201-9042">(819) 201-9042</a>
              <a href="mailto:info@roymarketing.ca" class="hover:text-brand transition-colors" aria-label="Envoyer un courriel à info@roymarketing.ca">info@roymarketing.ca</a>
+            <a href="politique-de-confidentialite.html" class="hover:text-brand transition-colors">Politique de confidentialité</a>
+            <button type="button" data-consent-manage class="rm-consent-manage">Gérer les témoins</button>
         </div>
     </div>
 </footer>
@@ -1006,5 +1011,18 @@
         }
     });
 </script>
+<!-- Consentement Loi 25 : ce script marketing reste inactif (text/plain) tant que la catégorie n'est pas acceptée. -->
+<script type="text/plain" data-consent="marketing" data-src="https://connect.facebook.net/en_US/fbevents.js"></script>
+<!--
+    Pixel Meta : aucun identifiant n'est configuré. Pour l'activer plus tard, décommentez
+    le bloc et remplacez PIXEL_ID. Le script doit rester type="text/plain" avec data-consent="marketing".
+    <script type="text/plain" data-consent="marketing">
+        fbq('init', 'PIXEL_ID');
+        fbq('track', 'PageView');
+    </script>
+    Analytique : aucun outil n'est installé. Exemple à décommenter seulement avec un vrai identifiant.
+    <script type="text/plain" data-consent="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+-->
+<script src="consent.js"></script>
 </body>
 </html>

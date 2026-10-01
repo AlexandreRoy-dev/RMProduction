@@ -92,6 +92,7 @@
         @keyframes scale { 0%, 100% { transform: none; } 50% { transform: scale3d(1.1, 1.1, 1); } }
         @keyframes fill { 100% { box-shadow: inset 0px 0px 0px 30px transparent; } }
     </style>
+    <link rel="stylesheet" href="consent.css">
 </head>
 <body class="antialiased bg-stone-50 text-stone-900 font-sans selection:bg-brand selection:text-white flex flex-col min-h-screen">
 
@@ -147,9 +148,11 @@
             <div>
                 <p class="text-[10px] font-bold uppercase tracking-widest text-stone-400">© 2026 Roy Marketing.</p>
             </div>
-            <div class="flex gap-6 text-[10px] font-medium tracking-widest text-stone-500 uppercase">
-                 <a href="tel:+18194521975" class="hover:text-brand transition-colors">Tel: (819) 452-1975</a>
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[10px] font-medium tracking-widest text-stone-500 uppercase">
+                 <a href="tel:+18192019042" class="hover:text-brand transition-colors">Tel: (819) 201-9042</a>
                  <a href="mailto:info@roymarketing.ca" class="hover:text-brand transition-colors">Email</a>
+            <a href="politique-de-confidentialite.html" class="hover:text-brand transition-colors">Politique de confidentialité</a>
+            <button type="button" data-consent-manage class="rm-consent-manage">Gérer les témoins</button>
             </div>
         </div>
     </footer>
@@ -166,5 +169,18 @@
             document.querySelectorAll('.reveal').forEach(el => { observer.observe(el); });
         });
     </script>
+<!-- Consentement Loi 25 : ce script marketing reste inactif (text/plain) tant que la catégorie n'est pas acceptée. -->
+<script type="text/plain" data-consent="marketing" data-src="https://connect.facebook.net/en_US/fbevents.js"></script>
+<!--
+    Pixel Meta : aucun identifiant n'est configuré. Pour l'activer plus tard, décommentez
+    le bloc et remplacez PIXEL_ID. Le script doit rester type="text/plain" avec data-consent="marketing".
+    <script type="text/plain" data-consent="marketing">
+        fbq('init', 'PIXEL_ID');
+        fbq('track', 'PageView');
+    </script>
+    Analytique : aucun outil n'est installé. Exemple à décommenter seulement avec un vrai identifiant.
+    <script type="text/plain" data-consent="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+-->
+<script src="consent.js"></script>
 </body>
 </html>
