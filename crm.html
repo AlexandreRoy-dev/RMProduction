@@ -125,6 +125,7 @@
             border: 1px solid rgba(15, 75, 58, 0.08);
         }
     </style>
+    <link rel="stylesheet" href="consent.css">
 </head>
 <body class="antialiased bg-stone-50 text-stone-900 font-sans selection:bg-brand selection:text-white">
 
@@ -500,6 +501,8 @@
                 <label for="message" class="absolute left-0 top-1 text-xs text-stone-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-stone-400 peer-placeholder-shown:top-7 peer-focus:top-1 peer-focus:text-xs peer-focus:text-brand">Parlez-nous de vos processus actuels (logiciels utilisés, défis...)</label>
             </div>
             <div class="pt-8 text-center">
+                <p class="text-xs text-stone-500 font-light leading-relaxed max-w-md mx-auto mb-6">En soumettant ce formulaire, vous acceptez notre <a href="politique-de-confidentialite.html" class="text-stone-900 underline underline-offset-2 hover:text-brand">politique de confidentialité</a>.</p>
+
                 <button type="submit" class="btn-premium bg-stone-900 text-white px-12 py-5 uppercase tracking-widest text-xs font-bold hover:bg-brand transition-all duration-300 shadow-premium">
                     Demander l'audit CRM
                 </button>
@@ -518,6 +521,8 @@
         <div class="flex flex-col items-center md:items-end gap-1 text-xs font-medium tracking-widest text-stone-500">
              <a href="tel:+18194521975" class="hover:text-brand transition-colors">(819) 452-1975</a>
              <a href="mailto:info@roymarketing.ca" class="hover:text-brand transition-colors">info@roymarketing.ca</a>
+            <a href="politique-de-confidentialite.html" class="hover:text-brand transition-colors">Politique de confidentialité</a>
+            <button type="button" data-consent-manage class="rm-consent-manage">Gérer les témoins</button>
         </div>
     </div>
 </footer>
@@ -615,5 +620,18 @@
         }
     });
 </script>
+<!-- Consentement Loi 25 : ce script marketing reste inactif (text/plain) tant que la catégorie n'est pas acceptée. -->
+<script type="text/plain" data-consent="marketing" data-src="https://connect.facebook.net/en_US/fbevents.js"></script>
+<!--
+    Pixel Meta : aucun identifiant n'est configuré. Pour l'activer plus tard, décommentez
+    le bloc et remplacez PIXEL_ID. Le script doit rester type="text/plain" avec data-consent="marketing".
+    <script type="text/plain" data-consent="marketing">
+        fbq('init', 'PIXEL_ID');
+        fbq('track', 'PageView');
+    </script>
+    Analytique : aucun outil n'est installé. Exemple à décommenter seulement avec un vrai identifiant.
+    <script type="text/plain" data-consent="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+-->
+<script src="consent.js"></script>
 </body>
 </html>

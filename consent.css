@@ -1,0 +1,220 @@
+/* Bandeau de consentement (Loi 25). Position fixe : aucun décalage de la page. */
+
+.rm-consent {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 80;
+    padding: 0.75rem;
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+    pointer-events: none;
+    font-family: Inter, sans-serif;
+    color: #111111;
+}
+
+.rm-consent[hidden] {
+    display: none !important;
+}
+
+.rm-consent *,
+.rm-consent *::before,
+.rm-consent *::after {
+    box-sizing: border-box;
+}
+
+.rm-consent__panel {
+    pointer-events: auto;
+    max-width: 920px;
+    max-height: min(85vh, 640px);
+    overflow: auto;
+    margin: 0 auto;
+    background: #F9F9F7;
+    border: 1px solid rgba(15, 75, 58, 0.14);
+    border-top: 3px solid #0f4b3a;
+    box-shadow: 0 20px 60px -15px rgba(15, 75, 58, 0.2), 0 10px 30px -10px rgba(0, 0, 0, 0.12);
+    padding: 1.15rem 1.2rem 1.1rem;
+}
+
+.rm-consent__kicker {
+    margin: 0 0 0.35rem;
+    font-family: Montserrat, Inter, sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #0f4b3a;
+}
+
+.rm-consent__title {
+    margin: 0 0 0.45rem;
+    font-family: Montserrat, Inter, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #111111;
+}
+
+.rm-consent__text {
+    margin: 0;
+    max-width: 68ch;
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.55;
+    color: #44403c;
+}
+
+.rm-consent__text a {
+    color: #0f4b3a;
+    font-weight: 500;
+    text-underline-offset: 2px;
+}
+
+.rm-consent__text a:hover {
+    color: #111111;
+}
+
+.rm-consent__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.rm-consent__btn {
+    min-height: 48px;
+    padding: 0.85rem 0.75rem;
+    border: 1px solid #111111;
+    background: #ffffff;
+    color: #111111;
+    font-family: Montserrat, Inter, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    cursor: pointer;
+}
+
+.rm-consent__btn--reject {
+    background: #111111;
+    color: #ffffff;
+    border-color: #111111;
+}
+
+.rm-consent__btn--accept {
+    background: #0f4b3a;
+    color: #ffffff;
+    border-color: #0f4b3a;
+}
+
+.rm-consent__btn--customize,
+.rm-consent__btn--save {
+    grid-column: 1 / -1;
+    background: transparent;
+    color: #111111;
+    border-color: #111111;
+}
+
+.rm-consent__btn:hover {
+    filter: brightness(1.06);
+}
+
+.rm-consent__btn:focus-visible,
+.rm-consent a:focus-visible,
+.rm-consent input:focus-visible,
+.rm-consent-manage:focus-visible {
+    outline: 2px solid #f9f9f7;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px #0f4b3a;
+}
+
+.rm-consent__prefs {
+    margin-top: 0.35rem;
+}
+
+.rm-consent__prefs[hidden] {
+    display: none !important;
+}
+
+.rm-consent__prefs-title {
+    margin: 0.85rem 0 0.25rem;
+    font-family: Montserrat, Inter, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.rm-consent__choice {
+    display: grid;
+    grid-template-columns: 1.15rem 1fr;
+    column-gap: 0.75rem;
+    row-gap: 0.15rem;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+    font-size: 0.92rem;
+}
+
+.rm-consent__choice input {
+    width: 1.15rem;
+    height: 1.15rem;
+    margin: 0;
+    accent-color: #0f4b3a;
+}
+
+.rm-consent__choice span {
+    font-family: Montserrat, Inter, sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+}
+
+.rm-consent__choice small {
+    grid-column: 2;
+    font-size: 0.8rem;
+    font-weight: 300;
+    line-height: 1.45;
+    color: #57534e;
+}
+
+.rm-consent-manage {
+    font: inherit;
+    letter-spacing: 0.04em;
+    text-transform: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    text-align: inherit;
+}
+
+footer a[href="politique-de-confidentialite.html"] {
+    letter-spacing: 0.04em;
+}
+
+.rm-consent-manage:hover {
+    color: #0f4b3a;
+}
+
+@media (max-width: 420px) {
+    .rm-consent {
+        padding: 0.5rem;
+    }
+
+    .rm-consent__panel {
+        padding: 1rem 0.9rem 0.9rem;
+    }
+
+    .rm-consent__title {
+        font-size: 1.1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rm-consent__btn {
+        transition: none;
+    }
+}
