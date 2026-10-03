@@ -1,6 +1,0 @@
-@import "tailwindcss";
-@import "./theme.css"; 
-@theme { 
---font-body: Inter;
---font-heading: "Playfair Display";
- }

@@ -1,0 +1,389 @@
+<!DOCTYPE html><html lang="fr-CA"><head><meta charset="utf-8">
+<style>
+:root{--g:#0f4b3a;--g2:#1c7a5c;--g3:#2fa67d;--gl:#e3efe9;--ink:#161a18;--mut:#5f6b66;--bg:#f5f4ef;--line:#e6e8e3}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+.blob{position:absolute;border-radius:50%;filter:blur(90px)}
+#dots{position:absolute;inset:-100px;background-image:radial-gradient(rgba(15,75,58,.10) 2px,transparent 2.5px);background-size:44px 44px}
+.scene{position:absolute;inset:0;visibility:hidden;transform-origin:50% 50%}
+.cam{position:absolute;inset:0;transform-origin:50% 48%}
+.eyebrow{position:absolute;left:0;right:0;text-align:center;font:700 30px 'Inter';letter-spacing:.2em;text-transform:uppercase;color:var(--g2)}
+.big{position:absolute;left:50px;right:50px;text-align:center;font:800 100px/1.05 'Manrope';letter-spacing:-.03em}
+.h2{position:absolute;left:50px;right:50px;text-align:center;font:800 72px/1.1 'Manrope';letter-spacing:-.02em}
+.gr{color:var(--g)}
+.ln{display:block;overflow:hidden;padding:14px 0 6px;margin:-14px 0 -6px}
+.lni{display:block}
+.card{position:absolute;background:#fff;border-radius:28px;border:1px solid var(--line);box-shadow:0 2px 4px rgba(16,40,30,.05),0 24px 60px rgba(16,40,30,.12)}
+.br{position:absolute;background:#fff;border-radius:28px;overflow:hidden;border:1px solid var(--line);box-shadow:0 4px 8px rgba(16,40,30,.05),0 40px 90px rgba(16,40,30,.18)}
+.bar{position:absolute;left:0;right:0;top:0;height:56px;background:#f1f3f1;display:flex;align-items:center;gap:10px;padding:0 22px;border-bottom:1px solid var(--line)}
+.bar i{width:14px;height:14px;border-radius:50%;background:#d5dad7;display:block}
+.url{margin-left:18px;height:34px;flex:1;border-radius:999px;background:#fff;border:1px solid var(--line);font:500 20px 'Inter';color:var(--mut);display:flex;align-items:center;padding:0 18px;white-space:nowrap;overflow:hidden}
+.vp{position:absolute;left:0;right:0;top:56px;bottom:0;overflow:hidden;background:#fbfbf9}
+.blk{position:absolute;border-radius:14px;background:#e7ebe8}
+.prog{position:absolute;left:0;top:56px;height:5px;background:var(--g3);transform-origin:0 50%}
+.cursor{position:absolute;left:0;top:0;width:44px;height:44px;z-index:30}
+.cursor svg{width:44px;height:44px;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
+.ripple{position:absolute;border-radius:50%;border:4px solid var(--g3);width:20px;height:20px;margin:-10px 0 0 -10px;opacity:0;z-index:29}
+.chip{position:absolute;display:flex;align-items:center;gap:16px;background:#fff;border-radius:999px;padding:16px 28px 16px 16px;font:700 30px 'Inter';border:1px solid var(--line);box-shadow:0 16px 40px rgba(16,40,30,.14);white-space:nowrap}
+.ic{width:56px;height:56px;border-radius:50%;background:var(--g);color:#fff;display:grid;place-items:center;flex:none}
+.ic svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.pill{position:absolute;left:50%;display:flex;align-items:center;gap:18px;background:var(--g);color:#fff;border-radius:999px;padding:30px 56px;font:700 48px 'Inter';white-space:nowrap;box-shadow:0 20px 50px rgba(15,75,58,.3);overflow:hidden}
+.shine{position:absolute;top:0;bottom:0;width:120px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg)}
+.ftitle{position:absolute;left:0;right:0;text-align:center;font:800 84px/1.05 'Manrope';letter-spacing:-.02em;color:var(--ink)}
+.dot{position:absolute;width:18px;height:18px;border-radius:50%;background:#cfd8d3}
+.row{position:absolute;left:30px;right:30px;height:84px;border-radius:20px;background:#f3f6f4;display:flex;align-items:center;gap:16px;padding:0 22px;font:600 28px 'Inter'}
+.row .d{width:14px;height:14px;border-radius:50%;background:var(--g2)}
+.row .tag{margin-left:auto;background:var(--g);color:#fff;font:700 20px 'Inter';padding:7px 14px;border-radius:999px;letter-spacing:.04em}
+.fld{position:absolute;left:28px;right:28px;height:70px;border-radius:16px;border:2px solid var(--line);background:#fff;font:500 26px 'Inter';color:var(--ink);display:flex;align-items:center;padding:0 20px;white-space:nowrap;overflow:hidden}
+.fl{position:absolute;left:30px;font:600 20px 'Inter';color:var(--mut)}
+#brand{position:absolute;left:0;right:0;top:1671px;height:64px;display:flex;justify-content:center;align-items:center;gap:15px;z-index:60}
+#brand img{height:62px}#brand span{font:800 31px 'Manrope';letter-spacing:-.02em}
+.panel{position:absolute;left:0;width:1080px;height:960px;background:var(--g);z-index:70}
+</style></head><body><div id="stage">
+<div id="bgl"><div class="blob" id="b1" style="width:820px;height:820px;background:#cfe5da;left:-260px;top:-180px"></div><div class="blob" id="b2" style="width:760px;height:760px;background:#d9ece2;right:-300px;bottom:-140px"></div><div class="blob" id="b3" style="width:520px;height:520px;background:#e8f0d8;left:300px;top:700px;opacity:.7"></div></div><div id="dots"></div>
+
+<!-- S1 HOOK -->
+<div class="scene" id="s1"><div class="cam" id="c1">
+ <div class="chip" id="f1a" style="left:0;top:0"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>Visiteurs</div>
+ <div class="chip" id="f1b" style="left:0;top:0"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></div>Demandes</div>
+ <div class="eyebrow" style="top:440px">Sites web sur mesure</div>
+ <div class="big" style="top:510px">Votre site web<br>travaille-t-il<br>pour vous&#8239;?</div>
+ <div id="u1" style="position:absolute;left:300px;top:832px;width:480px;height:10px;border-radius:5px;background:var(--g3);transform-origin:0 50%"></div>
+ <div class="big gr" style="top:880px">Ou contre vous&#8239;?</div>
+ <div class="br" id="m1" style="left:150px;top:1090px;width:780px;height:470px">
+  <div class="bar"><i></i><i></i><i></i><div class="url">votreentreprise.ca</div></div>
+  <div class="vp" id="vp1">
+   <div class="blk" style="left:24px;top:22px;width:130px;height:30px"></div>
+   <div class="blk" style="left:440px;top:28px;width:70px;height:18px"></div><div class="blk" style="left:530px;top:28px;width:70px;height:18px"></div><div class="blk" style="left:620px;top:28px;width:70px;height:18px"></div>
+   <div class="blk" style="left:24px;top:84px;width:420px;height:40px"></div><div class="blk" style="left:24px;top:140px;width:330px;height:40px"></div>
+   <div class="blk" style="left:24px;top:206px;width:360px;height:18px;background:#eef1ef"></div><div class="blk" style="left:24px;top:236px;width:300px;height:18px;background:#eef1ef"></div>
+   <div id="btn1" style="position:absolute;left:24px;top:290px;width:250px;height:66px;border-radius:999px;background:#dfe5e1;display:grid;place-items:center;font:700 24px 'Inter';color:#8a948f">Nous joindre</div>
+   <div class="blk" id="img1" style="left:470px;top:84px;width:280px;height:272px;background:linear-gradient(135deg,#dfe7e2,#cfdcd5)"></div>
+  </div>
+ </div>
+</div></div>
+
+<!-- S2 BUILD -->
+<div class="scene" id="s2"><div class="cam" id="c2">
+ <div class="eyebrow" id="s2e" style="top:290px">Conception</div>
+ <div class="h2" style="top:350px"><span class="ln"><span class="lni" id="s2l1">Un site pensé</span></span><span class="ln gr"><span class="lni" id="s2l2">pour convertir.</span></span></div>
+ <div class="br" id="m2" style="left:110px;top:560px;width:860px;height:960px">
+  <div class="bar"><i></i><i></i><i></i><div class="url" id="url2"></div></div>
+  <div class="prog" id="pg2" style="width:860px"></div>
+  <div class="vp" id="vp2"><div id="pg2c" style="position:absolute;left:0;top:0;width:860px;height:1400px">
+   <div class="blk" id="w0" style="left:24px;top:24px;width:150px;height:40px"><div class="fill2" style="position:absolute;inset:-4px;background:#fbfbf9;display:flex;align-items:center;gap:10px;opacity:0"><span style="width:34px;height:34px;border-radius:10px;background:#1f2522;color:#fff;display:grid;place-items:center;font:800 20px 'Manrope'">E</span><span style="font:800 22px 'Manrope';color:#161a18;white-space:nowrap">Entreprise</span></div></div>
+   <div class="blk" id="w0b" style="left:470px;top:34px;width:230px;height:20px"><div class="fill2" style="position:absolute;left:-40px;right:-6px;top:-6px;bottom:-6px;background:#fbfbf9;display:flex;justify-content:space-between;align-items:center;font:600 17px 'Inter';color:#5f6b66;opacity:0"><span>Services</span><span>Réalisations</span><span>Contact</span></div></div>
+   <div class="blk" id="w0c" style="left:720px;top:24px;width:116px;height:40px;border-radius:999px"><div class="fill2" style="position:absolute;inset:0;border-radius:999px;background:#1f2522;color:#fff;display:grid;place-items:center;font:700 16px 'Inter';opacity:0">Soumission</div></div>
+   <div class="blk" id="w1" style="left:24px;top:96px;width:812px;height:400px;border-radius:22px;overflow:hidden">
+     <svg id="heroart" viewBox="0 0 812 400" style="position:absolute;inset:0;width:100%;height:100%;opacity:0"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f4b3a"/><stop offset="1" stop-color="#1c7a5c"/></linearGradient></defs><rect width="812" height="400" fill="url(#hg)"/><circle cx="660" cy="120" r="150" fill="#2fa67d" opacity=".35"/><circle cx="740" cy="330" r="120" fill="#e8f0d8" opacity=".18"/><path d="M0 330 C200 280 380 380 812 300 L812 400 L0 400z" fill="#0b3a2d" opacity=".5"/></svg>
+     <div id="ht1" style="position:absolute;left:40px;top:70px;font:800 56px/1.08 'Manrope';color:#fff;white-space:nowrap"></div>
+     <div id="ht2" style="position:absolute;left:40px;top:134px;font:800 56px/1.08 'Manrope';color:#bfe8d6;white-space:nowrap"></div>
+     <div class="blk" id="hb1" style="left:40px;top:84px;width:420px;height:44px;background:#d5ddd8"></div>
+     <div class="blk" id="hb2" style="left:40px;top:146px;width:300px;height:44px;background:#d5ddd8"></div>
+     <div class="blk" id="hs" style="left:40px;top:222px;width:380px;height:20px;background:#dde3df"></div>
+     <div class="fill2" style="position:absolute;left:40px;top:214px;font:500 24px 'Inter';color:#d7efe4;white-space:nowrap;opacity:0">Un site clair et rapide, pensé pour attirer des clients.</div>
+     <div class="fill2" style="position:absolute;left:560px;top:40px;width:220px;height:92px;border-radius:18px;background:#fff;box-shadow:0 12px 30px rgba(0,0,0,.18);padding:14px 18px;opacity:0"><div style="font:700 22px 'Inter';color:#e0a526;letter-spacing:2px">★★★★★</div><div style="font:600 18px 'Inter';color:#161a18;margin-top:4px">4,9 sur 5, 120 avis</div></div>
+     <div id="hbtn" style="position:absolute;left:40px;top:282px;width:370px;height:72px;border-radius:999px;background:#d5ddd8;display:grid;place-items:center;font:700 26px 'Inter';white-space:nowrap;color:transparent">Demander une soumission</div>
+   </div>
+   <div class="blk" id="w2" style="left:24px;top:520px;width:256px;height:250px;overflow:hidden"><div class="cimg" style="position:absolute;left:0;top:0;right:0;height:150px;opacity:0;background:linear-gradient(135deg,#1c7a5c,#8fd1b4)"></div><div class="blk" style="left:18px;top:172px;width:180px;height:18px;background:#dde3df"></div><div class="blk" style="left:18px;top:204px;width:130px;height:18px;background:#dde3df"></div></div>
+   <div class="blk" id="w3" style="left:302px;top:520px;width:256px;height:250px;overflow:hidden"><div class="cimg" style="position:absolute;left:0;top:0;right:0;height:150px;opacity:0;background:linear-gradient(135deg,#0f4b3a,#2fa67d)"></div><div class="blk" style="left:18px;top:172px;width:180px;height:18px;background:#dde3df"></div><div class="blk" style="left:18px;top:204px;width:130px;height:18px;background:#dde3df"></div></div>
+   <div class="blk" id="w4" style="left:580px;top:520px;width:256px;height:250px;overflow:hidden"><div class="cimg" style="position:absolute;left:0;top:0;right:0;height:150px;opacity:0;background:linear-gradient(135deg,#e8f0d8,#2fa67d)"></div><div class="blk" style="left:18px;top:172px;width:180px;height:18px;background:#dde3df"></div><div class="blk" style="left:18px;top:204px;width:130px;height:18px;background:#dde3df"></div></div>
+   <div class="blk" id="w5" style="left:24px;top:800px;width:812px;height:300px;border-radius:22px;background:#e7ebe8"><div class="fill2" style="position:absolute;inset:0;border-radius:22px;background:#f3f1ea;z-index:2;opacity:0"><div style="position:absolute;left:40px;top:36px;font:700 24px 'Inter';color:#e0a526;letter-spacing:3px">★★★★★</div><div style="position:absolute;left:40px;top:78px;width:380px;font:800 30px/1.25 'Manrope';color:#161a18">«&#8239;Depuis notre nouveau site, les demandes ont doublé.&#8239;»</div><div style="position:absolute;left:40px;top:224px;font:600 19px 'Inter';color:#5f6b66">Julie Bergeron, Café du Coin</div><div style="position:absolute;left:460px;top:30px;width:320px;height:240px;border-radius:18px;background:#1f2522;overflow:hidden"><div style="position:absolute;left:110px;top:34px;width:100px;height:100px;border-radius:50%;background:#e3efe9"></div><div style="position:absolute;left:70px;top:150px;width:180px;height:120px;border-radius:90px 90px 0 0;background:#e3efe9"></div><div style="position:absolute;right:16px;top:16px;width:46px;height:46px;border-radius:50%;background:#2fa67d;color:#fff;display:grid;place-items:center;font:800 30px 'Manrope'">”</div></div></div><div class="blk" style="left:40px;top:50px;width:340px;height:40px;background:#d5ddd8"></div><div class="blk" style="left:40px;top:110px;width:300px;height:18px;background:#dde3df"></div><div class="blk" style="left:40px;top:140px;width:320px;height:18px;background:#dde3df"></div><div class="blk" style="left:440px;top:40px;width:330px;height:220px;background:linear-gradient(135deg,#cfe5da,#8fd1b4)"></div></div>
+  </div></div>
+ </div>
+</div></div>
+
+<!-- S3 FEATURES -->
+<div class="scene" id="s3"><div class="cam" id="c3">
+ <div class="eyebrow" style="top:290px">Ce qui est inclus</div>
+ <div id="ftw" style="position:absolute;left:0;right:0;top:350px;height:110px;overflow:hidden">
+  <div class="ftitle" id="ft0">Design sur mesure</div><div class="ftitle" id="ft1">Rapide et optimisé</div><div class="ftitle" id="ft2">Parfait sur mobile</div><div class="ftitle" id="ft3">Optimisé pour Google</div>
+ </div>
+ <!-- V0 design -->
+ <div id="v0" style="position:absolute;left:0;top:520px;width:1080px;height:980px">
+  <div class="card" style="left:110px;top:40px;width:860px;height:420px" id="v0a">
+   <div id="aa" style="position:absolute;left:60px;top:40px;font:800 230px/1 'Manrope';color:var(--g);letter-spacing:-.04em">Aa</div>
+   <div style="position:absolute;left:390px;top:80px;font:700 30px 'Inter';color:var(--mut)">Typographie</div>
+   <div style="position:absolute;left:390px;top:130px;font:800 54px/1.1 'Manrope'">Manrope<br><span style="font:500 40px 'Inter';color:var(--mut)">et Inter</span></div>
+   <div id="v0line" style="position:absolute;left:60px;right:60px;top:330px;height:4px;background:var(--gl);transform-origin:0 50%"></div>
+  </div>
+  <div id="sw" style="position:absolute;left:110px;top:500px;width:860px;height:180px"></div>
+  <div class="card" id="v0b" style="left:110px;top:720px;width:860px;height:200px"><div id="grid0" style="position:absolute;inset:30px"></div></div>
+ </div>
+ <!-- V1 speed -->
+ <div id="v1" style="position:absolute;left:0;top:520px;width:1080px;height:980px">
+  <div class="card" style="left:140px;top:40px;width:800px;height:620px">
+   <svg viewBox="0 0 800 520" style="position:absolute;left:0;top:30px;width:800px;height:520px"><path d="M140 420 A260 260 0 0 1 660 420" fill="none" stroke="#e3efe9" stroke-width="44" stroke-linecap="round"/><path id="gauge" d="M140 420 A260 260 0 0 1 660 420" fill="none" stroke="#1c7a5c" stroke-width="44" stroke-linecap="round" stroke-dasharray="817" stroke-dashoffset="817"/><line id="needle" x1="400" y1="420" x2="400" y2="210" stroke="#161a18" stroke-width="10" stroke-linecap="round"/><circle cx="400" cy="420" r="22" fill="#161a18"/></svg>
+   <div id="rap" style="position:absolute;left:0;right:0;top:500px;text-align:center;font:800 64px 'Manrope';color:var(--g)">Rapide</div>
+  </div>
+  <div class="card" style="left:140px;top:710px;width:800px;height:170px"><div style="position:absolute;left:40px;top:34px;font:700 30px 'Inter'">Chargement</div><div style="position:absolute;left:40px;right:40px;top:96px;height:30px;border-radius:15px;background:var(--gl)"></div><div id="lb" style="position:absolute;left:40px;width:720px;top:96px;height:30px;border-radius:15px;background:var(--g2);transform-origin:0 50%"></div></div>
+ </div>
+ <!-- V2 mobile morph -->
+ <div id="v2" style="position:absolute;left:0;top:520px;width:1080px;height:980px">
+  <div class="br" id="mm" style="left:130px;top:120px;width:820px;height:560px"><div class="bar" id="mmbar"><i></i><i></i><i></i><div class="url">votreentreprise.ca</div></div>
+   <div class="vp"><div id="mmh" style="position:absolute;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#0f4b3a,#1c7a5c)"></div><div class="mmc" style="position:absolute;border-radius:12px;overflow:hidden;background:#e3efe9"></div><div class="mmc" style="position:absolute;border-radius:12px;overflow:hidden;background:#1f2522"></div><div class="mmc" style="position:absolute;border-radius:12px;overflow:hidden;background:#fff;box-shadow:inset 0 0 0 2px #e6e8e3"></div></div></div>
+ </div>
+ <!-- V3 google -->
+ <div id="v3" style="position:absolute;left:0;top:520px;width:1080px;height:980px">
+  <div class="card" style="left:110px;top:60px;width:860px;height:120px;border-radius:999px;display:flex;align-items:center;gap:22px;padding:0 40px"><svg viewBox="0 0 24 24" style="width:48px;height:48px;fill:none;stroke:#5f6b66;stroke-width:2.2;stroke-linecap:round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><div id="q3" style="font:500 38px 'Inter';white-space:nowrap"></div><div id="caret" style="width:3px;height:44px;background:var(--ink)"></div></div>
+  <div class="card" id="res" style="left:110px;top:240px;width:860px;height:300px;padding:40px">
+   <div style="font:500 26px 'Inter';color:var(--mut)">votreentreprise.ca</div>
+   <div style="font:700 44px/1.2 'Manrope';color:#1a0dab;margin-top:12px">Votre entreprise, mise en valeur</div>
+   <div style="font:500 28px/1.45 'Inter';color:var(--mut);margin-top:14px">Un site rapide, clair et bien structuré, conçu pour être trouvé.</div>
+  </div>
+  <div id="seo" style="position:absolute;left:110px;top:600px;width:860px"></div>
+ </div>
+ <div id="dots3" style="position:absolute;left:0;right:0;top:1545px;height:20px"></div>
+</div></div>
+
+<!-- S4 CRM -->
+<div class="scene" id="s4"><div class="cam" id="c4">
+ <div class="h2" style="top:290px;font-size:66px"><span class="ln"><span class="lni" id="s4l1">Relié à votre CRM,</span></span><span class="ln gr"><span class="lni" id="s4l2">chaque visiteur</span></span><span class="ln gr"><span class="lni" id="s4l3">devient un lead.</span></span></div>
+ <div class="br" id="ph" style="left:70px;top:620px;width:400px;height:820px;border-radius:52px;border:10px solid #161a18">
+  <div class="vp" style="top:0">
+   <div style="position:absolute;left:28px;top:40px;font:800 34px 'Manrope'">Nous joindre</div>
+   <div class="fl" style="top:110px">Nom</div><div class="fld" id="fa" style="top:140px"></div>
+   <div class="fl" style="top:236px">Courriel</div><div class="fld" id="fb" style="top:266px"></div>
+   <div class="fl" style="top:362px">Message</div><div class="fld" id="fc" style="top:392px;height:150px;align-items:flex-start;padding-top:18px;white-space:normal;line-height:1.3"></div>
+   <div id="send" style="position:absolute;left:28px;right:28px;top:580px;height:80px;border-radius:999px;background:var(--g);color:#fff;display:grid;place-items:center;font:700 30px 'Inter'">Envoyer</div>
+   <div id="ok" style="position:absolute;left:28px;right:28px;top:690px;text-align:center;font:600 24px 'Inter';color:var(--g2)">Merci, message reçu</div>
+  </div>
+ </div>
+ <div class="card" id="crm" style="left:510px;top:700px;width:500px;height:620px">
+  <div style="position:absolute;left:30px;top:30px;font:800 36px 'Manrope'">Votre CRM</div>
+  <div style="position:absolute;left:30px;top:84px;font:600 22px 'Inter';color:var(--g2)">Nouveaux leads</div>
+  <div id="rows4" style="position:absolute;left:0;right:0;top:130px;bottom:0;overflow:hidden"></div>
+ </div>
+ <div class="chip" id="fly" style="left:0;top:0;font-size:26px"><div class="ic" style="width:48px;height:48px"><svg viewBox="0 0 24 24"><circle cx="10" cy="8" r="3.5"/><path d="M3.5 20a6.5 6.5 0 0 1 13 0"/></svg></div>Lead</div>
+ <div class="chip" id="task" style="left:510px;top:1350px;font-size:26px"><div class="ic" style="width:48px;height:48px"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></div>Suivi planifié</div>
+</div></div>
+
+<!-- S5 BENEFIT -->
+<div class="scene" id="s5"><div class="cam" id="c5">
+ <div class="h2" style="top:290px"><span class="ln"><span class="lni" id="s5l1">Une image à la hauteur</span></span><span class="ln gr"><span class="lni" id="s5l2">de votre entreprise.</span></span></div>
+ <div style="position:absolute;left:0;top:520px;width:1080px;height:1080px;perspective:2200px">
+  <div class="br" id="m5" style="left:120px;top:20px;width:840px;height:1000px;transform:rotateX(10deg) rotateY(-8deg);transform-origin:50% 0">
+   <div class="bar"><i></i><i></i><i></i><div class="url">votreentreprise.ca</div></div>
+   <div class="vp"><div id="long" style="position:absolute;left:0;top:0;width:840px"></div></div>
+  </div>
+ </div>
+</div></div>
+
+<!-- S6 END -->
+<div class="scene" id="s6"><div class="cam" id="c6">
+ <div class="chip" id="e1" style="left:0;top:0;opacity:.55"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8"/></svg></div>Sur mesure</div>
+ <div class="chip" id="e2" style="left:0;top:0;opacity:.55"><div class="ic"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18h2"/></svg></div>Mobile</div>
+ <img id="logo" src="roy-marketing-logo.png" style="position:absolute;left:50%;top:470px;height:250px">
+ <div class="h2" id="en" style="top:790px;font-size:96px">Roy Marketing</div>
+ <div class="h2 gr" id="et" style="top:910px;font-size:60px;font-weight:700">Sites web sur mesure</div>
+ <div class="pill" id="eu" style="top:1080px"><div class="shine" id="shine"></div>roymarketing.ca</div>
+ <div id="ep" style="position:absolute;left:0;right:0;top:1250px;display:flex;justify-content:center;align-items:center;gap:18px;font:800 56px 'Manrope'"><span class="ic" style="width:78px;height:78px;background:var(--gl);color:var(--g)"><svg viewBox="0 0 24 24" style="width:38px;height:38px"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>819-201-9042</div>
+ <div id="es" style="position:absolute;left:0;right:0;top:1380px;text-align:center;font:600 44px 'Inter';color:var(--mut)">Parlons de votre projet.</div>
+</div></div>
+
+<div class="cursor" id="cur"><svg viewBox="0 0 24 24"><path d="M5 3l14 7-6 1.8L10.5 18z" fill="#161a18" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
+<div class="ripple" id="rip"></div>
+<div id="brand"><img src="roy-marketing-logo.png"><span>Roy Marketing</span></div>
+<div class="panel" id="pl" style="top:0"></div><div class="panel" id="pr" style="top:960px"></div>
+</div>
+<script>
+// v2 30s re-time: 96 BPM, 48 beats = 30.0 s
+const BEAT=0.625, DUR=48*BEAT;
+const CUT=[7,17,29,37,42].map(b=>b*BEAT); // 4.375 10.625 18.125 23.125 26.25
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const p=(t,a,b)=>cl((t-a)/(b-a));
+const expo=x=>x>=1?1:1-Math.pow(2,-10*x);
+const quart=x=>1-Math.pow(1-x,4);
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const sine=x=>-(Math.cos(Math.PI*x)-1)/2;
+const back=(x,c=1.2)=>x<=0?0:x>=1?1:1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2);
+const R=v=>Math.round(v*100)/100;
+function st(el,o,tf){if(o!=null)el.style.opacity=R(o);if(tf!=null)el.style.transform=tf}
+function vis(el,v){el.style.visibility=v?'visible':'hidden'}
+function lineUp(el,t,a,d=.45){const k=expo(p(t,a,a+d));el.style.transform=`translateY(${R((1-k)*110)}%)`}
+function inUp(el,t,a,d=.4,dy=50,base=''){const k=expo(p(t,a,a+d));st(el,p(t,a,a+.12),`${base} translateY(${R((1-k)*dy)}px)`)}
+function pop(el,t,a,base='',d=.35,from=.6){const k=back(p(t,a,a+d));st(el,p(t,a,a+.1),`${base} scale(${R(from+(1-from)*k)})`)}
+function type(el,txt,t,a,cps=26){const n=Math.floor(cl((t-a)*cps,0,txt.length));el.textContent=txt.slice(0,n)}
+// cursor path helper
+function cursorAt(x,y,o=1,s=1){const ox=22+(9.17-22)*s,oy=22+(5.5-22)*s;st($('cur'),o,`translate(${(x-ox).toFixed(2)}px,${(y-oy).toFixed(2)}px) scale(${s.toFixed(3)})`)}
+// click moments and exact click points (button centres, measured from the DOM once at load)
+const C1=4.05, C2=CUT[0]+4.9, C3=CUT[2]+2.78;
+const CK={c1:[299,1480],c2:[354,1054],c3:[250,1260]}, CT={c1:C1,c2:C2,c3:C3};
+function press(t,c){return sine(p(t,c-.08,c))*(1-sine(p(t,c+.08,c+.28)))}
+function ctr(el){const r=el.getBoundingClientRect();return [r.left+r.width/2,r.top+r.height/2]}
+function lerp(a,b,k){return a+(b-a)*k}
+// build dynamic bits
+const SW=['#0f4b3a','#1c7a5c','#2fa67d','#8fd1b4','#e8f0d8'];
+$('sw').innerHTML=SW.map((c,i)=>`<div class="sw" style="position:absolute;left:${i*178}px;top:10px;width:150px;height:150px;border-radius:50%;background:${c};box-shadow:0 14px 30px rgba(16,40,30,.18)"></div>`).join('');
+let g='';for(let i=0;i<12;i++)g+=`<div class="gc" style="position:absolute;left:${(i%6)*134}px;top:${Math.floor(i/6)*74}px;width:120px;height:60px;border-radius:12px;background:${i%5==0?'#cfe5da':'#eef2ef'}"></div>`;$('grid0').innerHTML=g;
+$('seo').innerHTML=['Structure claire','Balises optimisées','Fiche Google reliée'].map((s,i)=>`<div class="chip seoc" style="position:relative;display:inline-flex;margin:0 14px 18px 0;font-size:28px"><div class="ic" style="width:46px;height:46px"><svg viewBox="0 0 24 24"><path d="m6 12.5 4 4 8-9"/></svg></div>${s}</div>`).join('');
+$('dots3').innerHTML=[0,1,2,3].map(i=>`<div class="dot" id="dt${i}" style="left:${486+i*30}px"></div>`).join('');
+const ROWS=['Lead, formulaire web','Lead, Messenger','Lead, SMS','Lead, courriel'];
+$('rows4').innerHTML=`<div class="row" id="nr" style="top:0"><span class="d"></span>Nouveau lead, site web<span class="tag">NOUVEAU</span></div>`+ROWS.map((r,i)=>`<div class="row orow" style="top:${i*100}px"><span class="d" style="background:#9fb3aa"></span>${r}</div>`).join('');
+
+const ICO={monitor:'<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>',pin:'<path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/>',mega:'<path d="M3 10v4h3l7 4V6L6 10H3z"/><path d="M17 9a4 4 0 0 1 0 6"/>',chat:'<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>',pen:'<path d="M4 20l4-1 11-11-3-3L5 16z"/>',rocket:'<path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 4 6"/>',chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',check:'<path d="m6 12.5 4 4 8-9"/>',phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>',mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',building:'<path d="M4 21V5l8-3v19M12 21h8V9l-8-3"/>'};
+const icon=(n,c,sz)=>`<svg viewBox="0 0 24 24" style="width:${sz}px;height:${sz}px;fill:none;stroke:${c};stroke-width:2;stroke-linecap:round;stroke-linejoin:round">${ICO[n]}</svg>`;
+// thumbnail palettes: [bg, icon colour] alternating light green tint, charcoal, warm light gray, white, dark green
+const TH=[['#e3efe9','#0f4b3a'],['#1f2522','#bfe8d6'],['#f0eee8','#161a18'],['#ffffff','#1c7a5c'],['#0f4b3a','#ffffff']];
+const photo=(k,w,h)=>{const P=[['#efe9dc','#e0a526','#c9bfa9','#9aa89f'],['#2a312d','#e8f0d8','#46524c','#1c7a5c'],['#e3efe9','#ffffff','#8fd1b4','#0f4b3a']][k%3];return `<svg viewBox="0 0 236 170" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:${w}px;height:${h}px"><rect width="236" height="170" fill="${P[0]}"/><circle cx="180" cy="48" r="22" fill="${P[1]}"/><path d="M0 130 L60 78 L110 118 L160 68 L236 128 V170 H0z" fill="${P[2]}"/><path d="M0 150 C60 118 140 162 236 134 V170 H0z" fill="${P[3]}"/></svg>`};
+// S2 service cards
+const SV=[['monitor','Conception web','Sites sur mesure, rapides et clairs.'],['pin','SEO local','Soyez trouvé près de chez vous.'],['mega','Publicité','Des campagnes ciblées qui rapportent.']];
+['w2','w3','w4'].forEach((id,i)=>{const th=TH[i==0?0:i==1?1:2];$(id).innerHTML=`<div class="cimg" style="position:absolute;inset:0;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px #e6e8e3;opacity:0"><div style="position:absolute;left:0;top:0;right:0;height:112px;background:${th[0]};display:grid;place-items:center;border-radius:14px 14px 0 0">${icon(SV[i][0],th[1],46)}</div><div style="position:absolute;left:18px;top:126px;font:800 23px 'Manrope';color:#161a18;white-space:nowrap">${SV[i][1]}</div><div style="position:absolute;left:18px;right:14px;top:160px;font:500 16px/1.3 'Inter';color:#5f6b66">${SV[i][2]}</div><div style="position:absolute;left:18px;top:214px;font:700 15px 'Inter';color:#1c7a5c">En savoir plus ›</div></div>`});
+// S3 mobile morph content
+$('mmh').innerHTML=`<div style="position:absolute;left:24px;top:30px;font:800 30px/1.15 'Manrope';color:#fff;white-space:nowrap">Un site qui<br><span style="color:#bfe8d6">travaille pour vous.</span></div><div style="position:absolute;left:24px;top:132px;padding:12px 22px;border-radius:999px;background:#fff;color:#0f4b3a;font:700 17px 'Inter'">Demander une soumission</div>`;
+document.querySelectorAll('.mmc').forEach((c,i)=>{const d=[['monitor','Conception web','#0f4b3a','#161a18','#fff'],['pin','SEO local','#bfe8d6','#fff','#2c3430'],['mega','Publicité','#1c7a5c','#161a18','#e3efe9']][i];c.innerHTML=`<div style="position:absolute;left:16px;top:16px;width:52px;height:52px;border-radius:14px;background:${d[4]};display:grid;place-items:center">${icon(d[0],d[2],28)}</div><div style="position:absolute;left:16px;top:80px;font:800 22px 'Manrope';color:${d[3]};white-space:nowrap">${d[1]}</div>`});
+// long page for S5
+let L='';
+L+=`<div style="position:absolute;left:24px;top:24px;width:792px;height:520px;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#1f2522,#2c3430)"><div style="position:absolute;right:-60px;top:-40px;width:340px;height:340px;border-radius:50%;background:#2fa67d;opacity:.35"></div><div style="position:absolute;left:44px;top:70px;font:700 22px 'Inter';color:#8fd1b4;letter-spacing:.12em">VOTRE ENTREPRISE</div><div style="position:absolute;left:44px;top:112px;font:800 64px/1.05 'Manrope';color:#fff">Votre entreprise,<br><span style="color:#bfe8d6">mise en valeur.</span></div><div style="position:absolute;left:44px;top:268px;font:500 24px 'Inter';color:#cfd8d3">Un site clair, rapide et facile à trouver.</div><div style="position:absolute;left:44px;top:340px;width:320px;height:76px;border-radius:999px;background:#fff;color:#0f4b3a;display:grid;place-items:center;font:700 24px 'Inter'">Demander une soumission</div><div style="position:absolute;left:384px;top:340px;width:200px;height:76px;border-radius:999px;border:2px solid #5f6b66;color:#fff;display:grid;place-items:center;font:700 24px 'Inter'">Nos projets</div></div>`;
+const SEC=[
+ ['Nos services',[['monitor','Conception web','Sites sur mesure, rapides et clairs.'],['pin','SEO local','Soyez trouvé près de chez vous.'],['mega','Publicité','Campagnes ciblées sur le Web.']],'stats'],
+ ['Nos réalisations',[['photo','Boulangerie Lavoie','Commandes en ligne.'],['photo','Garage Martin','Prise de rendez-vous.'],['photo','Clinique Horizon','Site bilingue et accessible.']],'quote'],
+ ['Notre approche',[['chat','1. Écoute','On comprend vos objectifs.'],['pen','2. Conception','Un design à votre image.'],['rocket','3. Lancement','Mise en ligne et suivi.']],'cta'],
+ ['Pourquoi nous',[['users','Équipe locale','Un accompagnement humain.'],['chart','Résultats mesurables','Des rapports simples et clairs.'],['check','Sans surprise','Prix clair, délais respectés.']],'checks'],
+ ['Nous joindre',[['phone','Téléphone','Appelez-nous du lundi au vendredi.'],['mail','Courriel','Réponse en moins de 24 h.'],['building','Bureau','Rencontres sur rendez-vous.']],'form']];
+const BAND={
+ stats:`<div style="position:absolute;inset:0;border-radius:18px;background:#fff;box-shadow:inset 0 0 0 1px #e6e8e3;display:flex;justify-content:space-around;align-items:center;text-align:center">${[['120+','projets livrés'],['4,9/5','avis clients'],['24 h','délai de réponse']].map(x=>`<div><div style="font:800 40px 'Manrope';color:#0f4b3a">${x[0]}</div><div style="font:500 18px 'Inter';color:#5f6b66">${x[1]}</div></div>`).join('')}</div>`,
+ quote:`<div style="position:absolute;inset:0;border-radius:18px;background:#f3f1ea"><div style="position:absolute;left:30px;top:24px;width:60px;height:60px;border-radius:50%;background:#1f2522;color:#fff;display:grid;place-items:center;font:800 26px 'Manrope'">ML</div><div style="position:absolute;left:112px;top:22px;font:700 20px 'Inter';color:#e0a526;letter-spacing:2px">★★★★★</div><div style="position:absolute;left:112px;top:52px;font:700 24px 'Manrope';color:#161a18;white-space:nowrap">«&#8239;Enfin des appels de nouveaux clients.&#8239;»</div><div style="position:absolute;left:112px;top:90px;font:500 17px 'Inter';color:#5f6b66">Marc Lavoie, Boulangerie Lavoie</div></div>`,
+ cta:`<div style="position:absolute;inset:0;border-radius:18px;background:#1f2522"><div style="position:absolute;left:36px;top:30px;font:800 34px 'Manrope';color:#fff">Prêt à démarrer&#8239;?</div><div style="position:absolute;left:36px;top:78px;font:500 18px 'Inter';color:#b9c4bf">Première rencontre gratuite.</div><div style="position:absolute;right:30px;top:32px;width:210px;height:66px;border-radius:999px;background:#2fa67d;color:#fff;display:grid;place-items:center;font:700 22px 'Inter'">Parlons-en</div></div>`,
+ checks:`<div style="position:absolute;inset:0;border-radius:18px;background:#fff;box-shadow:inset 0 0 0 1px #e6e8e3;display:flex;justify-content:space-around;align-items:center">${['Sans engagement','Hébergement inclus','Support local'].map(x=>`<div style="display:flex;align-items:center;gap:10px;font:700 20px 'Inter';color:#161a18"><span style="width:34px;height:34px;border-radius:50%;background:#e3efe9;display:grid;place-items:center">${icon('check','#0f4b3a',20)}</span>${x}</div>`).join('')}</div>`,
+ form:`<div style="position:absolute;inset:0;border-radius:18px;background:#e3efe9"><div style="position:absolute;left:30px;top:22px;font:800 24px 'Manrope';color:#161a18">Demandez votre soumission</div><div style="position:absolute;left:30px;top:62px;width:440px;height:50px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px #d5ddd8;font:500 18px 'Inter';color:#8a948f;display:flex;align-items:center;padding:0 16px">Votre courriel</div><div style="position:absolute;left:490px;top:62px;width:230px;height:50px;border-radius:999px;background:#1f2522;color:#fff;display:grid;place-items:center;font:700 19px 'Inter'">Envoyer</div></div>`};
+let kk=0;
+for(let s=0;s<5;s++){const y=580+s*620;const [title,cards,band]=SEC[s];L+=`<div style="position:absolute;left:24px;top:${y}px;width:792px;height:580px">`+
+ `<div style="position:absolute;left:20px;top:10px;font:800 44px 'Manrope'">${title}</div>`+
+ cards.map((c,i)=>{const th=TH[(kk++)%TH.length];const thumb=c[0]=='photo'?photo(i,236,170):`<div style="position:absolute;inset:0;display:grid;place-items:center">${icon(c[0],th[1],62)}</div>`;
+  return `<div style="position:absolute;left:${20+i*258}px;top:90px;width:236px;height:300px;border-radius:18px;background:#fff;border:1px solid #e6e8e3;overflow:hidden"><div style="position:relative;height:170px;background:${th[0]};${th[0]=='#ffffff'?'border-bottom:1px solid #e6e8e3;':''}overflow:hidden">${thumb}</div><div style="position:absolute;left:18px;top:184px;font:800 22px 'Manrope';color:#161a18;white-space:nowrap">${c[1]}</div><div style="position:absolute;left:18px;right:14px;top:218px;font:500 16px/1.3 'Inter';color:#5f6b66">${c[2]}</div><div style="position:absolute;left:18px;top:266px;font:700 15px 'Inter';color:#1c7a5c">En savoir plus ›</div></div>`}).join('')+
+ `<div style="position:absolute;left:20px;top:420px;width:752px;height:130px">${BAND[band]}</div></div>`}
+$('long').innerHTML=L;$('long').style.height=(580+5*620)+'px';
+$('logo').style.transformOrigin='50% 50%';
+function render(t){
+ // ---- background: continuous animated gradient
+ $('b1').style.transform=`translate(${R(Math.sin(t*.45)*120)}px,${R(Math.cos(t*.38)*90)}px)`;
+ $('b2').style.transform=`translate(${R(Math.cos(t*.4)*110)}px,${R(Math.sin(t*.33)*100)}px)`;
+ $('b3').style.transform=`translate(${R(Math.sin(t*.3+1)*160)}px,${R(Math.cos(t*.27)*140)}px)`;
+ $('dots').style.transform=`translate(${R(-(t*18)%44)}px,${R(-(t*10)%44)}px)`;
+ const S=['s1','s2','s3','s4','s5','s6'].map($);
+ const bounds=[[0,CUT[0]],[CUT[0],CUT[1]],[CUT[1],CUT[2]],[CUT[2],CUT[3]],[CUT[3],CUT[4]],[CUT[4],DUR]];
+ // default visibility/transforms
+ S.forEach((s,i)=>{vis(s,t>=bounds[i][0]&&t<bounds[i][1]);s.style.transform='';s.style.clipPath='';s.style.opacity=1;s.style.background='';s.style.webkitMaskImage='';s.style.maskImage=''});
+ // continuous slow push on every scene cam
+ ['c1','c2','c3','c4','c5','c6'].forEach((c,i)=>{const [a,b]=bounds[i];const k=p(t,a-.4,b+.4);$(c).style.transform=`scale(${(1+0.05*k).toFixed(5)}) translateY(${(-14*k).toFixed(3)}px)`;$(c).style.opacity=1});
+ // ---- T1 circle reveal from cursor click (hook -> build)
+ const CP=CK.c1;
+ {const a=CUT[0]-.18,b=CUT[0]+.55;if(t>=a&&t<b+.01){vis(S[0],1);vis(S[1],1);const k=quart(p(t,a,b));S[1].style.clipPath=`circle(${R(k*2300)}px at ${CP[0]}px ${CP[1]}px)`;const m=`radial-gradient(circle at ${CP[0]}px ${CP[1]}px, transparent ${R(k*2300)}px, #000 ${R(k*2300+1)}px)`;S[0].style.webkitMaskImage=m;S[0].style.maskImage=m}}
+ // ---- T2 zoom-through the browser screen (build -> features)
+ // page scroll settles by CUT1-.55 and cursor is gone; then one continuous zoom into the screen.
+ // S2 page content clears in the first third, S3 fades in inside the screen, backgrounds blend at the end.
+ {const a=CUT[1]-.42,b=CUT[1]+.43;if(t>=a&&t<b){vis(S[1],1);vis(S[2],1);
+   const r=$('vp2').getBoundingClientRect();const Ox=(r.left+r.right)/2,Oy=(r.top+r.bottom)/2;
+   const Zm=1.04*Math.max(Oy/(Oy-r.top),(1920-Oy)/(r.bottom-Oy),Ox/(Ox-r.left),(1080-Ox)/(r.right-Ox));
+   const k=sine(p(t,a,b));const z=Math.pow(Zm,k);const org=`${Ox.toFixed(2)}px ${Oy.toFixed(2)}px`;
+   S[1].style.transformOrigin=org;S[1].style.transform=`scale(${z.toFixed(5)})`;S[1].style.opacity=(1-sine(p(k,.8,1))).toFixed(3);
+   S[2].style.transformOrigin=org;S[2].style.transform=`scale(${(z/Zm).toFixed(5)})`;
+   const L=Ox-(Ox-r.left)*Zm,T=Oy-(Oy-r.top)*Zm,Rr=Ox+(r.right-Ox)*Zm,B=Oy+(r.bottom-Oy)*Zm,rad=(28*Zm).toFixed(1);
+   S[2].style.clipPath=k>=1?'':`inset(${Math.max(0,T).toFixed(2)}px ${Math.max(0,1080-Rr).toFixed(2)}px ${Math.max(0,1920-B).toFixed(2)}px ${Math.max(0,L).toFixed(2)}px round 0 0 ${rad}px ${rad}px)`;
+   S[2].style.background=`rgba(251,251,249,${(p(k,.3,.36)*(1-sine(p(k,.8,1)))).toFixed(3)})`;
+   $('c3').style.opacity=sine(p(k,.34,.68)).toFixed(3)}}
+ // ---- T3 horizontal slide push (features -> CRM)
+ {const a=CUT[2]-.32,b=CUT[2]+.32;if(t>=a&&t<b){vis(S[2],1);vis(S[3],1);const k=eio(p(t,a,b));S[2].style.transform=`translateX(${R(-1080*k)}px)`;S[3].style.transform=`translateX(${R(1080*(1-k))}px)`}}
+ // ---- T4 vertical scroll-through (CRM -> benefit)
+ {const a=CUT[3]-.35,b=CUT[3]+.35;if(t>=a&&t<b){vis(S[3],1);vis(S[4],1);const k=eio(p(t,a,b));S[3].style.transform=`translateY(${R(-1920*k)}px)`;S[4].style.transform=`translateY(${R(1920*(1-k))}px)`}}
+ // ---- T5 green panel split (benefit -> end)
+ {const a=CUT[4]-.38,m=CUT[4],b=CUT[4]+.5;let lx=-1080,rx=1080,ty=0,by=0;
+  if(t>=a&&t<m){const k=eio(p(t,a,m));lx=-1080*(1-k);rx=1080*(1-k)}
+  else if(t>=m&&t<b){const k=eio(p(t,m,b));lx=0;rx=0;ty=-960*k;by=960*k}
+  const on=t>=a&&t<b;$('pl').style.visibility=$('pr').style.visibility=on?'visible':'hidden';
+  $('pl').style.transform=`translate(${R(lx)}px,${R(ty)}px)`;$('pr').style.transform=`translate(${R(rx)}px,${R(by)}px)`}
+ $('brand').style.opacity=t<CUT[4]?1:0;
+ let cur=null;
+ // ======== S1 hook (fully composed at t=0)
+ {st($('f1a'),null,`translate(${R(70+t*26)}px,${R(300-t*10)}px)`);st($('f1b'),null,`translate(${R(640-t*22)}px,${R(330+t*8)}px)`);
+  $('u1').style.transform=`scaleX(${R(quart(p(t,.6,1.4)))})`;
+  $('img1').style.background=`linear-gradient(${R(135+t*40)}deg,#cfe5da,#8fd1b4)`;
+  // cursor: enters, hovers button, clicks at 4.05 on CP
+  const k1=eio(p(t,1.7,3.45));
+  if(t<CUT[0]+.1)cur=[$('btn1'),980,1640,k1,p(t,1.6,1.9),'c1'];
+  const hov=p(t,3.25,3.6),pr1=press(t,C1);$('btn1').style.background=hov?`rgba(${R(47-32*pr1)},${R(166-91*pr1)},${R(125-67*pr1)},${R(.25+.75*hov)})`:'#dfe5e1';$('btn1').style.color=hov>.5?'#fff':'#8a948f';$('btn1').style.transform=`scale(${(1-.07*pr1).toFixed(4)})`;
+ }
+ // ======== S2 build
+ {inUp($('s2e'),t,CUT[0]+.1,.5,24);lineUp($('s2l1'),t,CUT[0]+.15,.6);lineUp($('s2l2'),t,CUT[0]+.3,.6);
+  type($('url2'),'votreentreprise.ca',t,CUT[0]+.35,24);
+  $('pg2').style.transform=`scaleX(${R(eo(p(t,CUT[0]+.4,CUT[0]+2.8)))})`;$('pg2').style.opacity=R(1-p(t,CUT[0]+2.8,CUT[0]+3.1));
+  const w=['w0','w0b','w0c','w1','w2','w3','w4','w5'];w.forEach((id,i)=>{const a=CUT[0]+.6+i*.22;const k=back(p(t,a,a+.45),1.25);st($(id),p(t,a,a+.12),`scale(${R(.85+.15*k)})`)});
+  const fill=p(t,CUT[0]+2.6,CUT[0]+3.1);$('heroart').style.opacity=R(fill);
+  document.querySelectorAll('#vp2 .cimg').forEach((c,i)=>c.style.opacity=R(p(t,CUT[0]+2.75+i*.16,CUT[0]+3.1+i*.16)));
+  document.querySelectorAll('.fill2').forEach((e,i)=>e.style.opacity=R(p(t,CUT[0]+2.6+i*.08,CUT[0]+3.0+i*.08)));
+  const tt=CUT[0]+3.1;['hb1','hb2'].forEach(id=>$(id).style.opacity=R(1-p(t,tt,tt+.2)));
+  type($('ht1'),'Votre entreprise,',t,tt,26);type($('ht2'),'mise en valeur.',t,tt+.7,36);
+  $('hs').style.opacity=R(1-fill);
+  const hb=$('hbtn');const bf=p(t,tt+.9,tt+1.2);hb.style.background=bf?`rgba(255,255,255,${R(bf)})`:'#d5ddd8';hb.style.color=bf>.5?'#0f4b3a':'transparent';
+  // cursor to CTA, hover glow, click, then page scrolls
+  const pr2=press(t,C2);hb.style.transform=`scale(${(1-.06*pr2).toFixed(4)})`;if(pr2>0)hb.style.background=`rgb(${R(255-40*pr2)},${R(255-18*pr2)},${R(255-27*pr2)})`;
+  if(t>=CUT[0]+3.7&&t<C2+.6){const k=eio(p(t,CUT[0]+3.7,CUT[0]+4.6));cur=[hb,900,1500,k,p(t,CUT[0]+3.7,CUT[0]+3.95)*(1-sine(p(t,C2+.25,C2+.55))),'c2'];
+   const hv=p(t,CUT[0]+4.4,CUT[0]+4.7)*(1-p(t,C2+.3,C2+.6));hb.style.boxShadow=`0 0 0 ${R(8*hv)}px rgba(191,232,214,.6)`}
+  const sc=eio(p(t,C2+.15,CUT[1]-.55));$('pg2c').style.transform=`translateY(${(-330*sc).toFixed(2)}px)`;
+  $('pg2c').style.opacity=(1-sine(p(sine(p(t,CUT[1]-.42,CUT[1]+.43)),0,.33))).toFixed(3);
+ }
+ // ======== S3 features (one per 2 beats), slide push between visuals
+ {const F=[0,1.75,3.5,5.25].map(x=>CUT[1]+x);
+  for(let i=0;i<4;i++){const a=F[i],b=i<3?F[i+1]:CUT[2]+1;
+   const kin=i==0?1:eio(p(t,a-.2,a+.3));const kout=i<3?eio(p(t,b-.2,b+.3)):0;
+   st($('ft'+i),null,`translateY(${R((1-kin)*130-kout*130)}px)`);
+   const v=$('v'+i);v.style.display=((i==0||t>=a-.3)&&t<b+.35)?'block':'none';
+   st(v,1,`translateX(${R((1-kin)*1080-kout*1080)}px)`);
+   $('dt'+i).style.background=(t>=a)?'#0f4b3a':'#cfd8d3';$('dt'+i).style.transform=`scale(${R(1+.3*p(t,a,a+.3)-.3*p(t,b-.15,b+.15)*(i<3))})`;}
+  const a0=F[0]+.3;
+  // V0
+  $('aa').style.letterSpacing=`${R(-.04+.02*sine(p(t,a0,a0+1.8)))}em`;$('v0line').style.transform=`scaleX(${R(quart(p(t,a0+.15,a0+1.0)))})`;
+  document.querySelectorAll('.sw').forEach((s,i)=>pop(s,t,a0+.2+i*.14,'',.45,.2));
+  document.querySelectorAll('.gc').forEach((s,i)=>st(s,p(t,a0+.35+i*.07,a0+.5+i*.07),null));
+  $('v0a').style.transform=`translateX(${R(-24*p(t,a0-.4,a0+2.1))}px)`;$('v0b').style.transform=`translateX(${R(24*p(t,a0-.4,a0+2.1))}px)`;
+  // V1 gauge
+  const a1=F[1];const gk=eo(p(t,a1+.1,a1+1.3));$('gauge').setAttribute('stroke-dashoffset',R(817*(1-.92*gk)));
+  $('needle').setAttribute('transform',`rotate(${R(-90+166*gk+2*gk*Math.sin((t-a1)*5))} 400 420)`);
+  $('lb').style.transform=`scaleX(${R(eo(p(t,a1+.15,a1+1.4)))})`;pop($('rap'),t,a1+1.05,'',.45,.6);
+  // V2 morph desktop -> phone
+  const a2=F[2];const mk=eio(p(t,a2+.3,a2+1.35));const W=lerp(820,360,mk),H=lerp(560,760,mk);
+  const mm=$('mm');mm.style.width=R(W)+'px';mm.style.height=R(H)+'px';mm.style.left=R(540-W/2)+'px';mm.style.top=R(lerp(120,20,mk))+'px';mm.style.borderRadius=R(lerp(28,54,mk))+'px';mm.style.border=`${R(lerp(1,10,mk))}px solid ${mk>.05?'#161a18':'#e6e8e3'}`;
+  const vw=W-2*lerp(1,10,mk)-24;const hh=lerp(230,260,mk);const hm=$('mmh');hm.style.left='12px';hm.style.top='14px';hm.style.width=R(vw)+'px';hm.style.height=R(hh)+'px';
+  document.querySelectorAll('.mmc').forEach((c,i)=>{const dw=(vw-24)/3;const x=lerp(12+i*(dw+12),12,mk),y=lerp(14+hh+16,14+hh+16+i*(130+14),mk),w=lerp(dw,vw,mk),h=lerp(200,130,mk);c.style.left=R(x)+'px';c.style.top=R(y)+'px';c.style.width=R(w)+'px';c.style.height=R(h)+'px'});
+  // V3 google
+  const a3=F[3];type($('q3'),'site web sur mesure',t,a3+.1,26);$('caret').style.opacity=((t*2.5)%1)<.5?1:0;
+  inUp($('res'),t,a3+.8,.5,60);document.querySelectorAll('.seoc').forEach((c,i)=>pop(c,t,a3+1.0+i*.16,'',.4,.6));
+ }
+ // ======== S4 CRM
+ {const a=CUT[2];lineUp($('s4l1'),t,a+.12,.6);lineUp($('s4l2'),t,a+.27,.6);lineUp($('s4l3'),t,a+.42,.6);
+  type($('fa'),'Marie T.',t,a+.45,18);type($('fb'),'marie@courriel.ca',t,a+.95,28);type($('fc'),'Bonjour, j\'aimerais une soumission pour un nouveau site.',t,a+1.6,60);
+  const sx=70+10+28+160,sy=620+10+580+40;
+  if(t>=a+2.0&&t<CUT[3]){const k=eio(p(t,a+2.0,a+2.65));cur=[$('send'),420,1500,k,p(t,a+2.0,a+2.2)*(1-p(t,a+3.3,a+3.65)),'c3']}
+  $('send').style.transform=`scale(${(1-.06*press(t,C3)).toFixed(4)})`;
+  const sent=p(t,a+2.75,a+2.95);$('send').style.background=sent>0?`rgb(${R(15+32*sent)},${R(75+91*sent)},${R(58+67*sent)})`:'#0f4b3a';$('ok').style.opacity=R(p(t,a+2.95,a+3.25));
+  // lead chip flies along a curve into the CRM
+  const fk=eio(p(t,a+2.95,a+3.55));const P0=[180,1180],P1=[560,500],P2=[560,840];const bx=(1-fk)*(1-fk)*P0[0]+2*(1-fk)*fk*P1[0]+fk*fk*P2[0],by=(1-fk)*(1-fk)*P0[1]+2*(1-fk)*fk*P1[1]+fk*fk*P2[1];
+  st($('fly'),R(p(t,a+2.95,a+3.05)*(1-p(t,a+3.5,a+3.6))),`translate(${R(bx)}px,${R(by)}px) scale(${R(1-.2*fk)})`);
+  const nk=quart(p(t,a+3.45,a+3.9));st($('nr'),nk,`translateY(${R(-100*(1-nk))}px)`);
+  document.querySelectorAll('.orow').forEach(r=>r.style.transform=`translateY(${R(100*nk)}px)`);
+  inUp($('task'),t,a+3.8,.45,40);
+  $('ph').style.transform=`translateY(${R(-16*p(t,a,CUT[3]))}px)`;$('crm').style.transform=`translateY(${R(16*p(t,a,CUT[3]))}px)`;
+ }
+ // ======== S5 benefit: tilted browser auto-scrolling
+ {const a=CUT[3];lineUp($('s5l1'),t,a+.12,.6);lineUp($('s5l2'),t,a+.27,.6);
+  $('long').style.transform=`translateY(${R(-(Math.max(0,t-a+.45))*430)}px)`;
+  $('m5').style.transform=`rotateX(${R(10-4*p(t,a,CUT[4]))}deg) rotateY(${R(-8+6*p(t,a,CUT[4]))}deg)`;}
+ // ======== S6 end
+ {const a=CUT[4];pop($('logo'),t,a+.3,'translateX(-50%)',.55,.6);inUp($('en'),t,a+.55,.5,40);inUp($('et'),t,a+.75,.5,40);
+  pop($('eu'),t,a+1.0,'translateX(-50%)',.5,.7);inUp($('ep'),t,a+1.3,.5,40);inUp($('es'),t,a+1.55,.5,30);
+  const sp=(((t-a-1.4)%1.5)+1.5)%1.5/1.5;$('shine').style.transform=`translateX(${R(-160+sp*700)}px) skewX(-20deg)`;$('shine').style.opacity=t>a+1.4?1:0;
+  st($('e1'),null,`translate(${R(60+(t-a)*30)}px,${R(300)}px)`);st($('e2'),null,`translate(${R(760-(t-a)*28)}px,${R(1520)}px)`);}
+ if(cur&&!window.__meas){const [el,fx,fy,k,o,key]=cur;const tg=t>=CT[key]?CK[key]:ctr(el);cursorAt(lerp(fx,tg[0],k),lerp(fy,tg[1],k),o,1-.15*press(t,CT[key]))}else st($('cur'),0,null);
+ // click ripples
+ const clicks=[[C1,CK.c1],[C2,CK.c2],[C3,CK.c3]];
+ let rp=null;clicks.forEach(([c,pt])=>{if(t>=c&&t<c+.55)rp=[c,pt]});
+ if(rp){const k=p(t,rp[0],rp[0]+.55);st($('rip'),1-k,`translate(${rp[1][0].toFixed(1)}px,${rp[1][1].toFixed(1)}px) scale(${R(1+5*eo(k))})`)}else st($('rip'),0,null);
+}
+// measure exact click targets (button centres on screen at the click frame)
+window.__meas=true;[['c1','btn1'],['c2','hbtn'],['c3','send']].forEach(([k,id])=>{render(CT[k]);CK[k]=ctr($(id))});window.__meas=false;
+window.CK=CK;window.render=render;render(0);
+</script></body></html>

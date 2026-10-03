@@ -1,0 +1,6 @@
+# GitHub Pages, build legacy, racine de main.
+# Jekyll ne publie pas les dossiers dont le nom commence par _.
+# exclude retire aussi ce README du site généré.
+exclude:
+  - _source
+  - README.md
