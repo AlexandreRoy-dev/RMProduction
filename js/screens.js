@@ -359,15 +359,19 @@ export function buildMonitor(root, lang = 'fr') {
     <div class="wb-mob"><div class="nm"><i></i>${T.brand}</div><small>${T.eb}</small><h1>${T.h1a} <em>${T.h1b}</em></h1><p>${T.p}</p><b>${T.cta}</b><div class="mc"><i></i><i></i></div></div>
     <div class="wb-dev">${T.dev.map(d => `<span>${d}</span>`).join('')}<i></i></div>
     <div class="sx-toast"><i>${ICO.bell}</i><div><b>${T.toast}</b><small>${T.toastS}</small></div></div>
+    <div class="wb-cover"></div>
     <div class="sx-cur"><i class="ring"></i>${CURSOR}</div><div class="sx-glare"></div></div>`;
   const q = s => el(root, s), qa = s => els(root, s);
+  const cover = q('.wb-cover');
   const frame = q('.wb-frame'), pg = q('.wb-page'), skel = q('.wb-skel'), sk = qa('.wb-skel i'), sheen = q('.wb-sheen'), bar = q('.wb-bar i'), mob = q('.wb-mob'), dev = q('.wb-dev'), devI = q('.wb-dev i');
   const svs = qa('.ws .sv'), band = q('.wband'), fN = q('.fi.n span'), fE = q('.fi.e span'), sb = q('.sb'), toast = q('.sx-toast'), cur = q('.sx-cur'), ring = q('.ring'), nt = q('.art .nt'), ntBar = q('.art .nt u i');
   const keys = [[0, 1000, 560], [7.6, 1000, 560], [8.3, 460, 300], [9.25, 640, 300], [10.3, 1040, 300], [10.6, 1040, 300], [11.6, 1100, 640], [16, 1000, 560]];
   function render(time) {
     const t = ((time % CY) + CY) % CY;
     // 1. construction : squelette, puis balayage lumineux qui révèle le vrai contenu
-    const sw = ss(seg(t, 1.4, 2.7)), blank = ss(seg(t, 15.2, 15.9));
+    const sw = ss(seg(t, 1.4, 2.7)), blank = 0;
+    const cin = eio(seg(t, 15.2, 15.75)), cout = eio(seg(t, 0, .45));
+    cover.style.clipPath = t >= 15.2 ? `inset(0 ${R((1 - cin) * 100)}% 0 0)` : `inset(0 0 0 ${R(cout * 100)}%)`;
     sk.forEach((e, i) => { const k = eo(seg(t, .1 + i * .07, .5 + i * .07)); e.style.opacity = R(k); e.style.transform = `translateY(${R((1 - k) * 8)}px)`; });
     pg.style.clipPath = `inset(0 ${R((1 - sw) * 100)}% 0 0)`; skel.style.clipPath = `inset(0 0 0 ${R(sw * 100)}%)`;
     skel.style.visibility = sw < 1 ? 'visible' : 'hidden';
@@ -376,8 +380,8 @@ export function buildMonitor(root, lang = 'fr') {
     const sc = eio(seg(t, 3.6, 7.6)) * FORM_Y * (1 - eio(seg(t, 11.8, 13.0)));
     pg.style.transform = `translateY(${R(-sc)}px)`;
     bar.style.transform = `translateY(${R(sc / FORM_Y * 380)}px)`; bar.parentNode.style.opacity = R(seg(t, 3.4, 3.7) * (1 - seg(t, 11.6, 11.9)));
-    svs.forEach((e, i) => { const k = eo(seg(sc, 120 + i * 40, 360 + i * 40)); put(e, { o: t < 3.6 ? (t > 2.7 ? 1 : 1) : 1, y: t < 3.6 ? 0 : (1 - k) * 0 }); e.style.opacity = R(t < 3.6 ? 1 : .35 + .65 * k); e.style.transform = `translateY(${R(t < 3.6 ? 0 : (1 - k) * 30)}px)`; });
-    band.style.opacity = R(.4 + .6 * eo(seg(sc, 420, 700)));
+    svs.forEach((e, i) => { const k = eo(seg(sc, 120 + i * 40, 360 + i * 40)); e.style.opacity = 1; e.style.transform = `translateY(${R(t < 3.6 ? 0 : (1 - k) * 24)}px)`; });
+    band.style.opacity = 1;
     put(nt, { o: eo(seg(t, 2.6, 3.1)), y: (1 - eo(seg(t, 2.6, 3.1))) * 14 }); ntBar.style.width = R(eio(seg(t, 2.9, 3.8)) * 100) + '%';
     const kn = seg(t, 8.4, 9.2), ke = seg(t, 9.3, 10.2);
     fN.innerHTML = typed(T.vN, kn) + caret(t, kn > 0 && kn < 1); fE.innerHTML = typed(T.vE, ke) + caret(t, ke > 0 && ke < 1);
@@ -389,9 +393,9 @@ export function buildMonitor(root, lang = 'fr') {
     const rs = eio(seg(t, 11.8, 12.9));
     frame.style.transform = `translate(${R(-rs * 210)}px,${R(rs * 26)}px) scale(${R(1 - rs * .38)})`; frame.style.borderRadius = R(rs * 18) + 'px';
     frame.style.boxShadow = `0 ${R(rs * 30)}px ${R(rs * 60)}px rgba(20,40,30,${R(rs * .18)})`;
-    const mk = eo(seg(t, 12.3, 13.2)); put(mob, { o: mk * (1 - blank), x: (1 - mk) * 160 });
+    const mk = eo(seg(t, 12.3, 13.2)); put(mob, { o: Math.min(1, mk * 3.5), x: (1 - mk) * 160 });
     mob.style.setProperty('--sc', R(-ss(seg(t, 13.3, 15.0)) * 60) + 'px');
-    put(dev, { o: eo(seg(t, 12.6, 13.1)) * (1 - blank), y: (1 - eo(seg(t, 12.6, 13.1))) * 10 }); devI.style.transform = `translateX(${R(ss(seg(t, 13.4, 13.9)) * 100)}%)`;
+    put(dev, { o: eo(seg(t, 12.6, 13.1)), y: (1 - eo(seg(t, 12.6, 13.1))) * 10 }); devI.style.transform = `translateX(${R(ss(seg(t, 13.4, 13.9)) * 100)}%)`;
     frame.style.opacity = R(1 - blank);
     // curseur
     const [cx, cy] = pathAt(keys, t); cur.style.transform = `translate(${R(cx)}px,${R(cy)}px)`; cur.style.opacity = R(ss(seg(t, 7.6, 8.0)) * (1 - ss(seg(t, 11.0, 11.5))));

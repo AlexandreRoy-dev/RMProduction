@@ -95,10 +95,15 @@ const KB_W = { 'esc': 1.5, '⌫': 1.5, '⇥': 1.5, '\\': 1.5, '⇪': 1.8, '⏎':
 function cremaTexture() {
   const c = document.createElement('canvas'); c.width = c.height = 256; const x = c.getContext('2d');
   const g = x.createRadialGradient(118, 120, 4, 128, 128, 128);
-  g.addColorStop(0, '#c58b4f'); g.addColorStop(.35, '#a8672f'); g.addColorStop(.8, '#6b3a17'); g.addColorStop(1, '#3a1d0b');
+  g.addColorStop(0, '#9c6d45'); g.addColorStop(.45, '#7f4f2d'); g.addColorStop(.82, '#55311a'); g.addColorStop(1, '#24130a');
   x.fillStyle = g; x.fillRect(0, 0, 256, 256);
-  x.globalAlpha = .18; x.strokeStyle = '#e8c08a'; x.lineWidth = 3;
-  for (let i = 0; i < 5; i++) { x.beginPath(); x.arc(128 + i * 3, 128 - i * 2, 30 + i * 16, .4 + i, 2.4 + i); x.stroke(); }
+  // crème marbrée : fines taches claires et sombres, sans motif régulier
+  for (let i = 0; i < 900; i++) {
+    const a = Math.random() * Math.PI * 2, r = Math.sqrt(Math.random()) * 118;
+    x.globalAlpha = .05 + Math.random() * .07; x.fillStyle = Math.random() < .55 ? '#c99b6c' : '#3d2112';
+    x.beginPath(); x.arc(128 + Math.cos(a) * r, 128 + Math.sin(a) * r, .6 + Math.random() * 2.2, 0, 7); x.fill();
+  }
+  x.globalAlpha = 1;
   const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
 }
 
@@ -112,7 +117,7 @@ export async function createScene(canvas, { base = 'assets/tex/', low = false, l
   renderer.shadowMap.type = THREE.VSMShadowMap;
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color('#f4f4f2');
+  scene.background = new THREE.Color('#f2eee7');
   const pmrem = new THREE.PMREMGenerator(renderer);
   scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
   scene.environmentIntensity = 0.55;
@@ -132,14 +137,14 @@ export async function createScene(canvas, { base = 'assets/tex/', low = false, l
     return t;
   };
   const [tSite, tDeck, tPage, tFront, tBack, tGrain, tApp, tCrm, tSt1, tSt2] = await Promise.all([
-    tex('screen-site.webp', true, true), Promise.resolve(null), tex('notebook-page.webp', true, true), tex('card-front.webp'), tex('card-back.webp'),
+    tex('screen-site.webp', true, true), Promise.resolve(null), Promise.resolve(null), tex('card-front.webp'), tex('card-back.webp'),
     tex('grain.webp', false), tex('laptop-app.webp', true, true), tex('tablet-crm.webp', true, true),
-    tex('sticky-1.webp', true, true), tex('sticky-2.webp', true, true)
+    Promise.resolve(null), Promise.resolve(null)
   ]);
 
   // matériaux
   const M = {
-    desk: new THREE.MeshStandardMaterial({ color: '#fdfdfc', roughness: .86, metalness: 0 }),
+    desk: new THREE.MeshStandardMaterial({ color: '#ffffff', roughness: .88, metalness: 0 }),
     alu: new THREE.MeshPhysicalMaterial({ color: '#cfd2d6', metalness: .92, roughness: .5, envMapIntensity: 1.45, clearcoat: .15, clearcoatRoughness: .4 }),
     aluPad: new THREE.MeshPhysicalMaterial({ color: '#c3c6ca', metalness: .55, roughness: .2, envMapIntensity: 1.2, clearcoat: .9, clearcoatRoughness: .12 }),
     gap: new THREE.MeshStandardMaterial({ color: '#77797d', metalness: .6, roughness: .5 }),
@@ -164,6 +169,20 @@ export async function createScene(canvas, { base = 'assets/tex/', low = false, l
   for (const k of ['alu', 'gray', 'ti']) { M[k].roughnessMap = tBrush; M[k].bumpMap = tBrush; M[k].bumpScale = .015; }
   tBrush.repeat.set(3, 3);
   const tSheen = sheenTexture();
+  // texture du bureau : lin chaud très fin, à peine perceptible (évite l'effet blanc plat)
+  {
+    const c = document.createElement('canvas'); c.width = c.height = 1024; const x = c.getContext('2d');
+    x.fillStyle = '#f6f1e8'; x.fillRect(0, 0, 1024, 1024);
+    const img = x.getImageData(0, 0, 1024, 1024), d = img.data; let r = 11; const rnd = () => (r = (r * 16807) % 2147483647) / 2147483647;
+    const rowN = new Float32Array(1024).map(() => rnd() - .5), colN = new Float32Array(1024).map(() => rnd() - .5);
+    for (let yy = 0; yy < 1024; yy++) for (let xx = 0; xx < 1024; xx++) {
+      const i = (yy * 1024 + xx) * 4, n = (rnd() - .5) * 7 + rowN[yy] * 5 + colN[xx] * 4;   // grain + fils de trame et de chaîne
+      d[i] += n; d[i + 1] += n * .97; d[i + 2] += n * .9;
+    }
+    x.putImageData(img, 0, 0);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(9, 5); t.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    M.desk.map = t;
+  }
   if (tGrain) {
     tGrain.wrapS = tGrain.wrapT = THREE.RepeatWrapping; tGrain.repeat.set(14, 8);
     M.desk.roughnessMap = tGrain; M.desk.bumpMap = tGrain; M.desk.bumpScale = .25;
@@ -246,10 +265,21 @@ export async function createScene(canvas, { base = 'assets/tex/', low = false, l
 
   // souris
   const mouse = new THREE.Group();
-  const mg = new THREE.SphereGeometry(1, 48, 24, 0, Math.PI * 2, 0, Math.PI / 2); mg.scale(3.05, 1.25, 5.6);
-  add(mg, M.white, [0, .12, 0], mouse);
-  add(new THREE.CylinderGeometry(1, 1, .14, 48).scale(3.0, 1, 5.5), M.ceramic, [0, .07, 0], mouse);
-  place(mouse, LAYOUT.mouse); blob(LAYOUT.mouse.x, LAYOUT.mouse.z, 9, 14, LAYOUT.mouse.ry, .5);
+  {
+    const g = new THREE.SphereGeometry(1, 96, 40, 0, Math.PI * 2, 0, Math.PI / 2), pa = g.attributes.position, v = new THREE.Vector3();
+    for (let i = 0; i < pa.count; i++) {
+      v.fromBufferAttribute(pa, i); const rr = Math.hypot(v.x, v.z);
+      if (rr > 1e-6) { const a = Math.atan2(v.z, v.x), c = Math.abs(Math.cos(a)), sn = Math.abs(Math.sin(a)); const k = 1 / Math.pow(Math.pow(c, 3.2) + Math.pow(sn, 3.2), 1 / 3.2); v.x *= k; v.z *= k; }
+      // profil : dôme bas, point haut légèrement vers l'arrière, bords qui retombent en douceur
+      const zz = v.z; v.y = Math.pow(Math.max(0, v.y), .78) * (1 - .14 * zz);
+      pa.setXYZ(i, v.x * 2.85, v.y * 1.55, v.z * 5.65);
+    }
+    g.computeVertexNormals();
+    const shell = new THREE.MeshPhysicalMaterial({ color: '#1c1c1e', roughness: .42, metalness: 0, clearcoat: .9, clearcoatRoughness: .22, envMapIntensity: 1.1 });
+    add(g, shell, [0, .42, 0], mouse);
+    add(slab(5.62, 11.22, .42, 2.6, .12, 10), M.alu, [0, 0, 0], mouse, true, true);
+  }
+  place(mouse, LAYOUT.mouse); blob(LAYOUT.mouse.x, LAYOUT.mouse.z, 8.5, 14, LAYOUT.mouse.ry, .38); ao(LAYOUT.mouse.x, LAYOUT.mouse.z, 5.7, 11.3, 2.6, LAYOUT.mouse.ry, .5, 3);
 
   // tasse espresso
   function makeCup() {
@@ -258,7 +288,7 @@ export async function createScene(canvas, { base = 'assets/tex/', low = false, l
     add(new THREE.LatheGeometry(sau, 72), M.porcelain, [0, 0, 0], g);
     const cup = [[0, .5], [2.1, .5], [2.25, .8], [2.7, 1.6], [3.15, 3.4], [3.35, 5.6], [3.12, 5.75], [2.95, 5.6], [2.8, 3.6], [2.3, 1.6], [0, 1.4]].map(p => new THREE.Vector2(p[0], p[1]));
     add(new THREE.LatheGeometry(cup, 72), M.porcelain, [0, 0, 0], g);
-    const coffee = add(new THREE.CircleGeometry(2.92, 64).rotateX(-Math.PI / 2), new THREE.MeshPhysicalMaterial({ map: cremaTexture(), roughness: .25, clearcoat: 1 }), [0, 4.85, 0], g, false);
+    const coffee = add(new THREE.CircleGeometry(2.92, 64).rotateX(-Math.PI / 2), new THREE.MeshPhysicalMaterial({ map: cremaTexture(), roughness: .5, clearcoat: .5, clearcoatRoughness: .3 }), [0, 4.85, 0], g, false);
     const h = add(new THREE.TorusGeometry(1.05, .3, 16, 40, Math.PI * 1.15), M.porcelain, [3.55, 3.6, 0], g);
     h.rotation.z = -Math.PI * .57;
     return g;
@@ -368,9 +398,10 @@ export async function createScene(canvas, { base = 'assets/tex/', low = false, l
   const scrMon = add(new THREE.PlaneGeometry(60.3, 33.9).rotateX(-Math.PI / 2), siteMat, [0, 1.112, -.15], panel, false);
   if (tSite) { tSite.wrapT = THREE.ClampToEdgeWrapping; tSite.repeat.set(1, (1280 / (60.3 / 33.9)) / tSite.image.height); tSite.offset.set(0, 1 - tSite.repeat.y); }
   panel.rotation.x = THREE.MathUtils.degToRad(84); panel.position.set(0, 31, 0); mon.add(panel);
-  add(new THREE.BoxGeometry(4.2, 26, 1.4), M.alu, [0, 15, -3.2], mon).rotation.x = -.16;
-  add(slab(19, 15, .7, 2, .2), M.alu, [0, 0, -3], mon);
-  place(mon, LAYOUT.monitor); blob(LAYOUT.monitor.x, LAYOUT.monitor.z - 2, 30, 22, 0, .35); ao(LAYOUT.monitor.x, LAYOUT.monitor.z - 3, 19.2, 15.2, 2, 0, .5, 5); blob(LAYOUT.monitor.x, LAYOUT.monitor.z + 9, 70, 16, 0, .18);
+  { const foot = add(slab(13, 19, .5, .7, .18, 6), M.alu, [0, 0, -2.5], mon, true, true);
+    const arm = add(new THREE.BoxGeometry(12.6, .5, 27.4), M.alu, [0, 13.4, -6.9], mon); arm.rotation.x = -THREE.MathUtils.degToRad(71.6);
+    const bend = add(new THREE.CylinderGeometry(.55, .55, 12.6, 24, 1, false, 0, Math.PI), M.alu, [0, .55, -11.6], mon); bend.rotation.z = Math.PI / 2; }
+  place(mon, LAYOUT.monitor); blob(LAYOUT.monitor.x, LAYOUT.monitor.z - 3, 24, 26, 0, .3); ao(LAYOUT.monitor.x, LAYOUT.monitor.z - 2.5, 13.2, 19.2, .8, 0, .5, 4); blob(LAYOUT.monitor.x, LAYOUT.monitor.z + 9, 70, 16, 0, .18);
   // clavier
   const kbG = new THREE.Group();
   add(slab(28, 11.5, .7, .8, .3, 6), M.alu, [0, 0, 0], kbG, true, true);
@@ -392,41 +423,12 @@ export async function createScene(canvas, { base = 'assets/tex/', low = false, l
     add(new THREE.CircleGeometry(4.35, 64).rotateX(-Math.PI / 2), new THREE.MeshPhysicalMaterial({ map: latteTexture(), roughness: .35, clearcoat: .6 }), [0, 7.9, 0], g, false);
     const h = add(new THREE.TorusGeometry(1.7, .42, 16, 40, Math.PI * 1.1), M.porcelain, [4.9, 5.0, 0], g); h.rotation.z = -Math.PI * .55;
     place(g, { ...LAYOUT.latte, ry: -.5 }); blob(LAYOUT.latte.x, LAYOUT.latte.z, 15, 15, 0, .45); }
-  // lunettes
-  { const g = new THREE.Group(); const fr = new THREE.MeshPhysicalMaterial({ color: '#1b1a19', roughness: .3, clearcoat: 1 });
-    const lens = new THREE.MeshPhysicalMaterial({ color: '#cfd6d3', roughness: .05, transmission: .9, transparent: true, opacity: .35, thickness: .2 });
-    for (const sx of [-1, 1]) { const ring = add(new THREE.TorusGeometry(2.25, .24, 12, 48), fr, [sx * 2.9, .6, 0], g); ring.rotation.x = Math.PI / 2; ring.scale.set(1.18, 1, 1);
-      add(new THREE.CircleGeometry(2.2, 40).rotateX(-Math.PI / 2).scale(1.18, 1, 1), lens, [sx * 2.9, .62, 0], g, false);
-      const tm = add(new THREE.BoxGeometry(.32, .3, 12.5), fr, [sx * 5.4, .45, 6.4], g); tm.rotation.y = sx * -.08; }
-    add(new THREE.BoxGeometry(1.4, .28, .3), fr, [0, .78, -.4], g);
-    place(g, LAYOUT.glasses); blob(LAYOUT.glasses.x, LAYOUT.glasses.z + 3, 16, 16, LAYOUT.glasses.ry, .22); }
-  // clés USB
-  function usb(L) { const g = new THREE.Group(); add(slab(1.9, 4.2, .8, .35, .1, 3), M.ti, [0, 0, 0], g); add(new THREE.BoxGeometry(1.25, .45, 1.3), M.chrome, [0, .3, -2.65], g);
-    add(new THREE.TorusGeometry(.32, .1, 8, 20), M.chrome, [0, .45, 1.65], g).rotation.x = Math.PI / 2; place(g, L); blob(L.x, L.z, 3.4, 7, L.ry, .4); }
-  usb(LAYOUT.usb1); usb(LAYOUT.usb2); usb(LAYOUT.usb3);
-  // étui d'écouteurs
-  { const g = new THREE.Group(); add(slab(6.0, 4.8, 2.3, 2.0, 1.0, 8), M.white, [0, 0, 0], g); add(new THREE.BoxGeometry(5.8, .03, .05), M.ceramic, [0, 1.6, .9], g);
-    place(g, LAYOUT.earbuds); blob(LAYOUT.earbuds.x, LAYOUT.earbuds.z, 9, 8, LAYOUT.earbuds.ry, .5); }
   // agenda
   { const g = new THREE.Group(); const lea = new THREE.MeshStandardMaterial({ color: '#2f3c36', roughness: .7 });
     add(slab(15, 21, 2.0, .6, .25, 4), lea, [0, 0, 0], g); add(new THREE.BoxGeometry(14.4, 1.7, 20.4), M.paper, [.4, .15, 0], g);
     add(new THREE.BoxGeometry(.55, .1, 21.2), new THREE.MeshStandardMaterial({ color: '#141615', roughness: .6 }), [5.2, 2.02, 0], g);
     add(new THREE.BoxGeometry(.6, .05, 5), new THREE.MeshStandardMaterial({ color: '#0f4b3a', roughness: .5 }), [-3, .05, 12.6], g);
     place(g, LAYOUT.planner); blob(LAYOUT.planner.x, LAYOUT.planner.z, 21, 27, LAYOUT.planner.ry, .4); }
-  // stylo gris
-  { const g = new THREE.Group(); const gm = new THREE.MeshPhysicalMaterial({ color: '#8d9093', metalness: .7, roughness: .3 });
-    const b2 = add(new THREE.CylinderGeometry(.42, .42, 13, 24), gm, [0, .42, 0], g); b2.rotation.z = Math.PI / 2;
-    const t2 = add(new THREE.ConeGeometry(.42, 1.5, 24), M.chrome, [7.25, .42, 0], g); t2.rotation.z = -Math.PI / 2;
-    place(g, LAYOUT.pen2); blob(LAYOUT.pen2.x, LAYOUT.pen2.z, 15, 2.4, LAYOUT.pen2.ry, .4); }
-  // notes autocollantes
-  [[tSt1, LAYOUT.sticky1, 0], [tSt2, LAYOUT.sticky2, .05], [tSt2, LAYOUT.sticky3, 0]].forEach(([t, L, y]) => { const m = add(new THREE.BoxGeometry(7.6, .05, 7.6), [M.paper, M.paper, t ? lit(t, { roughness: .9 }) : M.paper, M.paper, M.paper, M.paper], [L.x, y + .03, L.z], world, true, true); m.rotation.y = L.ry; });
-  // trombones
-  function paperclip(L) { const g = new THREE.Group();
-    const pts = [[0, 0], [0, 3.2], [.9, 3.2], [.9, -.3], [-.35, -.3], [-.35, 2.5], [.45, 2.5], [.45, .6]].map(([x, z]) => new THREE.Vector3(x, .1, -z));
-    const curve = new THREE.CatmullRomCurve3(pts, false, 'catmullrom', .05);
-    add(new THREE.TubeGeometry(curve, 80, .055, 6, false), M.chrome, [0, 0, 0], g); place(g, L); return g; }
-  paperclip(LAYOUT.clips1); paperclip({ x: LAYOUT.clips1.x + 2.2, z: LAYOUT.clips1.z + 1, ry: 1.2 }); paperclip(LAYOUT.clips2); paperclip({ x: LAYOUT.clips2.x + 1.8, z: LAYOUT.clips2.z - 1.6, ry: .8 });
-
   // ombre douce de fenêtre et de feuillage sur le bureau (profondeur, lumière naturelle)
   const gobo = (() => {
     const c = document.createElement('canvas'); c.width = 1024; c.height = 640; const x = c.getContext('2d');

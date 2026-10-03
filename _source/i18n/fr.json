@@ -132,7 +132,7 @@
  "fLegalLink": "politique de confidentialité",
  "fSend": "Envoyer",
  "privacy": "Politique de confidentialité",
- "privacyHref": "/politique-de-confidentialite",
+ "privacyHref": "/politique-de-confidentialite/",
  "cookies": "Gérer les témoins",
  "modalTitle": "Appel découverte",
  "modalSub": "Choisissez le moment qui vous convient.",
@@ -140,5 +140,12 @@
  "modalAlt": "Vous préférez nous écrire ou nous appeler ?",
  "modalLoading": "Chargement du calendrier",
  "phoneUI": "fr",
- "tagline2": "Des outils sur mesure pour les PME d'ici."
+ "tagline2": "Des outils sur mesure pour les PME d'ici.",
+ "fOptional": "facultatif",
+ "fGoalsPh": "Parlez-nous de votre entreprise et de ce que vous aimeriez simplifier.",
+ "fErrName": "Indiquez votre nom.",
+ "fErrEmail": "Entrez un courriel valide, par exemple nom@entreprise.ca.",
+ "fSending": "Envoi en cours",
+ "fFix": "Vérifiez les champs indiqués.",
+ "backTop": "Retour au début"
 }

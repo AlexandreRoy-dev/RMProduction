@@ -94,22 +94,38 @@
         root.setAttribute('aria-labelledby', 'rm-consent-title');
         root.setAttribute('aria-describedby', 'rm-consent-desc');
         root.hidden = true;
+        var EN = /^en/i.test(document.documentElement.lang || '');
+        var T = EN ? {
+            kicker: 'Cookies', title: 'Cookie choices', policy: 'Privacy policy', href: '/en/privacy-policy/',
+            desc: 'Analytics and marketing cookies stay blocked until you accept them. Essential cookies only remember this choice on your device.',
+            reject: 'Decline', accept: 'Accept', custom: 'Customize', byCat: 'Choose by category',
+            ess: 'Essential', essD: 'Always on. They remember your decision in this browser. They are not used for advertising.',
+            ana: 'Analytics', anaD: 'Audience measurement. No tool is installed at the moment. Any future addition would stay blocked without your consent.',
+            mkD: 'Advertising, including the Meta pixel. The script only loads with your consent.', save: 'Save my choices'
+        } : {
+            kicker: 'Témoins', title: 'Choix sur les témoins', policy: 'Politique de confidentialité', href: '/politique-de-confidentialite/',
+            desc: 'Les témoins analytiques et marketing restent bloqués tant que vous ne les avez pas acceptés. Les témoins essentiels servent seulement à retenir ce choix sur votre appareil.',
+            reject: 'Refuser', accept: 'Accepter', custom: 'Personnaliser', byCat: 'Choisir par catégorie',
+            ess: 'Essentiels', essD: 'Toujours actifs. Ils retiennent votre décision dans ce navigateur. Ils ne servent pas à la publicité.',
+            ana: 'Analytique', anaD: 'Mesure d\'audience. Aucun outil n\'est installé pour le moment. Un ajout futur resterait bloqué sans votre accord.',
+            mkD: 'Publicité, dont le pixel Meta. Le script ne se charge qu\'avec votre accord.', save: 'Enregistrer mes choix'
+        };
         root.innerHTML =
             '<div class="rm-consent__panel">' +
-                '<p class="rm-consent__kicker">Témoins</p>' +
-                '<h2 id="rm-consent-title" class="rm-consent__title">Choix sur les témoins</h2>' +
-                '<p id="rm-consent-desc" class="rm-consent__text">Les témoins analytiques et marketing restent bloqués tant que vous ne les avez pas acceptés. Les témoins essentiels servent seulement à retenir ce choix sur votre appareil. <a href="/politique-de-confidentialite">Politique de confidentialité</a>.</p>' +
+                '<p class="rm-consent__kicker">' + T.kicker + '</p>' +
+                '<h2 id="rm-consent-title" class="rm-consent__title">' + T.title + '</h2>' +
+                '<p id="rm-consent-desc" class="rm-consent__text">' + T.desc + ' <a href="' + T.href + '">' + T.policy + '</a>.</p>' +
                 '<div class="rm-consent__actions">' +
-                    '<button type="button" class="rm-consent__btn rm-consent__btn--reject" id="rm-consent-reject">Refuser</button>' +
-                    '<button type="button" class="rm-consent__btn rm-consent__btn--accept" id="rm-consent-accept">Accepter</button>' +
-                    '<button type="button" class="rm-consent__btn rm-consent__btn--customize" id="rm-consent-customize" aria-expanded="false" aria-controls="rm-consent-prefs">Personnaliser</button>' +
+                    '<button type="button" class="rm-consent__btn rm-consent__btn--reject" id="rm-consent-reject">' + T.reject + '</button>' +
+                    '<button type="button" class="rm-consent__btn rm-consent__btn--accept" id="rm-consent-accept">' + T.accept + '</button>' +
+                    '<button type="button" class="rm-consent__btn rm-consent__btn--customize" id="rm-consent-customize" aria-expanded="false" aria-controls="rm-consent-prefs">' + T.custom + '</button>' +
                 '</div>' +
                 '<div id="rm-consent-prefs" class="rm-consent__prefs" hidden role="group" aria-labelledby="rm-consent-prefs-title">' +
-                    '<p id="rm-consent-prefs-title" class="rm-consent__prefs-title">Choisir par catégorie</p>' +
-                    '<label class="rm-consent__choice"><input type="checkbox" id="rm-consent-essential" checked disabled><span>Essentiels</span><small>Toujours actifs. Ils retiennent votre décision dans ce navigateur. Ils ne servent pas à la publicité.</small></label>' +
-                    '<label class="rm-consent__choice"><input type="checkbox" id="rm-consent-analytics"><span>Analytique</span><small>Mesure d\'audience. Aucun outil n\'est installé pour le moment. Un ajout futur resterait bloqué sans votre accord.</small></label>' +
-                    '<label class="rm-consent__choice"><input type="checkbox" id="rm-consent-marketing"><span>Marketing</span><small>Publicité, dont le pixel Meta. Le script ne se charge qu\'avec votre accord.</small></label>' +
-                    '<div class="rm-consent__actions"><button type="button" class="rm-consent__btn rm-consent__btn--save" id="rm-consent-save">Enregistrer mes choix</button></div>' +
+                    '<p id="rm-consent-prefs-title" class="rm-consent__prefs-title">' + T.byCat + '</p>' +
+                    '<label class="rm-consent__choice"><input type="checkbox" id="rm-consent-essential" checked disabled><span>' + T.ess + '</span><small>' + T.essD + '</small></label>' +
+                    '<label class="rm-consent__choice"><input type="checkbox" id="rm-consent-analytics"><span>' + T.ana + '</span><small>' + T.anaD + '</small></label>' +
+                    '<label class="rm-consent__choice"><input type="checkbox" id="rm-consent-marketing"><span>Marketing</span><small>' + T.mkD + '</small></label>' +
+                    '<div class="rm-consent__actions"><button type="button" class="rm-consent__btn rm-consent__btn--save" id="rm-consent-save">' + T.save + '</button></div>' +
                 '</div>' +
             '</div>';
         document.body.appendChild(root);
