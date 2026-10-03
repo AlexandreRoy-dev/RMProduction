@@ -235,35 +235,10 @@
 .wb-dev i{position:absolute;left:5px;top:5px;width:130px;height:40px;border-radius:999px;background:#e3efe9}
 .sx-mon .sx-toast{top:auto;bottom:30px;right:30px}
 
-/* ---------- scène : écrans posés par homographie ---------- */
-.scr-wrap{display:none}
-.cine .scr-wrap{display:block;position:absolute;left:0;top:0;width:0;height:0;pointer-events:none;z-index:1}
-.cine .scr-ov{position:absolute;left:0;top:0;transform-origin:0 0;display:none;backface-visibility:hidden;will-change:transform}
-.cine .scr-ov .sx{border-radius:6px}
-.cine .scr-ov--tablet .sx,.cine .scr-ov--pad .sx{border-radius:10px}
-.cine .scr-ov--hero .sx{border-radius:14px}
-/* lumière douce de fenêtre et vignette : profondeur de l'accueil */
-.glow{display:none}
-.cine .glow{display:block;position:absolute;inset:0;pointer-events:none;z-index:2;
-  background:radial-gradient(70% 60% at 14% 8%,rgba(255,246,228,.38),rgba(255,246,228,0) 60%),
-             radial-gradient(120% 90% at 50% 45%,rgba(0,0,0,0) 62%,rgba(40,36,30,.10) 100%)}
-.cine .stage::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;background:radial-gradient(140% 100% at 50% 40%,rgba(0,0,0,0) 70%,rgba(30,28,24,.06) 100%)}
-
 /* ---------- entrée en scène de l'accueil ---------- */
 @keyframes rm-in{from{opacity:0;transform:translateY(26px);filter:blur(10px)}to{opacity:1;transform:none;filter:blur(0)}}
 @keyframes rm-line{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes rm-fade{from{opacity:0}to{opacity:1}}
-.cine:not(.scene-ready) .panel--hero > *,.cine:not(.scene-ready) .top{opacity:0}
-.cine.scene-ready .panel--hero > *{animation:rm-in 1.3s cubic-bezier(.16,1,.3,1) backwards}
-.cine.scene-ready .panel--hero > :nth-child(1){animation-delay:1.0s}
-.cine.scene-ready .panel--hero > :nth-child(2){animation-delay:1.18s;animation-duration:1.5s}
-.cine.scene-ready .panel--hero > :nth-child(3){animation-delay:1.4s}
-.cine.scene-ready .panel--hero > :nth-child(4){animation-delay:1.55s}
-.cine.scene-ready .panel--hero > :nth-child(5){animation-delay:1.7s}
-.cine.scene-ready .panel--hero > :nth-child(6){animation-delay:1.85s}
-.cine.scene-ready .top{animation:rm-fade 1.4s .6s ease backwards}
-.cine.scene-ready .scroll-cue{animation:rm-fade 1.2s 2.6s ease backwards}
-@media (prefers-reduced-motion:reduce){.cine.scene-ready .panel--hero > *,.cine.scene-ready .top,.cine.scene-ready .scroll-cue{animation:none}}
 
 /* ---------- version simple : maquettes d'appareils ---------- */
 .dm{position:relative;margin:0 auto 32px;filter:drop-shadow(0 30px 40px rgba(20,20,18,.18)) drop-shadow(0 6px 10px rgba(20,20,18,.08))}
@@ -291,8 +266,7 @@
 .dm--monitor::after{content:"";position:absolute;left:50%;bottom:0;width:36%;height:12px;transform:translateX(-50%);border-radius:8px;background:linear-gradient(#dcdddf,#b3b5b8)}
 .dm--hero{margin-top:6px}   /* vue de face, sans déformation */
 @media (prefers-reduced-motion:no-preference){.dm--hero{animation:rm-in 1.4s cubic-bezier(.16,1,.3,1) .2s backwards}}
-.cine .dm{display:none}
-.no-intro .panel--hero > *,.no-intro .top,.no-intro .scroll-cue,.no-intro #desk{animation:none!important;transition:none!important}
+.no-intro .panel--hero > *,.no-intro .top{animation:none!important;transition:none!important}
 
 /* accueil (version simple) : tablette style iPad, vue de face, bordures fines et tranche en aluminium */
 .dm--ipad{width:min(540px,94%);padding:2.4%;border-radius:clamp(18px,5.4vw,30px);background:#0e0f11;box-sizing:border-box;

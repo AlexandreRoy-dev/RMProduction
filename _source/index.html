@@ -62,14 +62,8 @@
 </script>
 <!-- TODO schema, à confirmer par Alexandre avant mise en ligne : heures d'ouverture (lun. au ven., 9 h à 17 h, non vérifiées), liens sameAs (Facebook, Instagram, LinkedIn, non vérifiés), image Open Graph, fiche Google Business Profile quand elle existera. -->
 <script>
-/* Amélioration progressive : version cinématique sur grand écran seulement, sans préférence de mouvement réduit. */
-(function(){var d=document.documentElement,q=location.search;
-var big=matchMedia('(min-width: 900px) and (min-height: 560px)').matches;
-var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-if((big&&!calm&&q.indexOf('simple')<0)||q.indexOf('cine')>-1)d.classList.add('cine');
-if(q.indexOf('notext')>-1)d.classList.add('notext');
-d.classList.add('js');
-if(d.classList.contains('cine'))setTimeout(function(){d.classList.add('scene-ready');},4500);})();
+/* Une seule version : défilement natif, sections empilées (mobile) ou en alternance (bureau). */
+document.documentElement.classList.add('js');
 window.RM_I18N={"lang": "fr", "modalTitle": "Appel découverte", "modalSub": "Choisissez le moment qui vous convient.", "modalClose": "Fermer", "modalAlt": "Vous préférez nous écrire ou nous appeler ?", "modalLoading": "Chargement du calendrier"};window.RM_ROOT="";
 </script>
 </head>
@@ -99,18 +93,9 @@ window.RM_I18N={"lang": "fr", "modalTitle": "Appel découverte", "modalSub": "Ch
 
 <main id="contenu">
 
-<div class="stage" id="stage" aria-hidden="true">
-  <canvas id="desk"></canvas>
-  <div class="glow" id="glow"></div>
-  <div class="scr-wrap" id="scrWrap"></div>
-  <div class="phone-ui-wrap" id="phoneWrap"><div class="phone-ui" id="phoneUI"></div></div>
-  <div class="grain"></div>
-  <div class="fade-out" id="fadeOut"></div>
-</div>
-
 <div class="track" id="track">
 
-  <section class="chap chap--hero" id="hero" data-chap="0">
+  <section class="chap chap--hero chap--flip" id="hero" data-chap="0">
     <figure class="dm dm--ipad dm--hero" role="img" aria-label="Bureau blanc vu de haut : ordinateur portable, tasse d&#x27;espresso, souris et plante."><div class="dm__scr" data-screen="laptop" data-offset="0"></div></figure>
     <div class="panel panel--hero">
       <p class="label label--lines"><span class="ln"></span>Votre partenaire technologique<span class="ln"></span></p>
@@ -122,7 +107,6 @@ window.RM_I18N={"lang": "fr", "modalTitle": "Appel découverte", "modalSub": "Ch
         <a class="link" href="#applications">Découvrir l&#x27;atelier</a>
       </div>
     </div>
-    <div class="scroll-cue" aria-hidden="true"><span></span>Défilez</div>
   </section>
 
   <section class="chap" id="applications" data-chap="1">
@@ -135,7 +119,7 @@ window.RM_I18N={"lang": "fr", "modalTitle": "Appel découverte", "modalSub": "Ch
     </div>
   </section>
 
-  <section class="chap" id="automatisation" data-chap="2">
+  <section class="chap chap--flip" id="automatisation" data-chap="2">
     <div class="mock" aria-hidden="true"><div class="mock__frame"><div class="phone-ui" id="phoneUIStatic"></div></div></div>
     <div class="panel panel--automatisation">
       <p class="label"><span>02</span>Automatisation</p>
@@ -155,7 +139,7 @@ window.RM_I18N={"lang": "fr", "modalTitle": "Appel découverte", "modalSub": "Ch
     </div>
   </section>
 
-  <section class="chap" id="ia" data-chap="4">
+  <section class="chap chap--flip" id="ia" data-chap="4">
     <figure class="dm dm--pad" role="img" aria-label="Carnet ouvert sur un schéma d&#x27;intégration de l&#x27;intelligence artificielle dessiné à la main."><div class="dm__scr" data-screen="pad" data-offset="0"></div></figure>
     <div class="panel panel--ia">
       <p class="label"><span>04</span>Intégration IA</p>
@@ -175,7 +159,6 @@ window.RM_I18N={"lang": "fr", "modalTitle": "Appel découverte", "modalSub": "Ch
     </div>
   </section>
 
-  <section class="chap chap--outro" id="outro" data-chap="6" aria-label="Transition vers le contact"></section>
 </div>
 
 <section class="contact" id="contact">
@@ -222,8 +205,6 @@ window.RM_I18N={"lang": "fr", "modalTitle": "Appel découverte", "modalSub": "Ch
 <a class="totop" id="toTop" href="#top" aria-label="Retour au début"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Retour au début</span></a>
 <div class="jumpfade" id="jumpFade" aria-hidden="true"></div>
 
-<div class="hud" id="hud" aria-hidden="true"><ol><li data-i="1">Applications</li><li data-i="2">Automatisation</li><li data-i="3">ERP et CRM</li><li data-i="4">IA</li><li data-i="5">Web</li></ol><div class="hud__bar"><span id="hudBar"></span></div></div>
-
 <dialog class="booking" id="booking" aria-labelledby="bookingTitle">
   <div class="booking__head"><div><p class="label"><span>RDV</span>Appel découverte</p><h2 id="bookingTitle" class="booking__title">Choisissez le moment qui vous convient.</h2></div><button type="button" class="booking__close" data-close aria-label="Fermer">×</button></div>
   <div class="booking__body" id="bookingBody"><p class="booking__loading">Chargement du calendrier</p></div>
@@ -232,7 +213,6 @@ window.RM_I18N={"lang": "fr", "modalTitle": "Appel découverte", "modalSub": "Ch
 
 <!-- Pixel Meta : bloqué jusqu'au consentement marketing (Loi 25). fbq('init') reste en commentaire tant qu'il n'y a pas d'identifiant de pixel. -->
 <script type="text/plain" data-consent="marketing">/* fbq('init', 'A_REMPLACER'); fbq('track', 'PageView'); */</script>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/","lenis":"https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.mjs"}}</script>
 <script src="js/consent.js" defer></script>
 <script type="module" src="js/main.js"></script>
 </body>
