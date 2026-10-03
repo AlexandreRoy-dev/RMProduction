@@ -21,8 +21,6 @@ cp _source/en/index.html en/index.html
 
 Si le CSS, le JavaScript, les images ou la politique de confidentialité changent, copier les mêmes chemins depuis `_source/` vers la racine. La politique (`_source/politique-de-confidentialite/index.html`) n'est pas générée par le script.
 
-Les fichiers publiés `index.html`, `en/index.html` et `politique-de-confidentialite/index.html` contiennent `<meta name="robots" content="noindex, nofollow">`. Le script de build ne l'écrit pas, et la politique dans `_source/` indique `index, follow`. Copier un build frais retire donc cette balise des pages d'accueil. À trancher avant la mise en ligne.
-
 `robots.txt` autorise l'exploration et indique `sitemap.xml`. L'archive de build livrée contenait un `Disallow: /` de prévisualisation. Ce fichier n'est pas celui qui est publié.
 
 ## Anciennes adresses
