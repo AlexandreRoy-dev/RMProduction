@@ -77,7 +77,6 @@ i{font-style:normal;color:var(--g)}
 .top__cta{padding:14px 20px}
 
 /* ---------- version simple (mobile, mouvement réduit, sans JS) ---------- */
-.stage,.hud{display:none}
 .track{padding-top:100px}
 .chap{position:relative;padding:44px var(--pad) 60px;max-width:1240px;margin:0 auto}
 .chap + .chap{border-top:1px solid var(--hair2)}
@@ -181,47 +180,7 @@ i{font-style:normal;color:var(--g)}
 .booking__alt{margin:0;padding:14px 28px;border-top:1px solid var(--hair2);font-size:13px;color:var(--grey2)}
 .booking__alt a{color:var(--g);text-decoration:none}
 
-/* ---------- version cinématique (grand écran) ---------- */
-.cine body{background-color:#f2eee7}
-.cine .stage{display:block;position:fixed;inset:0;z-index:0;overflow:hidden;background:#f2eee7}
-.cine #desk{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.2s var(--ease)}
-.cine.scene-ready #desk{opacity:1}
-.cine .phone-ui-wrap{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none}
-.cine .phone-ui-wrap .phone-ui{position:absolute;left:0;top:0;width:360px;height:770px;transform-origin:0 0;font-size:16px;border-radius:40px;visibility:hidden;backface-visibility:hidden}
-.grain{position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 95% at 50% 45%,transparent 60%,rgba(60,52,40,.09) 100%)}
-.fade-out{position:absolute;inset:0;background:var(--stone);opacity:0;pointer-events:none}
-.cine .track{position:relative;z-index:2;padding:0}
-.cine .chap{position:static;max-width:none;margin:0;padding:0;height:var(--h,180vh);border:0}
-.cine .chap .still,.cine .mock{display:none}
-.cine .panel{position:fixed;top:50%;transform:translateY(-50%);width:min(430px,33vw);z-index:3}
-.cine .panel--hero{right:calc(var(--pad) + 8px);width:min(600px,45vw);text-align:right}
-@media (min-width:821px) and (max-width:1400px){.cine .panel--hero{width:min(600px,40vw)}}
-@media (min-width:821px) and (max-width:1100px){.cine .panel--hero{width:37vw}.cine .panel--hero .lead{font-size:14px}.cine .panel--hero .label--lines{white-space:nowrap;letter-spacing:.14em;font-size:10px}}
-.cine .panel--hero .label{justify-content:flex-end}
-.cine .panel--hero .lead{margin-left:auto}
-.cine .panel--hero .actions{justify-content:flex-end}
-.cine .panel--applications,.cine .panel--erp-crm,.cine .panel--web{left:calc(var(--pad) + 8px)}
-.cine .panel--automatisation,.cine .panel--ia{right:calc(var(--pad) + 8px)}
-.cine .panel--automatisation{width:min(440px,34vw)}
-.cine .chap:not(.chap--hero) .panel{visibility:hidden}
-.cine .panel:not(.panel--hero){padding:32px 34px 34px;background:rgba(250,249,246,.86);backdrop-filter:blur(16px) saturate(1.1);-webkit-backdrop-filter:blur(16px) saturate(1.1);border:1px solid rgba(255,255,255,.8);border-radius:18px;box-shadow:0 1px 0 var(--hair2),0 30px 70px -45px rgba(40,34,20,.4);will-change:transform,opacity}
-.cine .steps li{opacity:.4;transition:opacity .5s var(--ease)}
-.cine .steps li.is-on{opacity:1}
-.cine .steps li.is-on::before{color:var(--g3)}
-.cine .steps li.is-on b{color:var(--g)}
-.cine .panel--automatisation .body{font-size:14.5px}
-.cine .panel--automatisation .steps{margin-top:18px}
-.cine .panel--automatisation .steps li{padding:10px 0 10px 40px}
-.cine .scroll-cue{position:fixed;left:50%;bottom:74px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font:500 9.5px/1 var(--mono);letter-spacing:.3em;text-transform:uppercase;color:var(--grey);z-index:3}
-.cine .scroll-cue span{width:1px;height:40px;background:linear-gradient(var(--grey),transparent);animation:cue 2.4s var(--ease) infinite;transform-origin:top}
-@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
-.cine .hud{display:flex;position:fixed;left:var(--pad);bottom:22px;z-index:36;align-items:center;gap:22px;opacity:0;transition:opacity .6s var(--ease)}
-.hud ol{display:flex;gap:18px;margin:0;padding:0;list-style:none}
-.hud li{font:500 9.5px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--grey);transition:color .4s}
-.hud li.is-on{color:var(--ink)}
-.hud__bar{width:110px;height:1px;background:var(--hair);overflow:hidden}
-.hud__bar span{display:block;height:100%;background:var(--ink);transform-origin:0 50%;transform:scaleX(0)}
-.notext .panel,.notext .top,.notext .hud,.notext .scroll-cue,.notext .frame,.notext #rm-consent{display:none!important}
+.notext .panel,.notext .top,.notext .frame,.notext #rm-consent{display:none!important}
 
 /* ---------- écran du téléphone (repris des pubs Roy Marketing) ---------- */
 .phone-ui{overflow:hidden;background:#f5f4ef;color:#161a18;font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -340,5 +299,52 @@ body,.contact,.approach,.foot,.policy-page{background-image:url("data:image/svg+
 .totop.is-on{opacity:1;transform:none;pointer-events:auto}
 .totop:hover{background:#fff}
 .totop:focus-visible{outline:0;box-shadow:0 0 0 4px rgba(15,75,58,.2)}
-.cine .totop{bottom:70px}
 @media (max-width:620px){.totop{right:14px;bottom:16px;height:44px;padding:0 15px 0 13px}}
+
+/* ---------- bureau (900 px et plus) : sections en alternance, défilement natif ---------- */
+@media (min-width:900px){
+  html{scroll-behavior:auto}
+  .fl--b,.fd{display:none}
+  .track{padding-top:0}
+  .chap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);grid-template-areas:"vis txt";align-items:center;gap:clamp(48px,6vw,112px);
+    max-width:1360px;min-height:min(86vh,820px);padding:clamp(96px,12vh,150px) var(--pad);
+    background:radial-gradient(38% 46% at 27% 52%,rgba(255,253,248,.7),rgba(255,253,248,0) 72%)}
+  .chap--flip{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);grid-template-areas:"txt vis";background:radial-gradient(38% 46% at 73% 52%,rgba(255,253,248,.7),rgba(255,253,248,0) 72%)}
+  .chap > .dm,.chap > .mock{grid-area:vis;justify-self:center;margin:0}
+  .chap > .panel{grid-area:txt;max-width:500px;justify-self:start}
+  .chap--flip > .panel{justify-self:end;width:100%}
+  .chap .body{max-width:470px}
+  .chap > .dm--laptop{width:min(600px,100%)}
+  .chap > .dm--laptop{margin-bottom:clamp(40px,7%,80px)}
+  .chap > .dm--tablet{width:min(580px,100%)}
+  .chap > .dm--pad{width:min(380px,74%)}
+  .chap > .dm--monitor{width:min(640px,100%)}
+  .mock{margin:0}
+  /* ombres en box-shadow plutôt qu'en filtre : l'écran animé ne force plus le recalcul de l'ombre à chaque image */
+  .chap > .dm{filter:none}
+  .dm__scr > .sx{will-change:transform}
+  .chap > .dm--tablet,.chap > .dm--pad{box-shadow:0 34px 60px -26px rgba(20,20,18,.34),0 8px 16px -6px rgba(20,20,18,.12)}
+  .chap > .dm--ipad{box-shadow:0 0 0 1.5px #d9dbde,0 0 0 3px #b4b7bb,0 0 0 3.6px #8e9196,inset 0 0 0 1px #2a2b2e,0 40px 70px -30px rgba(20,20,18,.36),0 10px 20px -8px rgba(20,20,18,.12)}
+  .chap > .dm--laptop .dm__scr{box-shadow:0 0 0 1px #9a9ca0,0 30px 50px -30px rgba(20,20,18,.3)}
+  .chap > .dm--monitor .dm__scr{box-shadow:0 34px 60px -30px rgba(20,20,18,.34),0 8px 16px -8px rgba(20,20,18,.12)}
+  .mock__frame{width:290px}
+  .mock .phone-ui{font-size:calc(290px / 380 * 16)}
+  /* accueil : texte à gauche, appareil à droite */
+  .chap--hero{min-height:max(640px,100vh);padding-top:clamp(120px,15vh,170px);padding-bottom:clamp(70px,9vh,110px);border:0}
+  .chap--hero > .panel{max-width:620px;justify-self:start}
+  .chap--hero .dm--ipad{width:min(680px,100%)}
+  .steps{margin-top:22px}
+  .steps li{padding:11px 0 11px 44px}
+  /* apparition douce à l'entrée dans l'écran (IntersectionObserver, ajoutée par JS seulement) */
+  .rv-on .rv{opacity:0;transform:translate3d(0,26px,0);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .rv-on .panel.rv{transition-delay:.1s}
+  .rv-on .rv.is-in{opacity:1;transform:none}
+}
+@media (min-width:900px) and (max-width:1100px){
+  .chap{gap:44px}
+  .chap--hero .h1{font-size:clamp(38px,4.6vw,52px)}
+}
+@media (min-width:1700px){
+  .chap{max-width:1480px}
+  .chap--hero .dm--ipad{width:min(760px,100%)}
+}

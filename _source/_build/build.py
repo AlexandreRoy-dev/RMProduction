@@ -26,7 +26,7 @@ def page(d, root):
         mock = '<div class="mock" aria-hidden="true"><div class="mock__frame"><div class="phone-ui" id="phoneUIStatic"></div></div></div>' if phone else ""
         body = extra or f'<ul class="tags">{tags("c%dt" % i)}</ul>'
         return f'''
-  <section class="chap" id="{cid}" data-chap="{i}">
+  <section class="chap{' chap--flip' if cid in ('automatisation', 'ia') else ''}" id="{cid}" data-chap="{i}">
     {still}{mock}
     <div class="panel panel--{cid}">
       <p class="label"><span>{ea(n)}</span>{ea(k)}</p>
@@ -37,7 +37,6 @@ def page(d, root):
   </section>'''
     steps = '<ol class="steps">' + "".join(f'<li data-step="{j}"><b>{ea(a)}</b><span>{ea(b)}</span></li>' for j, (a, b) in enumerate(d["c2s"])) + "</ol>"
     opts = "".join(f'<label class="chip"><input type="radio" name="service" value="{ea(o)}"><span>{ea(o)}</span></label>' for o in d["fOpts"])
-    hud = "".join(f'<li data-i="{j+1}">{ea(x)}</li>' for j, x in enumerate(d["hud"]))
     other = "en" if L == "fr" else "fr"
     i18n_js = json.dumps({"lang": L, "modalTitle": t(d["modalTitle"]), "modalSub": t(d["modalSub"]), "modalClose": d["modalClose"], "modalAlt": t(d["modalAlt"]), "modalLoading": d["modalLoading"]}, ensure_ascii=False)
     return f'''<!DOCTYPE html>
@@ -104,14 +103,8 @@ def page(d, root):
 </script>
 <!-- TODO schema, à confirmer par Alexandre avant mise en ligne : heures d'ouverture (lun. au ven., 9 h à 17 h, non vérifiées), liens sameAs (Facebook, Instagram, LinkedIn, non vérifiés), image Open Graph, fiche Google Business Profile quand elle existera. -->
 <script>
-/* Amélioration progressive : version cinématique sur grand écran seulement, sans préférence de mouvement réduit. */
-(function(){{var d=document.documentElement,q=location.search;
-var big=matchMedia('(min-width: 900px) and (min-height: 560px)').matches;
-var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-if((big&&!calm&&q.indexOf('simple')<0)||q.indexOf('cine')>-1)d.classList.add('cine');
-if(q.indexOf('notext')>-1)d.classList.add('notext');
-d.classList.add('js');
-if(d.classList.contains('cine'))setTimeout(function(){{d.classList.add('scene-ready');}},4500);}})();
+/* Une seule version : défilement natif, sections empilées (mobile) ou en alternance (bureau). */
+document.documentElement.classList.add('js');
 window.RM_I18N={i18n_js};window.RM_ROOT="{root}";
 </script>
 </head>
@@ -141,18 +134,9 @@ window.RM_I18N={i18n_js};window.RM_ROOT="{root}";
 
 <main id="contenu">
 
-<div class="stage" id="stage" aria-hidden="true">
-  <canvas id="desk"></canvas>
-  <div class="glow" id="glow"></div>
-  <div class="scr-wrap" id="scrWrap"></div>
-  <div class="phone-ui-wrap" id="phoneWrap"><div class="phone-ui" id="phoneUI"></div></div>
-  <div class="grain"></div>
-  <div class="fade-out" id="fadeOut"></div>
-</div>
-
 <div class="track" id="track">
 
-  <section class="chap chap--hero" id="hero" data-chap="0">
+  <section class="chap chap--hero chap--flip" id="hero" data-chap="0">
     <figure class="dm dm--ipad dm--hero" role="img" aria-label="{e("altHero")}"><div class="dm__scr" data-screen="laptop" data-offset="0"></div></figure>
     <div class="panel panel--hero">
       <p class="label label--lines"><span class="ln"></span>{e("heroEyebrow")}<span class="ln"></span></p>
@@ -164,7 +148,6 @@ window.RM_I18N={i18n_js};window.RM_ROOT="{root}";
         <a class="link" href="#applications">{e("heroLink")}</a>
       </div>
     </div>
-    <div class="scroll-cue" aria-hidden="true"><span></span>{e("scroll")}</div>
   </section>
 {chap(1, "applications", img=True)}
 {chap(2, "automatisation", phone=True, extra=steps)}
@@ -172,7 +155,6 @@ window.RM_I18N={i18n_js};window.RM_ROOT="{root}";
 {chap(4, "ia", img=True)}
 {chap(5, "web", img=True)}
 
-  <section class="chap chap--outro" id="outro" data-chap="6" aria-label="{e("outroLabel")}"></section>
 </div>
 
 <section class="contact" id="contact">
@@ -219,8 +201,6 @@ window.RM_I18N={i18n_js};window.RM_ROOT="{root}";
 <a class="totop" id="toTop" href="#top" aria-label="{ea(d["backTop"])}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>{e("backTop")}</span></a>
 <div class="jumpfade" id="jumpFade" aria-hidden="true"></div>
 
-<div class="hud" id="hud" aria-hidden="true"><ol>{hud}</ol><div class="hud__bar"><span id="hudBar"></span></div></div>
-
 <dialog class="booking" id="booking" aria-labelledby="bookingTitle">
   <div class="booking__head"><div><p class="label"><span>RDV</span>{e("modalTitle")}</p><h2 id="bookingTitle" class="booking__title">{e("modalSub")}</h2></div><button type="button" class="booking__close" data-close aria-label="{e("modalClose")}">×</button></div>
   <div class="booking__body" id="bookingBody"><p class="booking__loading">{e("modalLoading")}</p></div>
@@ -229,7 +209,6 @@ window.RM_I18N={i18n_js};window.RM_ROOT="{root}";
 
 <!-- Pixel Meta : bloqué jusqu'au consentement marketing (Loi 25). fbq('init') reste en commentaire tant qu'il n'y a pas d'identifiant de pixel. -->
 <script type="text/plain" data-consent="marketing">/* fbq('init', 'A_REMPLACER'); fbq('track', 'PageView'); */</script>
-<script type="importmap">{{"imports":{{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/","lenis":"https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.mjs"}}}}</script>
 <script src="{root}js/consent.js" defer></script>
 <script type="module" src="{root}js/main.js"></script>
 </body>
