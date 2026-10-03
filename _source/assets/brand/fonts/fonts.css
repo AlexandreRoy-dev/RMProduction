@@ -1,0 +1,21 @@
+/* Roy Marketing: self-hosted web fonts (SIL Open Font License 1.1, see OFL-*.txt).
+   Variable woff2, Latin subset (covers French: accents, ligatures oe/OE, guillemets, euro).
+   Montserrat: weights 400 to 800. Inter: weights 300 to 700 (opsz axis kept). */
+@font-face {
+  font-family: "Montserrat";
+  src: url("montserrat-latin-var.woff2") format("woff2-variations"),
+       url("montserrat-latin-var.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("inter-latin-var.woff2") format("woff2-variations"),
+       url("inter-latin-var.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}

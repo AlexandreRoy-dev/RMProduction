@@ -1,0 +1,26 @@
+/* Bandeau de consentement (Loi 25), adapté du site actuel. Position fixe, aucun décalage de la page. */
+.rm-consent{position:fixed;left:0;bottom:0;z-index:80;padding:16px;padding-bottom:calc(16px + env(safe-area-inset-bottom));pointer-events:none;font-family:Inter,system-ui,sans-serif;color:#111}
+.rm-consent[hidden]{display:none!important}
+.rm-consent *,.rm-consent *::before,.rm-consent *::after{box-sizing:border-box}
+.rm-consent__panel{pointer-events:auto;width:min(420px,calc(100vw - 32px));max-height:min(80vh,600px);overflow:auto;background:rgba(249,249,247,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(15,75,58,.14);border-radius:14px;box-shadow:0 24px 60px -18px rgba(15,75,58,.28),0 10px 30px -12px rgba(0,0,0,.14);padding:18px 18px 16px}
+.rm-consent__kicker{margin:0 0 4px;font:700 10px/1 Montserrat,Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#0f4b3a}
+.rm-consent__title{margin:0 0 6px;font:600 17px/1.25 Montserrat,Inter,sans-serif;letter-spacing:-.01em}
+.rm-consent__text{margin:0;font-size:13px;font-weight:400;line-height:1.55;color:#57534e}
+.rm-consent__text a{color:#0f4b3a;font-weight:600;text-underline-offset:2px}
+.rm-consent__actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.rm-consent__btn{min-height:42px;padding:10px;border:1px solid #111;background:#fff;color:#111;font:700 10.5px/1.2 Montserrat,Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border-radius:999px;transition:background .25s,color .25s,border-color .25s}
+.rm-consent__btn--reject{background:#111;color:#fff}
+.rm-consent__btn--accept{background:#0f4b3a;color:#fff;border-color:#0f4b3a}
+.rm-consent__btn--customize,.rm-consent__btn--save{grid-column:1/-1;background:transparent}
+.rm-consent__btn:hover{filter:brightness(1.08)}
+.rm-consent__btn:focus-visible,.rm-consent a:focus-visible,.rm-consent input:focus-visible,.rm-consent-manage:focus-visible{outline:2px solid #f9f9f7;outline-offset:2px;box-shadow:0 0 0 4px #0f4b3a}
+.rm-consent__prefs{margin-top:4px}
+.rm-consent__prefs[hidden]{display:none!important}
+.rm-consent__prefs-title{margin:12px 0 2px;font:700 10.5px Montserrat,Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.rm-consent__choice{display:grid;grid-template-columns:18px 1fr;column-gap:10px;row-gap:2px;align-items:center;padding:10px 0;border-top:1px solid rgba(17,17,17,.08);font-size:13px}
+.rm-consent__choice input{width:16px;height:16px;margin:0;accent-color:#0f4b3a}
+.rm-consent__choice span{font:600 12.5px Montserrat,Inter,sans-serif}
+.rm-consent__choice small{grid-column:2;font-size:12px;line-height:1.45;color:#57534e}
+.rm-consent-manage{font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+.rm-consent-manage:hover{color:#0f4b3a}
+@media (prefers-reduced-motion:reduce){.rm-consent__btn{transition:none}}

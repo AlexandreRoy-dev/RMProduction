@@ -1,1028 +1,238 @@
 <!DOCTYPE html>
-<html lang="fr-CA" class="scroll-smooth">
+<html lang="fr-CA">
 <head>
-    <title>Roy Marketing | Agence Marketing à Sherbrooke, Montréal & Québec | Stratégie Commerciale</title>
-    <meta name="description" content="Agence de marketing et stratégie commerciale à Sherbrooke, Montréal et Québec. Services web, publicité numérique et croissance d'entreprise. Contactez-nous au (819) 201-9042.">
-    <meta name="keywords" content="agence marketing Sherbrooke, marketing numérique Montréal, stratégie commerciale Québec, agence web Estrie, consultant marketing Sherbrooke, publicité numérique Québec, SEO Sherbrooke, Google Ads Montréal">
-    <meta name="author" content="Roy Marketing">
-    <meta name="robots" content="index, follow">
-    <meta name="geo.region" content="CA-QC">
-    <meta name="geo.placename" content="Sherbrooke, Montréal, Québec">
-    <meta name="geo.position" content="45.4000;-71.9000">
-    <link rel="canonical" href="https://roymarketing.ca/">
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Roy Marketing | Agence Marketing à Sherbrooke, Montréal & Québec">
-    <meta property="og:description" content="Agence de stratégie commerciale et marketing pour les entreprises ambitieuses de Sherbrooke, Montréal et Québec. Propulsez votre croissance.">
-    <meta property="og:url" content="https://roymarketing.ca/">
-    <meta property="og:site_name" content="Roy Marketing">
-    <meta property="og:locale" content="fr_CA">
-    <meta property="og:image" content="https://roymarketing.ca/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Roy Marketing | Agence Marketing Sherbrooke, Montréal & Québec">
-    <meta name="twitter:description" content="Stratégie commerciale, web et publicité numérique pour entreprises ambitieuses.">
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: '#0f4b3a', 
-                        stone: {
-                            50: '#F9F9F7', 
-                            100: '#F5F5F3',
-                            900: '#111111'
-                        }
-                    },
-                    letterSpacing: {
-                        'luxury': '0.15em', 
-                    }
-                }
-            }
-        }
-    </script>
-
-<link rel="icon" type="image/png" href="favicon.png" sizes="96x96">
-
-<link rel="apple-touch-icon" href="favicon.png">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;600;700;800&display=swap');
-        
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        /* Premium scrollbar */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #F5F5F3; }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #0f4b3a 0%, #1a6b55 100%); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #1a6b55 0%, #0f4b3a 100%); }
-        
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
-        .focus\:not-sr-only:focus { position: static; width: auto; height: auto; padding: inherit; margin: inherit; overflow: visible; clip: auto; white-space: normal; }
-        
-        /* Premium shadows */
-        .shadow-premium { box-shadow: 0 20px 60px -15px rgba(15, 75, 58, 0.15), 0 10px 30px -10px rgba(0, 0, 0, 0.1); }
-        .shadow-premium-lg { box-shadow: 0 30px 80px -20px rgba(15, 75, 58, 0.2), 0 15px 40px -15px rgba(0, 0, 0, 0.15); }
-        .shadow-premium-hover { transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        .shadow-premium-hover:hover { box-shadow: 0 25px 70px -15px rgba(15, 75, 58, 0.25), 0 12px 35px -10px rgba(0, 0, 0, 0.15); }
-        
-        /* Premium gradients */
-        .gradient-premium { background: linear-gradient(135deg, rgba(15, 75, 58, 0.05) 0%, rgba(15, 75, 58, 0.02) 100%); }
-        .gradient-overlay { background: linear-gradient(180deg, rgba(249, 249, 247, 0.95) 0%, rgba(249, 249, 247, 0.85) 50%, transparent 100%); }
-        
-        /* Premium borders */
-        .border-premium { border-color: rgba(15, 75, 58, 0.08); }
-        .border-premium-hover { transition: border-color 0.3s ease; }
-        .border-premium-hover:hover { border-color: rgba(15, 75, 58, 0.2); }
-        
-        /* Premium text effects */
-        .text-premium { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.02); }
-        .text-gradient { background: linear-gradient(135deg, #0f4b3a 0%, #1a6b55 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        
-        /* Premium image effects */
-        .image-premium { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease; }
-        .image-premium:hover { transform: scale(1.02); filter: brightness(1.05) contrast(1.02); }
-        
-        /* Premium button */
-        .btn-premium { 
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .btn-premium::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        .btn-premium:hover::before { left: 100%; }
-        .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 15px 40px -10px rgba(15, 75, 58, 0.4); }
-        
-        /* Premium card */
-        .card-premium {
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            backdrop-filter: blur(10px);
-        }
-        .card-premium:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 25px 70px -15px rgba(15, 75, 58, 0.2), 0 12px 35px -10px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Premium divider */
-        .divider-premium {
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, rgba(15, 75, 58, 0.2) 50%, transparent 100%);
-        }
-        
-        /* Premium link hover */
-        .link-premium {
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        .link-premium::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: linear-gradient(90deg, #0f4b3a, #1a6b55);
-            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .link-premium:hover::after { width: 100%; }
-        
-        /* Premium backdrop */
-        .backdrop-premium {
-            backdrop-filter: blur(20px) saturate(180%);
-            background-color: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(15, 75, 58, 0.08);
-        }
-        
-        /* Smooth animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-premium { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    </style>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": ["MarketingAgency", "LocalBusiness"],
-      "name": "Roy Marketing",
-      "url": "https://roymarketing.ca",
-      "logo": "https://roymarketing.ca/logo.png",
-      "description": "Agence spécialisée en stratégie commerciale, conception web et publicité numérique desservant Sherbrooke, Montréal et Québec.",
-      "telephone": "+18192019042",
-      "email": "info@roymarketing.ca",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Sherbrooke",
-        "addressRegion": "QC",
-        "addressCountry": "CA"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "45.4000",
-        "longitude": "-71.9000"
-      },
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Sherbrooke",
-          "addressRegion": "QC"
-        },
-        {
-          "@type": "City",
-          "name": "Montréal",
-          "addressRegion": "QC"
-        },
-        {
-          "@type": "City",
-          "name": "Québec",
-          "addressRegion": "QC"
-        }
-      ],
-      "serviceArea": {
-        "@type": "GeoCircle",
-        "geoMidpoint": {
-          "@type": "GeoCoordinates",
-          "latitude": "45.4000",
-          "longitude": "-71.9000"
-        }
-      },
-      "sameAs": [
-        "https://www.facebook.com/profile.php?id=61581535466026",
-        "https://www.instagram.com/rmarketing32/",
-        "https://www.linkedin.com/company/roy-marketing"
-      ],
-      "priceRange": "$$",
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "09:00",
-        "closes": "17:00"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Services Marketing",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Stratégie Commerciale",
-              "description": "Consultation et audit pour optimiser votre modèle d'affaires"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Design & Web",
-              "description": "Conception de sites web et plateformes numériques performantes"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Publicité Numérique",
-              "description": "Campagnes Google Ads et réseaux sociaux pour maximiser votre ROI"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Production Média",
-              "description": "Création de contenu visuel et vidéo publicitaire"
-            }
-          }
-        ]
-      }
-    }
-    </script>
-    <link rel="stylesheet" href="consent.css">
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Roy Marketing | Agence web et marketing, Sherbrooke, Montréal, Québec</title>
+<meta name="description" content="Applications sur mesure, automatisation, ERP et CRM, IA et sites web pour les PME. Bureaux à Sherbrooke, Montréal et Québec. 819 201-9042.">
+<link rel="canonical" href="https://roymarketing.ca/">
+<link rel="alternate" hreflang="fr-CA" href="https://roymarketing.ca/">
+<link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/">
+<link rel="alternate" hreflang="x-default" href="https://roymarketing.ca/">
+<meta name="theme-color" content="#F3F1EC">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:site_name" content="Roy Marketing">
+<meta property="og:title" content="Roy Marketing | Des systèmes qui travaillent pour vous">
+<meta property="og:description" content="Applications sur mesure, automatisation, ERP et CRM, IA et sites web pour les PME du Québec.">
+<meta property="og:url" content="https://roymarketing.ca/">
+<!-- TODO avant mise en ligne : image Open Graph 1200 x 630 qui existe vraiment (og-image.jpg renvoie une 404 sur le site actuel). -->
+<meta property="og:image" content="https://roymarketing.ca/assets/img/og-image.jpg">
+<link rel="icon" href="assets/brand/favicon/favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/brand/favicon/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/brand/favicon/apple-touch-icon-180.png">
+<meta name="theme-color" content="#F9F9F7">
+<link rel="preload" href="assets/brand/fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/brand/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/brand/fonts/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/screens.css">
+<link rel="stylesheet" href="css/consent.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["MarketingAgency", "LocalBusiness"],
+  "@id": "https://roymarketing.ca/#entreprise",
+  "name": "Roy Marketing",
+  "url": "https://roymarketing.ca/",
+  "logo": "https://roymarketing.ca/assets/brand/logo/png/mark/mark-dark-on-light-512.png",
+  "description": "Applications sur mesure, automatisation, ERP et CRM, IA et sites web pour les PME du Québec.",
+  "telephone": "+18192019042",
+  "email": "info@roymarketing.ca",
+  "founder": { "@type": "Person", "name": "Alexandre Roy" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Sherbrooke", "addressRegion": "QC", "addressCountry": "CA" },
+  "areaServed": [
+    { "@type": "City", "name": "Sherbrooke" },
+    { "@type": "City", "name": "Montréal" },
+    { "@type": "City", "name": "Québec" }
+  ],
+  "knowsLanguage": ["fr-CA", "en-CA"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Applications sur mesure" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatisation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ERP et CRM" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Intégration IA" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Création de sites web" } }
+    ]
+  }
+}
+</script>
+<!-- TODO schema, à confirmer par Alexandre avant mise en ligne : heures d'ouverture (lun. au ven., 9 h à 17 h, non vérifiées), liens sameAs (Facebook, Instagram, LinkedIn, non vérifiés), image Open Graph, fiche Google Business Profile quand elle existera. -->
+<script>
+/* Amélioration progressive : version cinématique sur grand écran seulement, sans préférence de mouvement réduit. */
+(function(){var d=document.documentElement,q=location.search;
+var big=matchMedia('(min-width: 900px) and (min-height: 560px)').matches;
+var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if((big&&!calm&&q.indexOf('simple')<0)||q.indexOf('cine')>-1)d.classList.add('cine');
+if(q.indexOf('notext')>-1)d.classList.add('notext');
+d.classList.add('js');
+if(d.classList.contains('cine'))setTimeout(function(){d.classList.add('scene-ready');},4500);})();
+window.RM_I18N={"lang": "fr", "modalTitle": "Appel découverte", "modalSub": "Choisissez le moment qui vous convient.", "modalClose": "Fermer", "modalAlt": "Vous préférez nous écrire ou nous appeler ?", "modalLoading": "Chargement du calendrier"};window.RM_ROOT="";
+</script>
 </head>
-<body class="antialiased bg-stone-50 text-stone-900 font-sans selection:bg-brand selection:text-white">
-<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-brand focus:text-white focus:rounded">Aller au contenu principal</a>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<div class="frame" aria-hidden="true"><i class="fl fl--l"></i><i class="fl fl--r"></i><i class="fl fl--b"></i><b class="fd fd--l"></b><b class="fd fd--r"></b></div>
 
-<nav class="fixed w-full z-50 py-6 transition-all duration-500 backdrop-premium" id="navbar" role="navigation" aria-label="Navigation principale">
-    <div class="max-w-[1800px] mx-auto px-6 flex justify-between items-center">
-        <a href="#" class="font-display font-bold text-lg tracking-widest uppercase text-stone-900 text-premium" aria-label="Roy Marketing - Retour à l'accueil">
-            Roy Marketing<span class="text-brand">.</span>
-        </a>
-        
-        <div class="hidden md:flex gap-12 absolute left-1/2 -translate-x-1/2" role="menubar">
-            <a href="#expertise" class="text-xs uppercase tracking-luxury text-stone-900 hover:text-brand transition-all duration-300 font-medium link-premium" role="menuitem">Expertises</a>
-            <a href="#portfolio" class="text-xs uppercase tracking-luxury text-stone-900 hover:text-brand transition-all duration-300 font-medium link-premium" role="menuitem">Travaux</a>
-            <a href="#agency" class="text-xs uppercase tracking-luxury text-stone-900 hover:text-brand transition-all duration-300 font-medium link-premium" role="menuitem">Agence</a>
-        </div>
+<header class="top" id="top">
+  <a class="brand" href="#top" aria-label="Roy Marketing, accueil">
+    <img src="assets/brand/logo/mark/mark-dark-on-light.svg" width="40" height="33" alt="">
+    <span class="brand__txt"><span class="brand__name">ROY MARKETING<i>.</i></span><span class="brand__tag">Stratégie • Web • Automatisation</span></span>
+  </a>
+  <nav class="nav" aria-label="Navigation principale">
+    <a href="#applications">Expertises</a>
+    <a href="#automatisation">Automatisation</a>
+    <a href="#ia">IA</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="top__contact">
+    <a href="tel:+18192019042">819-201-9042</a>
+    <a href="mailto:info@roymarketing.ca">info@roymarketing.ca</a>
+  </div>
+  <a class="lang" href="en/" hreflang="en" lang="en" aria-label="English">EN</a>
+  <!-- Lien de réservation : voir js/config.js (BOOKING_URL). -->
+  <a class="btn btn--dark top__cta" href="#contact" data-booking>Réserver un appel découverte</a>
+</header>
 
-        <div class="hidden md:flex items-center gap-8">
-            
-            <div class="hidden lg:flex flex-col items-end text-xs font-medium tracking-widest text-stone-500 leading-snug">
-                <a href="tel:+18192019042" class="hover:text-brand transition-colors" aria-label="Appeler Roy Marketing au (819) 201-9042">(819) 201-9042</a>
-                <a href="mailto:info@roymarketing.ca" class="hover:text-brand transition-colors" aria-label="Envoyer un courriel à info@roymarketing.ca">info@roymarketing.ca</a>
-            </div>
+<main id="contenu">
 
-            <a href="#contact" class="text-xs uppercase tracking-luxury border-b-2 border-stone-900 text-stone-900 pb-1 hover:border-brand hover:text-brand transition-all duration-300 font-medium link-premium">
-                Démarrer un projet
-            </a>
-        </div>
-
-        <button class="md:hidden text-stone-900" id="mobile-menu-btn" aria-label="Ouvrir le menu mobile" aria-expanded="false" aria-controls="mobile-menu">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </button>
-    </div>
-</nav>
-<div id="mobile-menu" class="fixed inset-0 bg-stone-900 z-40 transform translate-x-full transition-transform duration-500 flex items-center justify-center" role="menu" aria-label="Menu mobile">
-    <div class="flex flex-col gap-8 text-center">
-        <a href="#expertise" class="text-white font-display text-3xl font-medium tracking-widest uppercase mobile-link hover:text-brand transition-colors" role="menuitem">Expertises</a>
-        <a href="#portfolio" class="text-white font-display text-3xl font-medium tracking-widest uppercase mobile-link hover:text-brand transition-colors" role="menuitem">Travaux</a>
-        <a href="#agency" class="text-white font-display text-3xl font-medium tracking-widest uppercase mobile-link hover:text-brand transition-colors" role="menuitem">Agence</a>
-        <a href="#contact" class="text-brand font-display text-3xl font-bold tracking-widest uppercase mobile-link mt-4" role="menuitem">Contact</a>
-    </div>
+<div class="stage" id="stage" aria-hidden="true">
+  <canvas id="desk"></canvas>
+  <div class="glow" id="glow"></div>
+  <div class="scr-wrap" id="scrWrap"></div>
+  <div class="phone-ui-wrap" id="phoneWrap"><div class="phone-ui" id="phoneUI"></div></div>
+  <div class="grain"></div>
+  <div class="fade-out" id="fadeOut"></div>
 </div>
 
-<main id="main-content">
-<section class="min-h-screen relative flex items-center pt-20 overflow-hidden bg-stone-50" aria-label="Section héro">
-    
-    <div class="absolute right-0 top-0 w-full md:w-1/2 h-full bg-stone-200 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop" 
-             class="w-full h-full object-cover scale-105 image-premium" 
-             alt="Agence de stratégie commerciale Roy Marketing à Sherbrooke, Montréal et Québec"
-             loading="eager"
-             fetchpriority="high"
-             width="1035"
-             height="690">
-        
-        <div class="absolute inset-0 gradient-overlay z-10" aria-hidden="true"></div>
-        <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-stone-50 via-stone-50/90 to-transparent z-10 hidden md:block" aria-hidden="true"></div>
-    </div>
+<div class="track" id="track">
 
-    <div class="max-w-[1800px] mx-auto px-6 w-full relative z-20 grid md:grid-cols-2">
-        <div class="md:pr-12">
-            <div class="reveal delay-100">
-    <span class="block text-brand text-xs font-bold tracking-luxury uppercase mb-6">Sherbrooke - Montréal - Québec</span>
-    
-    <h1 class="font-display font-medium text-5xl lg:text-7xl leading-[0.95] tracking-tight mb-8 text-stone-900 uppercase">
-        Stratégie<br>
-        Commerciale,<br>
-        <span class="font-bold">Web et Publicité<span style="color: #0f4b3a;">.</span></span>
-    </h1>
+  <section class="chap chap--hero" id="hero" data-chap="0">
+    <figure class="dm dm--ipad dm--hero" role="img" aria-label="Bureau blanc vu de haut : ordinateur portable, tasse d&#x27;espresso, souris et plante."><div class="dm__scr" data-screen="laptop" data-offset="0"></div></figure>
+    <div class="panel panel--hero">
+      <p class="label label--lines"><span class="ln"></span>Votre partenaire technologique<span class="ln"></span></p>
+      <h1 class="h1"><span class="h-a">Des systèmes</span> <span class="h-b">qui travaillent pour vous<i>.</i></span></h1>
+      <p class="tagline2">Des outils sur mesure pour les PME d&#x27;ici.</p>
+      <p class="lead">Technologies d&#x27;affaires, logiciels et automatisation pour les PME. Applications sur mesure, CRM, intelligence artificielle et sites web, guidés par une stratégie marketing claire : nous bâtissons les leviers qui font croître votre entreprise.</p>
+      <div class="actions">
+        <a class="pill" href="#contact" data-booking>Réserver un appel découverte</a>
+        <a class="link" href="#applications">Découvrir l&#x27;atelier</a>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span></span>Défilez</div>
+  </section>
+
+  <section class="chap" id="applications" data-chap="1">
+    <figure class="dm dm--laptop" role="img" aria-label="Ordinateur portable ouvert sur le tableau de bord d&#x27;une application sur mesure."><div class="dm__scr" data-screen="laptop" data-offset="6"></div></figure>
+    <div class="panel panel--applications">
+      <p class="label"><span>01</span>Applications sur mesure</p>
+      <h2 class="h2"><span class="h-a">Applications sur mesure</span> <span class="h-b">pensées pour votre façon de travailler<i>.</i></span></h2>
+      <p class="body">Outils internes, portails clients, tableaux de bord. Une plateforme à votre image, qui centralise votre travail et grandit avec votre entreprise.</p>
+      <ul class="tags"><li>Outils internes</li><li>Portails clients</li><li>Tableaux de bord</li></ul>
+    </div>
+  </section>
+
+  <section class="chap" id="automatisation" data-chap="2">
+    <div class="mock" aria-hidden="true"><div class="mock__frame"><div class="phone-ui" id="phoneUIStatic"></div></div></div>
+    <div class="panel panel--automatisation">
+      <p class="label"><span>02</span>Automatisation</p>
+      <h2 class="h2"><span class="h-a">Automatisation</span> <span class="h-b">chaque suivi part au bon moment<i>.</i></span></h2>
+      <p class="body">Chaque demande reçoit une réponse. Vos tâches répétitives roulent toutes seules pendant que vous travaillez.</p>
+      <ol class="steps"><li data-step="0"><b>Un lead entre</b><span>Formulaire web, Messenger, SMS ou courriel : tout arrive au même endroit.</span></li><li data-step="1"><b>Réponse instantanée</b><span>Un texto personnalisé part tout seul, même un dimanche soir.</span></li><li data-step="2"><b>Rendez-vous réservé</b><span>Le client choisit sa plage horaire. Le rappel est planifié.</span></li><li data-step="3"><b>Le pipeline avance</b><span>Chaque étape est suivie, chaque tâche est créée.</span></li><li data-step="4"><b>Votre journée, résumée</b><span>Chaque matin, l&#x27;essentiel vous attend sur votre téléphone.</span></li></ol>
+    </div>
+  </section>
+
+  <section class="chap" id="erp-crm" data-chap="3">
+    <figure class="dm dm--tablet" role="img" aria-label="Tablette affichant un pipeline de ventes et des modules de facturation et d&#x27;inventaire."><div class="dm__scr" data-screen="tablet" data-offset="0"></div></figure>
+    <div class="panel panel--erp-crm">
+      <p class="label"><span>03</span>ERP et CRM</p>
+      <h2 class="h2"><span class="h-a">ERP et CRM</span> <span class="h-b">vos ventes et vos opérations, reliées<i>.</i></span></h2>
+      <p class="body">Nous configurons et relions vos outils, comme GoHighLevel, Ava Client ou Ultimo, pour centraliser vos clients, vos soumissions, votre facturation et votre inventaire.</p>
+      <ul class="tags"><li>Pipeline de ventes</li><li>Facturation</li><li>Inventaire</li><li>Intégration API</li></ul>
+    </div>
+  </section>
+
+  <section class="chap" id="ia" data-chap="4">
+    <figure class="dm dm--pad" role="img" aria-label="Carnet ouvert sur un schéma d&#x27;intégration de l&#x27;intelligence artificielle dessiné à la main."><div class="dm__scr" data-screen="pad" data-offset="0"></div></figure>
+    <div class="panel panel--ia">
+      <p class="label"><span>04</span>Intégration IA</p>
+      <h2 class="h2"><span class="h-a">Intégration IA</span> <span class="h-b">là où elle fait gagner du temps<i>.</i></span></h2>
+      <p class="body">Tri des demandes, réponses assistées, résumés et recherche dans vos documents. Une intelligence artificielle encadrée, toujours au service de votre équipe.</p>
+      <ul class="tags"><li>Assistants IA</li><li>Documents</li><li>Réponses assistées</li></ul>
+    </div>
+  </section>
+
+  <section class="chap" id="web" data-chap="5">
+    <figure class="dm dm--monitor" role="img" aria-label="Écran affichant un concept de site web."><div class="dm__scr" data-screen="monitor" data-offset="0"></div></figure>
+    <div class="panel panel--web">
+      <p class="label"><span>05</span>Sites web</p>
+      <h2 class="h2"><span class="h-a">Sites web haut de gamme</span> <span class="h-b">qui transforment les visites en demandes<i>.</i></span></h2>
+      <p class="body">Conception de sites web et de plateformes numériques rapides, élégants et optimisés pour Google, reliés à votre CRM.</p>
+      <ul class="tags"><li>Sites vitrines</li><li>Commerce en ligne</li><li>SEO technique</li></ul>
+    </div>
+  </section>
+
+  <section class="chap chap--outro" id="outro" data-chap="6" aria-label="Transition vers le contact"></section>
 </div>
-            <div class="reveal delay-300 h-[2px] w-24 bg-gradient-to-r from-brand to-transparent mb-8 shadow-premium" aria-hidden="true"></div>
-            <p class="reveal delay-500 text-lg max-w-lg font-light leading-relaxed mb-10">
-                On s'occupe de tout : <strong>stratégie de croissance</strong>, création de <strong>site web performant</strong> et <strong>publicité numérique</strong>.
-                Nous gérons votre marketing pour que vous n'ayez qu'à gérer votre expansion.
-            </p>
-            <div class="reveal delay-700">
-                <a href="#agency" class="group inline-flex items-center gap-4 text-stone-900 font-medium text-sm uppercase tracking-widest link-premium" aria-label="En savoir plus sur Roy Marketing">
-                    <span>En savoir plus</span>
-                    <span class="w-8 h-[2px] bg-gradient-to-r from-stone-900 to-transparent group-hover:w-16 transition-all duration-500 ease-out" aria-hidden="true"></span>
-                </a>
-            </div>
-        </div>
+
+<section class="contact" id="contact">
+  <div class="wrap contact__grid">
+    <div class="contact__intro">
+      <p class="label"><span>06</span>Contact</p>
+      <h2 class="h2 h2--xl"><span class="h-a">Parlons de votre projet</span><i>.</i></h2>
+      <p class="body">Dites-nous où vous voulez aller. Nous vous proposerons un plan clair, sans jargon et sans boîte noire.</p>
+      <ul class="contact__list">
+        <li><span>Téléphone</span><a href="tel:+18192019042">819-201-9042</a></li>
+        <li><span>Courriel</span><a href="mailto:info@roymarketing.ca">info@roymarketing.ca</a></li>
+      </ul>
+      <!-- Lien de réservation : voir js/config.js (BOOKING_URL). -->
+      <a class="pill pill--lg" href="#contact" data-booking>Réserver un appel découverte</a>
+      <p class="location">Bureaux à Sherbrooke, Montréal et Québec.</p>
     </div>
-    
-    <div class="absolute bottom-10 left-6 md:left-1/2 md:-translate-x-1/2 flex flex-col items-center gap-2 text-stone-900 z-20" aria-hidden="true">
-        <div class="w-px h-12 bg-current opacity-30"></div>
-        <span class="text-[10px] uppercase tracking-widest opacity-60">Découvrir</span>
-    </div>
+    <!-- Formulaire : même point de réception Formspree que le site actuel. À remplacer par un envoi direct dans GHL si Alexandre le décide. -->
+    <form class="form" action="https://formspree.io/f/mjgknole" method="POST">
+      <input type="hidden" name="langue" value="fr">
+      <div class="form__row">
+        <label><span>Nom</span><input name="nom" autocomplete="name" required></label>
+        <label><span>Courriel</span><input type="email" name="courriel" autocomplete="email" required></label>
+      </div>
+      <div class="form__row">
+        <label><span>Téléphone</span><input type="tel" name="telephone" autocomplete="tel"></label>
+        <label><span>Service souhaité</span><select name="service"><option>Application sur mesure</option><option>Automatisation</option><option>ERP et CRM</option><option>Intégration IA</option><option>Site web</option><option>Stratégie marketing</option><option>Je ne sais pas encore</option></select></label>
+      </div>
+      <label><span>Vos objectifs</span><textarea name="objectifs" rows="4"></textarea></label>
+      <p class="form__legal">En envoyant ce formulaire, vous acceptez que Roy Marketing utilise vos coordonnées pour vous répondre. Voir notre <a href="/politique-de-confidentialite">politique de confidentialité</a>.</p>
+      <button class="btn btn--dark" type="submit">Envoyer</button>
+    </form>
+  </div>
 </section>
 
-
-<section id="agency" class="py-24 lg:py-40 bg-white border-b border-stone-200 overflow-hidden" aria-labelledby="agency-heading">
-    <div class="max-w-[1800px] mx-auto px-6">
-        <div class="grid lg:grid-cols-12 gap-12 lg:gap-24">
-            
-            <div class="lg:col-span-5 relative">
-                <div class="sticky top-32 reveal">
-                    <div class="aspect-[3/4] overflow-hidden bg-stone-200 relative z-10 grayscale hover:grayscale-0 transition-all duration-1000 shadow-premium-lg image-premium rounded-sm">
-                        <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                             alt="Consultants en stratégie marketing Roy Marketing en réunion à Sherbrooke" 
-                             class="w-full h-full object-cover"
-                             loading="lazy"
-                             width="630"
-                             height="840">
-                    </div>
-                    <div class="absolute -left-12 top-12 -rotate-90 origin-bottom-left hidden xl:block"></div>
-                </div>
-            </div>
-
-            <div class="lg:col-span-7 flex flex-col justify-center reveal delay-200">
-                
-                <div class="mb-16">
-                    <span class="block text-brand text-xs font-bold tracking-luxury uppercase mb-6">Notre ADN</span>
-                    <h2 id="agency-heading" class="font-display text-4xl lg:text-5xl leading-tight font-medium mb-8 text-premium">
-                        Nous ne suivons pas les tendances.<br>
-                        <span class="text-stone-400">Nous dictons la croissance.</span>
-                    </h2>
-                    <p class="text-stone-600 text-lg font-light leading-relaxed max-w-2xl">
-                        Dans un monde où chaque agence promet "plus de clics", Roy Marketing se concentre sur la seule métrique qui compte : <strong>le revenu généré</strong>. Notre approche fusionne intelligence d'affaires et direction artistique sans compromis.
-                    </p>
-                </div>
-
-                <div class="space-y-0 border-t border-stone-200">
-                    
-                    <div class="group py-8 border-b border-premium hover:bg-gradient-premium transition-all duration-500 card-premium px-6 -mx-6 rounded-lg">
-                        <div class="flex flex-col md:flex-row gap-4 md:gap-12 md:items-baseline">
-                            <span class="text-xs font-bold text-brand uppercase tracking-widest min-w-[120px]">01. Transparence</span>
-                            <div>
-                                <h3 class="font-display text-2xl font-medium text-stone-900 mb-2">Pas de "Boîte Noire"</h3>
-                                <p class="text-stone-500 font-light text-sm leading-relaxed max-w-md">
-                                    Vous savez exactement où chaque dollar est investi. Pas de frais cachés, pas de jargon technique pour masquer la réalité.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group py-8 border-b border-premium hover:bg-gradient-premium transition-all duration-500 card-premium px-6 -mx-6 rounded-lg">
-                        <div class="flex flex-col md:flex-row gap-4 md:gap-12 md:items-baseline">
-                            <span class="text-xs font-bold text-brand uppercase tracking-widest min-w-[120px]">02. Performance</span>
-                            <div>
-                                <h3 class="font-display text-2xl font-medium text-stone-900 mb-2">Rentabilité avant tout</h3>
-                                <p class="text-stone-500 font-light text-sm leading-relaxed max-w-md">
-                                    Le beau ne suffit pas, ça doit vendre. Si une campagne ne génère pas de profit, nous la coupons. Nous gérons votre budget comme si c'était le nôtre.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group py-8 border-b border-premium hover:bg-gradient-premium transition-all duration-500 card-premium px-6 -mx-6 rounded-lg">
-                        <div class="flex flex-col md:flex-row gap-4 md:gap-12 md:items-baseline">
-                            <span class="text-xs font-bold text-brand uppercase tracking-widest min-w-[120px]">03. Ambition</span>
-                            <div>
-                                <h3 class="font-display text-2xl font-medium text-stone-900 mb-2">Partenaires de Guerre</h3>
-                                <p class="text-stone-500 font-light text-sm leading-relaxed max-w-md">
-                                    Nous ne cherchons pas des clients pour un "one-shot". Nous cherchons des entreprises ambitieuses prêtes à dominer leur marché sur le long terme.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section id="expertise" class="py-24 bg-stone-50" aria-labelledby="expertise-heading">
-    <div class="max-w-[1800px] mx-auto px-6">
-        <div class="mb-20 reveal flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-                <span class="text-xs font-bold text-brand uppercase tracking-luxury">Notre Expertise</span>
-                <h2 id="expertise-heading" class="font-display text-4xl mt-4 text-premium">Nos Services Marketing</h2>
-            </div>
-            <p class="text-stone-500 max-w-md text-sm leading-relaxed text-right hidden md:block">
-                Une offre 360° intégrée pour maintenir la cohérence de votre marque sur tous les points de contact.
-            </p>
-        </div>
-
-        <div class="space-y-0">
-            <div class="group border-t border-stone-300 py-12 hover:bg-white transition-all duration-500 cursor-default reveal">
-                <div class="grid md:grid-cols-12 gap-8 items-center">
-                    <div class="md:col-span-1">
-                        <span class="font-display text-xl font-bold text-stone-300 group-hover:text-brand transition-colors duration-300">01</span>
-                    </div>
-                    <div class="md:col-span-4">
-                        <h3 class="font-display text-3xl font-medium mb-2 group-hover:translate-x-2 transition-transform duration-500 text-premium">Stratégie Commerciale</h3>
-                        <p class="text-xs text-brand font-bold tracking-widest uppercase">Consultation & Audit</p>
-                    </div>
-                    <div class="md:col-span-4">
-                        <p class="text-stone-500 text-sm leading-relaxed">
-                            Analyse approfondie de votre modèle d'affaires. Nous identifions les fuites de revenus et construisons la feuille de route pour dominer votre secteur.
-                        </p>
-                        <ul class="mt-4 flex gap-4 text-xs font-medium text-stone-400 mb-6">
-                            <li>• Positionnement</li>
-                            <li>• Pricing</li>
-                            <li>• Go-to-Market</li>
-                        </ul>
-                        <a href="strategie-commerciale.html" class="inline-flex items-center gap-2 text-brand text-xs font-bold tracking-widest uppercase hover:gap-4 transition-all duration-300 group link-premium">
-                            <span>En savoir plus</span>
-                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                        </a>
-                    </div>
-                    <div class="md:col-span-3">
-                        <div class="overflow-hidden h-40 w-full">
-                            <img src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=600" 
-                                 alt="Consultant en stratégie commerciale à Sherbrooke et Montréal" 
-                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-all duration-700 md:grayscale md:group-hover:grayscale-0"
-                                 loading="lazy" width="600" height="400">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="group border-t border-stone-300 py-12 hover:bg-white transition-all duration-500 cursor-default reveal">
-                <div class="grid md:grid-cols-12 gap-8 items-center">
-                    <div class="md:col-span-1">
-                        <span class="font-display text-xl font-bold text-stone-300 group-hover:text-brand transition-colors">02</span>
-                    </div>
-                    <div class="md:col-span-4">
-                        <h3 class="font-display text-3xl font-medium mb-2 group-hover:translate-x-2 transition-transform duration-300">Design & Web</h3>
-                        <p class="text-xs text-brand font-bold tracking-widest uppercase">UI/UX & Développement</p>
-                    </div>
-                    <div class="md:col-span-4">
-                        <p class="text-stone-500 text-sm leading-relaxed">
-                            Conception de sites web et plateformes numériques qui convertissent. Alliant esthétique minimaliste et SEO technique pour une performance sans faille.
-                        </p>
-                        <ul class="mt-4 flex gap-4 text-xs font-medium text-stone-400 mb-6">
-                            <li>• E-Commerce</li>
-                            <li>• Vitrine</li>
-                            <li>• SEO Technique</li>
-                        </ul>
-                        <a href="design-web.html" class="inline-flex items-center gap-2 text-brand text-xs font-bold tracking-widest uppercase hover:gap-4 transition-all duration-300 group link-premium">
-                            <span>En savoir plus</span>
-                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                        </a>
-                    </div>
-                    <div class="md:col-span-3">
-                        <div class="overflow-hidden h-40 w-full">
-                            <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600" 
-                                 alt="Conception de site web et design UI à Québec" 
-                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-all duration-700 md:grayscale md:group-hover:grayscale-0"
-                                 loading="lazy" width="600" height="400">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="group border-t border-stone-300 py-12 hover:bg-white transition-all duration-500 cursor-default reveal">
-                <div class="grid md:grid-cols-12 gap-8 items-center">
-                    <div class="md:col-span-1">
-                        <span class="font-display text-xl font-bold text-stone-300 group-hover:text-brand transition-colors">03</span>
-                    </div>
-                    <div class="md:col-span-4">
-                        <h3 class="font-display text-3xl font-medium mb-2 group-hover:translate-x-2 transition-transform duration-300">Publicité Numérique</h3>
-                        <p class="text-xs text-brand font-bold tracking-widest uppercase">Google Ads & Social</p>
-                    </div>
-                    <div class="md:col-span-4">
-                        <p class="text-stone-500 text-sm leading-relaxed">
-                            Acquisition de trafic qualifié via Google et Meta. Nos campagnes sont pilotées par la donnée pour maximiser chaque dollar investi.
-                        </p>
-                        <ul class="mt-4 flex gap-4 text-xs font-medium text-stone-400 mb-6">
-                            <li>• Search (SEM)</li>
-                            <li>• Retargeting</li>
-                            <li>• LinkedIn Ads</li>
-                        </ul>
-                        <a href="publicite-numerique.html" class="inline-flex items-center gap-2 text-brand text-xs font-bold tracking-widest uppercase hover:gap-4 transition-all duration-300 group link-premium">
-                            <span>En savoir plus</span>
-                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                        </a>
-                    </div>
-                    <div class="md:col-span-3">
-                        <div class="overflow-hidden h-40 w-full">
-                            <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=600" 
-                                 alt="Marketing digital et publicité numérique à Montréal" 
-                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-all duration-700 md:grayscale md:group-hover:grayscale-0"
-                                 loading="lazy" width="600" height="400">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="group border-t border-stone-300 py-12 hover:bg-white transition-all duration-500 cursor-default reveal">
-                <div class="grid md:grid-cols-12 gap-8 items-center">
-                    <div class="md:col-span-1">
-                        <span class="font-display text-xl font-bold text-stone-300 group-hover:text-brand transition-colors">04</span>
-                    </div>
-                    <div class="md:col-span-4">
-                        <h3 class="font-display text-3xl font-medium mb-2 group-hover:translate-x-2 transition-transform duration-300">Production Média</h3>
-                        <p class="text-xs text-brand font-bold tracking-widest uppercase">Contenu Visuel</p>
-                    </div>
-                    <div class="md:col-span-4">
-                        <p class="text-stone-500 text-sm leading-relaxed">
-                            Studio interne de création. Nous produisons des visuels percutants et des vidéos publicitaires qui racontent l'histoire de votre marque.
-                        </p>
-                        <ul class="mt-4 flex gap-4 text-xs font-medium text-stone-400 mb-6">
-                            <li>• Shooting Produit</li>
-                            <li>• Vidéo Corpo</li>
-                            <li>• Reels/TikTok</li>
-                        </ul>
-                        <a href="production-media.html" class="inline-flex items-center gap-2 text-brand text-xs font-bold tracking-widest uppercase hover:gap-4 transition-all duration-300 group link-premium">
-                            <span>En savoir plus</span>
-                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                        </a>
-                    </div>
-                    <div class="md:col-span-3">
-                        <div class="overflow-hidden h-40 w-full">
-                            <img src="https://images.pexels.com/photos/8088488/pexels-photo-8088488.jpeg?auto=compress&cs=tinysrgb&w=600" 
-                                 alt="Production vidéo corporative et shooting photo à Sherbrooke" 
-                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-all duration-700 md:grayscale md:group-hover:grayscale-0"
-                                 loading="lazy" width="600" height="400">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="group border-t border-b border-stone-300 py-12 hover:bg-white transition-all duration-500 cursor-default reveal">
-                <div class="grid md:grid-cols-12 gap-8 items-center">
-                    <div class="md:col-span-1">
-                        <span class="font-display text-xl font-bold text-stone-300 group-hover:text-brand transition-colors">05</span>
-                    </div>
-                    <div class="md:col-span-4">
-                        <h3 class="font-display text-3xl font-medium mb-2 group-hover:translate-x-2 transition-transform duration-300">Personnalisation CRM</h3>
-                        <p class="text-xs text-brand font-bold tracking-widest uppercase">Données & Automatisations</p>
-                    </div>
-                    <div class="md:col-span-4">
-                        <p class="text-stone-500 text-sm leading-relaxed">
-                            Optimisez votre gestion client. Nous configurons vos outils (Ava Client, GoHighLevel, Ultimo) pour automatiser vos ventes et centraliser vos données.
-                        </p>
-                        <ul class="mt-4 flex gap-4 text-xs font-medium text-stone-400 mb-6">
-                            <li>• Automatisations</li>
-                            <li>• Pipeline Ventes</li>
-                            <li>• Intégration API</li>
-                        </ul>
-                        <a href="crm.html" class="inline-flex items-center gap-2 text-brand text-xs font-bold tracking-widest uppercase hover:gap-4 transition-all duration-300 group link-premium">
-                            <span>En savoir plus</span>
-                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                        </a>
-                    </div>
-                    <div class="md:col-span-3">
-                        <div class="overflow-hidden h-40 w-full">
-                            <img src="https://images.pexels.com/photos/7567529/pexels-photo-7567529.jpeg?auto=compress&cs=tinysrgb&w=600" 
-                                 alt="Optimisation et personnalisation de CRM pour entreprises" 
-                                 class="w-full h-full object-cover transform group-hover:scale-110 transition-all duration-700 md:grayscale md:group-hover:grayscale-0"
-                                 loading="lazy" width="600" height="400">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<section id="portfolio" class="py-24 bg-stone-900 text-stone-100 overflow-hidden relative group/section" aria-labelledby="portfolio-heading">
-    <div class="max-w-[1800px] mx-auto px-6 mb-16 flex justify-between items-end reveal">
-        <div>
-            <span class="text-xs font-bold text-brand uppercase tracking-luxury">Portfolio</span>
-            <h2 id="portfolio-heading" class="font-display text-4xl mt-4">Nos Clients & Réalisations</h2>
-        </div>
-        <div class="hidden md:flex gap-4">
-            <button id="scrollLeft" class="p-4 border border-stone-700 hover:border-white transition-colors rounded-full z-10 bg-stone-900 active:bg-stone-800" aria-label="Défiler vers la gauche">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path></svg>
-            </button>
-            <button id="scrollRight" class="p-4 border border-stone-700 hover:border-white transition-colors rounded-full z-10 bg-stone-900 active:bg-stone-800" aria-label="Défiler vers la droite">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path></svg>
-            </button>
-        </div>
-    </div>
-
-    <div id="portfolio-track" class="flex gap-8 overflow-x-auto px-6 pb-12 no-scrollbar scroll-smooth snap-x snap-mandatory touch-pan-x cursor-grab active:cursor-grabbing">
-        
-        <a href="https://melaniefafardimmo.com" target="_blank" class="portfolio-item snap-center min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block select-none">
-            <div class="overflow-hidden mb-6 relative rounded-lg bg-stone-800 aspect-video border border-stone-800 group-hover:border-stone-600 transition-colors">
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                <img src="melanie.webp" draggable="false" class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105 select-none" alt="Site web courtier immobilier Mélanie Fafard - Projet Roy Marketing" loading="lazy" width="900" height="506">
-            </div>
-            <div class="flex justify-between items-start pt-2">
-                <div>
-                    <h3 class="font-display text-2xl font-medium group-hover:text-brand transition-colors">Mélanie Fafard</h3>
-                    <p class="text-stone-400 text-sm mt-1">Courtier Immobilier - Québec et Lévis</p>
-                </div>
-                <span class="text-xs border border-stone-700 px-3 py-1 rounded-full text-stone-400">Site Vitrine</span>
-            </div>
-        </a>
-
-        <a href="https://axrconstruction.com" target="_blank" class="portfolio-item snap-center min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block select-none">
-            <div class="overflow-hidden mb-6 relative rounded-lg bg-stone-800 aspect-video border border-stone-800 group-hover:border-stone-600 transition-colors">
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                <img src="axr.webp" draggable="false" class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105 select-none" alt="Vitrine web AXR Construction Génie Civil - Projet Roy Marketing" loading="lazy" width="900" height="506">
-            </div>
-            <div class="flex justify-between items-start pt-2">
-                <div>
-                    <h3 class="font-display text-2xl font-medium group-hover:text-brand transition-colors">AXR Construction</h3>
-                    <p class="text-stone-400 text-sm mt-1">Entrepreneur général - Estrie</p>
-                </div>
-                <span class="text-xs border border-stone-700 px-3 py-1 rounded-full text-stone-400">Site Vitrine</span>
-            </div>
-        </a>
-
-        <a href="https://do-mar.com" target="_blank" class="portfolio-item snap-center min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block select-none">
-            <div class="overflow-hidden mb-6 relative rounded-lg bg-stone-800 aspect-video border border-stone-800 group-hover:border-stone-600 transition-colors">
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                <img src="do-mar.webp" draggable="false" class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105 select-none" alt="Site web Do-Mar Services Industriels - Projet Roy Marketing" loading="lazy" width="900" height="506">
-            </div>
-            <div class="flex justify-between items-start pt-2">
-                <div>
-                    <h3 class="font-display text-2xl font-medium group-hover:text-brand transition-colors">Do-Mar</h3>
-                    <p class="text-stone-400 text-sm mt-1">Services Industriels - Estrie</p>
-                </div>
-                <span class="text-xs border border-stone-700 px-3 py-1 rounded-full text-stone-400">Site Vitrine</span>
-            </div>
-        </a>
-
-        <a href="https://chiassondefrancesco.ca" target="_blank" class="portfolio-item snap-center min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block select-none">
-            <div class="overflow-hidden mb-6 relative rounded-lg bg-stone-800 aspect-video border border-stone-800 group-hover:border-stone-600 transition-colors">
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                <img src="cdf.webp" draggable="false" class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105 select-none" alt="Branding Chiasson de Francesco - Projet Roy Marketing" loading="lazy" width="900" height="506">
-            </div>
-            <div class="flex justify-between items-start pt-2">
-                <div>
-                    <h3 class="font-display text-2xl font-medium group-hover:text-brand transition-colors">Chiasson de Francesco</h3>
-                    <p class="text-stone-400 text-sm mt-1">Groupe de Courtiers immobilier - Estrie</p>
-                </div>
-                <span class="text-xs border border-stone-700 px-3 py-1 rounded-full text-stone-400">Site Vitrine</span>
-            </div>
-        </a>
-
-        <a href="https://couillardimmobilier.ca/" target="_blank" class="portfolio-item snap-center min-w-[90vw] md:min-w-[900px] group cursor-pointer reveal block select-none">
-            <div class="overflow-hidden mb-6 relative rounded-lg bg-stone-800 aspect-video border border-stone-800 group-hover:border-stone-600 transition-colors">
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all z-10"></div>
-                <img src="couillard.webp" draggable="false" class="w-full h-full object-cover object-top transition-all duration-700 transform group-hover:scale-105 select-none" alt="Marketing Immobilier de Luxe Couillard - Projet Roy Marketing" loading="lazy" width="900" height="506">
-            </div>
-            <div class="flex justify-between items-start pt-2">
-                <div>
-                    <h3 class="font-display text-2xl font-medium group-hover:text-brand transition-colors">Couillard Immobilier</h3>
-                    <p class="text-stone-400 text-sm mt-1">Services immobilier - Québec et lévis</p>
-                </div>
-                <span class="text-xs border border-stone-700 px-3 py-1 rounded-full text-stone-400">Site Vitrine</span>
-            </div>
-        </a>
-
-    </div>
-
-    <div class="flex justify-center gap-4 mt-6" id="portfolio-indicators"></div>
-
-</section>
-
-<section id="contact" class="py-24 bg-stone-50" aria-labelledby="contact-heading">
-    <div class="max-w-4xl mx-auto px-6">
-        <div class="text-center mb-16 reveal">
-            <span class="text-xs font-bold text-brand uppercase tracking-luxury">Contact</span>
-            <h2 id="contact-heading" class="font-display text-4xl md:text-5xl mt-6 mb-6">Parlons Croissance.</h2>
-            <p class="text-stone-500 font-light">Remplissez ce formulaire pour une consultation stratégique initiale.</p>
-        </div>
-
-        <form action="https://formspree.io/f/mjgknole" method="POST" class="space-y-8 reveal delay-200" novalidate aria-label="Formulaire de contact" id="contact-form">
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="relative">
-                    <input type="text" name="name" id="name" required autocomplete="name" class="peer w-full bg-transparent border-b border-stone-300 py-3 text-stone-900 focus:border-brand focus:outline-none transition-colors placeholder-transparent" placeholder="Name" aria-required="true" aria-invalid="false">
-                    <label for="name" class="absolute left-0 -top-3 text-xs text-stone-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-stone-400 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-xs peer-focus:text-brand">Votre Nom</label>
-                    <span class="error-message text-xs text-red-600 mt-1 hidden" role="alert" aria-live="polite"></span>
-                </div>
-                <div class="relative">
-                    <input type="email" name="email" id="email" required autocomplete="email" class="peer w-full bg-transparent border-b border-stone-300 py-3 text-stone-900 focus:border-brand focus:outline-none transition-colors placeholder-transparent" placeholder="Email" aria-required="true" aria-invalid="false">
-                    <label for="email" class="absolute left-0 -top-3 text-xs text-stone-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-stone-400 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-xs peer-focus:text-brand">Courriel Professionnel</label>
-                    <span class="error-message text-xs text-red-600 mt-1 hidden" role="alert" aria-live="polite"></span>
-                </div>
-                <div class="relative">
-                    <input type="tel" name="phone" id="phone" autocomplete="tel" class="peer w-full bg-transparent border-b border-stone-300 py-3 text-stone-900 focus:border-brand focus:outline-none transition-colors placeholder-transparent" placeholder="Phone" pattern="[0-9\s\-\+\(\)]+" aria-invalid="false">
-                    <label for="phone" class="absolute left-0 -top-3 text-xs text-stone-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-stone-400 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-xs peer-focus:text-brand">Téléphone</label>
-                    <span class="error-message text-xs text-red-600 mt-1 hidden" role="alert" aria-live="polite"></span>
-                </div>
-                <div class="relative">
-                    <select name="service" id="service" class="w-full bg-transparent border-b border-stone-300 py-3 text-stone-900 focus:border-brand focus:outline-none cursor-pointer" aria-label="Service souhaité">
-                        <option value="" disabled selected>Service souhaité</option>
-                        <option value="strategy">Stratégie Commerciale</option>
-                        <option value="web">Design & Web</option>
-                        <option value="ads">Publicité (Ads/Social)</option>
-                        <option value="production">Production Photo/Vidéo</option>
-                    </select>
-                </div>
-            </div>
-            <div class="relative pt-4">
-                <textarea name="message" id="message" rows="3" class="peer w-full bg-transparent border-b border-stone-300 py-3 text-stone-900 focus:border-brand focus:outline-none transition-colors placeholder-transparent" placeholder="Message" aria-invalid="false"></textarea>
-                <label for="message" class="absolute left-0 top-1 text-xs text-stone-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-stone-400 peer-placeholder-shown:top-7 peer-focus:top-1 peer-focus:text-xs peer-focus:text-brand">Parlez-nous de vos objectifs</label>
-                <span class="error-message text-xs text-red-600 mt-1 hidden" role="alert" aria-live="polite"></span>
-            </div>
-            <div class="pt-8 text-center">
-                <p class="text-xs text-stone-500 font-light leading-relaxed max-w-md mx-auto mb-6">En soumettant ce formulaire, vous acceptez notre <a href="politique-de-confidentialite.html" class="text-stone-900 underline underline-offset-2 hover:text-brand">politique de confidentialité</a>.</p>
-
-                <button type="submit" class="btn-premium bg-stone-900 text-white px-12 py-5 uppercase tracking-widest text-xs font-bold hover:bg-brand transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-premium" aria-label="Envoyer le formulaire de contact">
-                    Envoyer la demande
-                </button>
-            </div>
-        </form>
-    </div>
-</section>
 </main>
 
-<footer class="bg-white border-t border-stone-200 py-12" role="contentinfo">
-    <div class="max-w-[1800px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div class="text-center md:text-left">
-            <h4 class="font-display font-bold uppercase tracking-widest text-sm">Roy Marketing.</h4>
-            <p class="text-xs text-stone-400 mt-2">© 2026 Tous droits réservés.</p>
-        </div>
-        <div class="flex flex-col items-center md:items-end gap-1 text-xs font-medium tracking-widest text-stone-500">
-             <a href="tel:+18192019042" class="hover:text-brand transition-colors" aria-label="Appeler Roy Marketing au (819) 201-9042">(819) 201-9042</a>
-             <a href="mailto:info@roymarketing.ca" class="hover:text-brand transition-colors" aria-label="Envoyer un courriel à info@roymarketing.ca">info@roymarketing.ca</a>
-            <a href="politique-de-confidentialite.html" class="hover:text-brand transition-colors">Politique de confidentialité</a>
-            <button type="button" data-consent-manage class="rm-consent-manage">Gérer les témoins</button>
-        </div>
-    </div>
+<footer class="foot">
+  <div class="wrap foot__grid">
+    <div class="foot__brand"><span class="brand__name">ROY MARKETING<i>.</i></span><span>Bureaux à Sherbrooke, Montréal et Québec.</span></div>
+    <div class="foot__nap"><a href="tel:+18192019042">819-201-9042</a><a href="mailto:info@roymarketing.ca">info@roymarketing.ca</a></div>
+    <div class="foot__legal"><a href="/politique-de-confidentialite">Politique de confidentialité</a><button type="button" class="rm-consent-manage" data-consent-manage>Gérer les témoins</button><span>© 2026 Roy Marketing</span></div>
+  </div>
 </footer>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // 1. Reveal on Scroll
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('active'); }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.reveal').forEach(el => { observer.observe(el); });
+<div class="hud" id="hud" aria-hidden="true"><ol><li data-i="1">Applications</li><li data-i="2">Automatisation</li><li data-i="3">ERP et CRM</li><li data-i="4">IA</li><li data-i="5">Web</li></ol><div class="hud__bar"><span id="hudBar"></span></div></div>
 
-        // 2. Navbar Color Change
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (!nav) return; 
-            if (window.scrollY > 50) {
-                nav.classList.remove('mix-blend-difference', 'text-white', 'py-6');
-                nav.classList.add('bg-white/90', 'backdrop-blur-md', 'text-stone-900', 'shadow-sm', 'py-4');
-            } else {
-                nav.classList.add('mix-blend-difference', 'text-white', 'py-6');
-                nav.classList.remove('bg-white/90', 'backdrop-blur-md', 'text-stone-900', 'shadow-sm', 'py-4');
-            }
-        });
+<dialog class="booking" id="booking" aria-labelledby="bookingTitle">
+  <div class="booking__head"><div><p class="label"><span>RDV</span>Appel découverte</p><h2 id="bookingTitle" class="booking__title">Choisissez le moment qui vous convient.</h2></div><button type="button" class="booking__close" data-close aria-label="Fermer">×</button></div>
+  <div class="booking__body" id="bookingBody"><p class="booking__loading">Chargement du calendrier</p></div>
+  <p class="booking__alt">Vous préférez nous écrire ou nous appeler ? <a href="tel:+18192019042">819-201-9042</a> · <a href="mailto:info@roymarketing.ca">info@roymarketing.ca</a></p>
+</dialog>
 
-        // 3. Portfolio Controls (Drag to Swipe + Dots)
-        const track = document.getElementById('portfolio-track');
-        const items = track ? track.querySelectorAll('.portfolio-item') : [];
-        const btnLeft = document.getElementById('scrollLeft');
-        const btnRight = document.getElementById('scrollRight');
-        const indicatorsContainer = document.getElementById('portfolio-indicators');
-
-        if (track && items.length > 0 && indicatorsContainer) {
-            
-            // --- A. DRAG TO SCROLL IMPLEMENTATION ---
-            let isDown = false;
-            let startX;
-            let scrollLeft;
-            let isDragging = false; // Flag to check if we are scrolling or clicking
-
-            track.addEventListener('mousedown', (e) => {
-                isDown = true;
-                isDragging = false;
-                track.classList.add('cursor-grabbing');
-                track.classList.remove('cursor-grab', 'snap-x'); // Temporarily remove snap for smooth dragging
-                startX = e.pageX - track.offsetLeft;
-                scrollLeft = track.scrollLeft;
-            });
-
-            track.addEventListener('mouseleave', () => {
-                isDown = false;
-                track.classList.remove('cursor-grabbing');
-                track.classList.add('cursor-grab', 'snap-x');
-            });
-
-            track.addEventListener('mouseup', () => {
-                isDown = false;
-                track.classList.remove('cursor-grabbing');
-                track.classList.add('cursor-grab', 'snap-x');
-            });
-
-            track.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - track.offsetLeft;
-                const walk = (x - startX) * 2; // Speed multiplier
-                track.scrollLeft = scrollLeft - walk;
-                if(Math.abs(walk) > 5) isDragging = true; // If moved more than 5px, it's a drag
-            });
-
-            // Prevent link clicks if user was dragging
-            items.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    if (isDragging) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-                });
-            });
-
-            // --- B. Generate Dots ---
-            items.forEach((_, index) => {
-                const dot = document.createElement('button');
-                // Default inactive style
-                dot.className = `w-3 h-3 rounded-full transition-all duration-300 bg-stone-600 hover:bg-stone-500`;
-                dot.ariaLabel = `Go to slide ${index + 1}`;
-                
-                dot.addEventListener('click', () => {
-                    const itemWidth = items[0].offsetWidth + 32;
-                    track.scrollTo({ left: itemWidth * index, behavior: 'smooth' });
-                });
-                
-                indicatorsContainer.appendChild(dot);
-            });
-
-            const dots = indicatorsContainer.querySelectorAll('button');
-
-            // --- C. Update Dots on Scroll ---
-            const updateDots = () => {
-                const itemWidth = items[0].offsetWidth + 32;
-                const scrollPosition = track.scrollLeft;
-                const activeIndex = Math.round(scrollPosition / itemWidth);
-
-                dots.forEach((dot, index) => {
-                    if (index === activeIndex) {
-                        // ACTIVE: Green (#0f4b3a) & Scaled
-                        dot.className = 'w-3 h-3 rounded-full transition-all duration-300 bg-[#0f4b3a] scale-110';
-                    } else {
-                        // INACTIVE: Grey
-                        dot.className = 'w-3 h-3 rounded-full transition-all duration-300 bg-stone-600 hover:bg-stone-500';
-                    }
-                });
-            };
-            
-            track.addEventListener('scroll', updateDots);
-            updateDots(); // Initial call
-
-            // --- D. Button Logic ---
-            const scrollAmount = () => items[0].offsetWidth + 32;
-
-            if(btnLeft) btnLeft.addEventListener('click', () => {
-                track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
-            });
-            if(btnRight) btnRight.addEventListener('click', () => {
-                track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
-            });
-        }
-
-        // 4. Mobile Menu
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        let isMenuOpen = false;
-        
-        if (mobileBtn && mobileMenu) {
-            mobileBtn.addEventListener('click', () => {
-                isMenuOpen = !isMenuOpen;
-                mobileBtn.setAttribute('aria-expanded', isMenuOpen);
-                if(isMenuOpen) {
-                    mobileMenu.classList.remove('translate-x-full');
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    mobileMenu.classList.add('translate-x-full');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('translate-x-full');
-                    document.body.style.overflow = 'auto';
-                    isMenuOpen = false;
-                    mobileBtn.setAttribute('aria-expanded', 'false');
-                });
-            });
-        }
-
-        // 5. Form Validation Enhancement
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            const inputs = contactForm.querySelectorAll('input, textarea');
-            
-            inputs.forEach(input => {
-                input.addEventListener('blur', function() {
-                    validateField(this);
-                });
-                
-                input.addEventListener('input', function() {
-                    if (this.getAttribute('aria-invalid') === 'true') {
-                        validateField(this);
-                    }
-                });
-            });
-            
-            contactForm.addEventListener('submit', function(e) {
-                let isValid = true;
-                inputs.forEach(input => {
-                    if (!validateField(input)) {
-                        isValid = false;
-                    }
-                });
-                
-                if (!isValid) {
-                    e.preventDefault();
-                    const firstInvalid = contactForm.querySelector('[aria-invalid="true"]');
-                    if (firstInvalid) {
-                        firstInvalid.focus();
-                        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                }
-            });
-            
-            function validateField(field) {
-                const errorMsg = field.parentElement.querySelector('.error-message');
-                let isValid = true;
-                let message = '';
-                
-                if (field.hasAttribute('required') && !field.value.trim()) {
-                    isValid = false;
-                    message = 'Ce champ est requis';
-                } else if (field.type === 'email' && field.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
-                    isValid = false;
-                    message = 'Veuillez entrer une adresse courriel valide';
-                } else if (field.type === 'tel' && field.value && !/^[\d\s\-\+\(\)]+$/.test(field.value)) {
-                    isValid = false;
-                    message = 'Veuillez entrer un numéro de téléphone valide';
-                }
-                
-                field.setAttribute('aria-invalid', !isValid);
-                if (errorMsg) {
-                    if (isValid) {
-                        errorMsg.classList.add('hidden');
-                        errorMsg.textContent = '';
-                    } else {
-                        errorMsg.classList.remove('hidden');
-                        errorMsg.textContent = message;
-                    }
-                }
-                
-                return isValid;
-            }
-        }
-    });
-</script>
-<!-- Consentement Loi 25 : ce script marketing reste inactif (text/plain) tant que la catégorie n'est pas acceptée. -->
-<script type="text/plain" data-consent="marketing" data-src="https://connect.facebook.net/en_US/fbevents.js"></script>
-<!--
-    Pixel Meta : aucun identifiant n'est configuré. Pour l'activer plus tard, décommentez
-    le bloc et remplacez PIXEL_ID. Le script doit rester type="text/plain" avec data-consent="marketing".
-    <script type="text/plain" data-consent="marketing">
-        fbq('init', 'PIXEL_ID');
-        fbq('track', 'PageView');
-    </script>
-    Analytique : aucun outil n'est installé. Exemple à décommenter seulement avec un vrai identifiant.
-    <script type="text/plain" data-consent="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
--->
-<script src="consent.js"></script>
+<!-- Pixel Meta : bloqué jusqu'au consentement marketing (Loi 25). fbq('init') reste en commentaire tant qu'il n'y a pas d'identifiant de pixel. -->
+<script type="text/plain" data-consent="marketing">/* fbq('init', 'A_REMPLACER'); fbq('track', 'PageView'); */</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/","lenis":"https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.mjs"}}</script>
+<script src="js/consent.js" defer></script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>

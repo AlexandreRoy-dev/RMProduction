@@ -1,0 +1,145 @@
+/* Roy Marketing design tokens (roymarketing.ca v2 prototype)
+   Brand typeface for print and design files: Gotham (licensed, not shipped here).
+   Web: Montserrat (display) + Inter (body), self-hosted in ./fonts/ (OFL 1.1).
+   Load ./fonts/fonts.css before this file. */
+:root {
+  /* Colour: brand */
+  --rm-green: #0F4B3A;            /* primary green: labels, links, hovers, the signature period */
+  --rm-green-2: #1A6B55;          /* secondary green: gradient partner of --rm-green only */
+  --rm-green-light: #3DA37F;      /* dot / period on dark backgrounds only (ink or green) */
+  --rm-green-gradient: linear-gradient(135deg, #0F4B3A 0%, #1A6B55 100%);
+  --rm-green-5: rgba(15, 75, 58, 0.05);
+  --rm-green-10: rgba(15, 75, 58, 0.10);
+  --rm-green-20: rgba(15, 75, 58, 0.20);
+
+  /* Colour: neutrals */
+  --rm-ink: #111111;              /* text, headings, primary buttons, dark sections, logo R */
+  --rm-bg: #F9F9F7;               /* main page background */
+  --rm-bg-2: #F5F5F3;             /* light text on dark, scrollbar track */
+  --rm-white: #FFFFFF;
+  --rm-stone-200: #E7E5E4;        /* section borders, placeholders */
+  --rm-stone-300: #D6D3D1;        /* dividers, form underlines, big faded numbers */
+  --rm-stone-400: #A8A29E;        /* second line of split headlines, form labels */
+  --rm-stone-500: #78716C;        /* secondary body copy */
+  --rm-stone-600: #57534E;        /* intro paragraphs */
+  --rm-stone-700: #44403C;        /* borders on dark sections */
+  --rm-stone-800: #292524;        /* cards on dark sections */
+  --rm-error: #DC2626;            /* form validation only */
+
+  /* Typography: families */
+  --rm-font-display: "Montserrat", "Gotham", "Helvetica Neue", Arial, sans-serif;
+  --rm-font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Typography: weights */
+  --rm-fw-light: 300;
+  --rm-fw-regular: 400;
+  --rm-fw-medium: 500;
+  --rm-fw-semibold: 600;
+  --rm-fw-bold: 700;
+
+  /* Typography: scale (rem, 1rem = 16px) */
+  --rm-fs-label: 0.75rem;         /* 12px eyebrow labels and buttons */
+  --rm-fs-sm: 0.875rem;           /* 14px */
+  --rm-fs-base: 1rem;             /* 16px body */
+  --rm-fs-lead: 1.125rem;         /* 18px intro paragraphs (Inter 300) */
+  --rm-fs-xl: 1.25rem;            /* 20px */
+  --rm-fs-h4: 1.5rem;             /* 24px */
+  --rm-fs-h3: 1.875rem;           /* 30px */
+  --rm-fs-h2: clamp(2rem, 1.4rem + 2.4vw, 3rem);        /* 32 to 48px */
+  --rm-fs-h1: clamp(2.75rem, 1.6rem + 4.6vw, 4.5rem);   /* 44 to 72px, hero */
+  --rm-fs-display: clamp(3.5rem, 2rem + 6vw, 6rem);     /* 56 to 96px, oversized */
+
+  /* Typography: line height and tracking */
+  --rm-lh-hero: 0.95;
+  --rm-lh-tight: 1.1;
+  --rm-lh-snug: 1.3;
+  --rm-lh-body: 1.6;
+  --rm-ls-hero: -0.025em;         /* H1 */
+  --rm-ls-label: 0.15em;          /* eyebrow labels */
+  --rm-ls-wordmark: 0.1em;        /* ROY MARKETING. and buttons */
+
+  /* Spacing (4px base) */
+  --rm-space-0: 0;
+  --rm-space-1: 0.25rem;          /* 4 */
+  --rm-space-2: 0.5rem;           /* 8 */
+  --rm-space-3: 0.75rem;          /* 12 */
+  --rm-space-4: 1rem;             /* 16 */
+  --rm-space-5: 1.25rem;          /* 20 */
+  --rm-space-6: 1.5rem;           /* 24 */
+  --rm-space-8: 2rem;             /* 32 */
+  --rm-space-10: 2.5rem;          /* 40 */
+  --rm-space-12: 3rem;            /* 48 */
+  --rm-space-16: 4rem;            /* 64 */
+  --rm-space-24: 6rem;            /* 96 */
+  --rm-space-32: 8rem;            /* 128 */
+  --rm-section-y: clamp(4rem, 2rem + 8vw, 8rem);
+  --rm-container-max: 1800px;
+  --rm-gutter: clamp(1.25rem, 0.5rem + 3vw, 3rem);
+
+  /* Shape: sharp corners everywhere (circles only for dots) */
+  --rm-radius: 0;
+  --rm-radius-dot: 9999px;
+  --rm-border-hairline: 1px solid var(--rm-stone-200);
+
+  /* Elevation and motion */
+  --rm-shadow-green: 0 12px 32px -12px rgba(15, 75, 58, 0.35);
+  --rm-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --rm-dur: 300ms;
+}
+
+/* Ready-made text styles */
+.rm-hero {
+  font-family: var(--rm-font-display);
+  font-weight: var(--rm-fw-medium);
+  font-size: var(--rm-fs-h1);
+  line-height: var(--rm-lh-hero);
+  letter-spacing: var(--rm-ls-hero);
+  text-transform: uppercase;
+  color: var(--rm-ink);
+}
+.rm-hero strong { font-weight: var(--rm-fw-bold); }
+.rm-h2 {
+  font-family: var(--rm-font-display);
+  font-weight: var(--rm-fw-medium);
+  font-size: var(--rm-fs-h2);
+  line-height: var(--rm-lh-tight);
+}
+.rm-label {
+  font-family: var(--rm-font-body);
+  font-size: var(--rm-fs-label);
+  font-weight: var(--rm-fw-bold);
+  letter-spacing: var(--rm-ls-label);
+  text-transform: uppercase;
+  color: var(--rm-green);
+}
+.rm-lead {
+  font-family: var(--rm-font-body);
+  font-weight: var(--rm-fw-light);
+  font-size: var(--rm-fs-lead);
+  line-height: var(--rm-lh-body);
+  color: var(--rm-stone-600);
+}
+.rm-wordmark {
+  font-family: var(--rm-font-display);
+  font-weight: var(--rm-fw-bold);
+  letter-spacing: var(--rm-ls-wordmark);
+  text-transform: uppercase;
+  color: var(--rm-ink);
+}
+.rm-dot { color: var(--rm-green); }              /* wrap the final period: ROY MARKETING<span class="rm-dot">.</span> */
+.rm-on-dark .rm-dot { color: var(--rm-green-light); }
+.rm-btn {
+  display: inline-block;
+  font-family: var(--rm-font-body);
+  font-size: var(--rm-fs-label);
+  font-weight: var(--rm-fw-bold);
+  letter-spacing: var(--rm-ls-wordmark);
+  text-transform: uppercase;
+  color: var(--rm-white);
+  background: var(--rm-ink);
+  padding: var(--rm-space-5) var(--rm-space-12);
+  border-radius: var(--rm-radius);
+  text-decoration: none;
+  transition: background var(--rm-dur) var(--rm-ease), transform var(--rm-dur) var(--rm-ease), box-shadow var(--rm-dur) var(--rm-ease);
+}
+.rm-btn:hover { background: var(--rm-green); transform: translateY(-2px); box-shadow: var(--rm-shadow-green); }
