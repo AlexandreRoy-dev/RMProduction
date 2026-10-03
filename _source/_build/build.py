@@ -36,7 +36,7 @@ def page(d, root):
     </div>
   </section>'''
     steps = '<ol class="steps">' + "".join(f'<li data-step="{j}"><b>{ea(a)}</b><span>{ea(b)}</span></li>' for j, (a, b) in enumerate(d["c2s"])) + "</ol>"
-    opts = "".join(f"<option>{ea(o)}</option>" for o in d["fOpts"])
+    opts = "".join(f'<label class="chip"><input type="radio" name="service" value="{ea(o)}"><span>{ea(o)}</span></label>' for o in d["fOpts"])
     hud = "".join(f'<li data-i="{j+1}">{ea(x)}</li>' for j, x in enumerate(d["hud"]))
     other = "en" if L == "fr" else "fr"
     i18n_js = json.dumps({"lang": L, "modalTitle": t(d["modalTitle"]), "modalSub": t(d["modalSub"]), "modalClose": d["modalClose"], "modalAlt": t(d["modalAlt"]), "modalLoading": d["modalLoading"]}, ensure_ascii=False)
@@ -190,19 +190,18 @@ window.RM_I18N={i18n_js};window.RM_ROOT="{root}";
       <p class="location">{e("location")}</p>
     </div>
     <!-- Formulaire : même point de réception Formspree que le site actuel. À remplacer par un envoi direct dans GHL si Alexandre le décide. -->
-    <form class="form" action="https://formspree.io/f/mjgknole" method="POST">
+    <form class="form" action="https://formspree.io/f/mjgknole" method="POST" novalidate data-err-name="{ea(d["fErrName"])}" data-err-email="{ea(d["fErrEmail"])}" data-fix="{ea(d["fFix"])}">
       <input type="hidden" name="langue" value="{L}">
       <div class="form__row">
-        <label><span>{e("fName")}</span><input name="nom" autocomplete="name" required></label>
-        <label><span>{e("fEmail")}</span><input type="email" name="courriel" autocomplete="email" required></label>
+        <div class="field"><input id="f-nom" name="nom" autocomplete="name" required placeholder=" " aria-describedby="e-nom"><label for="f-nom">{e("fName")}</label><small class="field__err" id="e-nom"></small></div>
+        <div class="field"><input id="f-courriel" type="email" name="courriel" autocomplete="email" required placeholder=" " aria-describedby="e-courriel"><label for="f-courriel">{e("fEmail")}</label><small class="field__err" id="e-courriel"></small></div>
       </div>
-      <div class="form__row">
-        <label><span>{e("fPhone")}</span><input type="tel" name="telephone" autocomplete="tel"></label>
-        <label><span>{e("fService")}</span><select name="service">{opts}</select></label>
-      </div>
-      <label><span>{e("fGoals")}</span><textarea name="objectifs" rows="4"></textarea></label>
+      <div class="field"><input id="f-tel" type="tel" name="telephone" autocomplete="tel" placeholder=" "><label for="f-tel">{e("fPhone")} <em>{e("fOptional")}</em></label></div>
+      <fieldset class="chips"><legend>{e("fService")}</legend><div class="chips__list">{opts}</div></fieldset>
+      <div class="field field--area"><textarea id="f-obj" name="objectifs" rows="4" placeholder="{ea(d["fGoalsPh"])}"></textarea><label for="f-obj">{e("fGoals")}</label></div>
       <p class="form__legal">{e("fLegal")} <a href="{d["privacyHref"]}">{e("fLegalLink")}</a>.</p>
-      <button class="btn btn--dark" type="submit">{e("fSend")}</button>
+      <p class="form__status" role="status" aria-live="polite"></p>
+      <button class="send" type="submit" data-sending="{ea(d["fSending"])}"><span class="send__label">{e("fSend")}</span><span class="send__spin" aria-hidden="true"></span><svg class="send__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </form>
   </div>
 </section>
@@ -216,6 +215,9 @@ window.RM_I18N={i18n_js};window.RM_ROOT="{root}";
     <div class="foot__legal"><a href="{d["privacyHref"]}">{e("privacy")}</a><button type="button" class="rm-consent-manage" data-consent-manage>{e("cookies")}</button><span>© 2026 Roy Marketing</span></div>
   </div>
 </footer>
+
+<a class="totop" id="toTop" href="#top" aria-label="{ea(d["backTop"])}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>{e("backTop")}</span></a>
+<div class="jumpfade" id="jumpFade" aria-hidden="true"></div>
 
 <div class="hud" id="hud" aria-hidden="true"><ol>{hud}</ol><div class="hud__bar"><span id="hudBar"></span></div></div>
 

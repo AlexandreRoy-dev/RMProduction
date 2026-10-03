@@ -132,7 +132,7 @@
  "fLegalLink": "privacy policy",
  "fSend": "Send",
  "privacy": "Privacy policy",
- "privacyHref": "/politique-de-confidentialite",
+ "privacyHref": "/en/privacy-policy/",
  "cookies": "Manage cookies",
  "modalTitle": "Discovery call",
  "modalSub": "Pick the time that suits you.",
@@ -140,5 +140,12 @@
  "modalAlt": "Prefer to write or call?",
  "modalLoading": "Loading the calendar",
  "phoneUI": "en",
- "tagline2": "Custom tools for local businesses."
+ "tagline2": "Custom tools for local businesses.",
+ "fOptional": "optional",
+ "fGoalsPh": "Tell us about your business and what you would like to simplify.",
+ "fErrName": "Please enter your name.",
+ "fErrEmail": "Enter a valid email, for example name@company.ca.",
+ "fSending": "Sending",
+ "fFix": "Please check the highlighted fields.",
+ "backTop": "Back to top"
 }

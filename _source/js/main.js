@@ -42,6 +42,67 @@ function initBooking(lenisRef) {
   dlg.addEventListener('click', e => { if (e.target === dlg || e.target.closest('[data-close]')) dlg.close(); });
 }
 
+/* ---------- navigation : fondu doux, saut instantané, retour du fondu (aucun défilement animé) ---------- */
+let jumping = false;
+function fadeJump(go) {
+  const f = $('#jumpFade');
+  if (!f || CAPTURE) { go(); return; }
+  if (jumping) return; jumping = true;
+  f.classList.add('is-on');
+  setTimeout(() => {
+    go();
+    // deux images pour que la scène soit déjà à jour sous le voile avant qu'il ne se retire
+    requestAnimationFrame(() => requestAnimationFrame(() => { f.classList.remove('is-on'); setTimeout(() => { jumping = false; }, 340); }));
+  }, 330);
+}
+function initNav(targetY, jumpTo) {
+  $$('a[href^="#"]').forEach(a => {
+    if (a.hasAttribute('data-booking') || a.classList.contains('skip')) return;
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const y = targetY(id); if (y == null) return;
+      e.preventDefault();
+      fadeJump(() => jumpTo(y));
+      if (history.replaceState) history.replaceState(null, '', id === 'top' ? location.pathname : '#' + id);
+    });
+  });
+  const tt = $('#toTop');
+  if (tt) {
+    let on = false;
+    const form = $('form.form');
+    // masqué aussi quand le formulaire passe sous le bouton (évite qu'il chevauche « Envoyer »)
+    const overForm = () => { if (!form) return false; const r = form.getBoundingClientRect(), t = tt.getBoundingClientRect(); return r.bottom > t.top - 16 && r.top < t.bottom + 16 && r.right > t.left - 16 && r.left < t.right + 16; };
+    const chk = () => { const v = scrollY > innerHeight * .9 && !overForm(); if (v !== on) { on = v; tt.classList.toggle('is-on', v); } };
+    addEventListener('scroll', chk, { passive: true }); addEventListener('resize', chk, { passive: true }); chk();
+    // le formulaire peut encore glisser (apparition) après le dernier défilement : vérification légère en continu
+    setInterval(() => { if (!document.hidden) chk(); }, 300);
+  }
+}
+
+/* ---------- formulaire : validation en ligne et état d'envoi (envoi natif inchangé vers Formspree) ---------- */
+function initForm() {
+  const f = $('form.form'); if (!f) return;
+  const nom = f.querySelector('[name="nom"]'), mail = f.querySelector('[name="courriel"]'), status = f.querySelector('.form__status'), btn = f.querySelector('.send');
+  const okMail = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+  const set = (inp, msg) => { const fd = inp.closest('.field'); fd.classList.toggle('is-bad', !!msg); inp.setAttribute('aria-invalid', msg ? 'true' : 'false'); fd.querySelector('.field__err').textContent = msg || ''; };
+  const check = (inp, force) => {
+    if (inp === nom) { const bad = !nom.value.trim(); if (bad && !force && !nom.dataset.t) return true; set(nom, bad ? f.dataset.errName : ''); return !bad; }
+    const bad = !okMail(mail.value); if (bad && !force && !mail.dataset.t) return true; set(mail, bad ? f.dataset.errEmail : ''); return !bad;
+  };
+  [nom, mail].forEach(inp => {
+    inp.addEventListener('blur', () => { if (inp.value.trim()) inp.dataset.t = 1; check(inp); });
+    inp.addEventListener('input', () => { if (inp.closest('.field').classList.contains('is-bad')) check(inp, true); });
+  });
+  f.addEventListener('submit', e => {
+    const a = check(nom, true), b = check(mail, true);
+    if (!a || !b) { e.preventDefault(); status.textContent = f.dataset.fix; (a ? mail : nom).focus(); return; }
+    status.textContent = '';
+    btn.classList.add('is-loading'); btn.querySelector('.send__label').textContent = btn.dataset.sending;
+  });
+  // retour arrière depuis la page de confirmation : bouton remis à neuf
+  addEventListener('pageshow', () => { btn.classList.remove('is-loading'); });
+}
+
 /* ---------- version simple : téléphone animé dans la maquette ---------- */
 function initStacked() {
   const el = $('#phoneUIStatic'); if (!el) return;
@@ -163,17 +224,16 @@ const PANEL_IN = {
 };
 function stylePanel(el, kind, vin, vout, side) {
   const v = Math.min(vin, 1 - vout);
-  if (v <= 0) { el.style.visibility = 'hidden'; return; }
+  const key = v <= 0 ? 'off' : (vin >= 1 && vout <= 0 ? 'on' : '');
+  if (key && el._k === key) return;                       // état stable : aucune écriture (pas de scintillement)
+  el._k = key;
+  if (v <= 0) { el.style.visibility = 'hidden'; el.style.opacity = 0; return; }
   el.style.visibility = 'visible';
   const ei = eo(vin), eoO = ease(vout);
-  let tf = 'translateY(-50%)', clip = 'none', op = 1, filt = 'none';
-  if (kind === 'mask') { clip = side === 'left' ? `inset(0 ${R((1 - ei) * 100)}% 0 0 round 18px)` : `inset(0 0 0 ${R((1 - ei) * 100)}% round 18px)`; tf += ` translateX(${R((1 - ei) * (side === 'left' ? -24 : 24))}px)`; }
-  if (kind === 'rise') { tf += ` translateY(${R((1 - ei) * 40)}px)`; op = ei; filt = `blur(${R((1 - ei) * 8)}px)`; }
-  if (kind === 'wipe') { clip = `inset(${R((1 - ei) * 100)}% 0 0 0 round 18px)`; tf += ` translateY(${R((1 - ei) * 30)}px)`; }
-  if (kind === 'slide') { tf += ` translateX(${R((1 - ei) * 60)}px)`; op = ei; }
-  // sortie commune : légère montée et fondu
-  tf += ` translateY(${R(-eoO * 36)}px)`; op *= 1 - eoO;
-  el.style.transform = tf; el.style.clipPath = clip; el.style.opacity = R(op); el.style.filter = filt;
+  const dx = kind === 'slide' ? (1 - ei) * 28 : 0;
+  const ty = (1 - ei) * 22 - eoO * 22;
+  el.style.transform = `translate3d(${R(dx)}px,calc(-50% + ${R(ty)}px),0)`;
+  el.style.opacity = R(Math.min(ei, 1 - eoO));
 }
 
 /* ---------- version cinématique ---------- */
@@ -205,7 +265,7 @@ async function initCine() {
   const sides = panels.map(p => p && getComputedStyle(p).left !== 'auto' && parseFloat(getComputedStyle(p).left) < vw / 2 ? 'left' : 'right');
   const heroLines = $$('.panel--hero > *');
   const steps = $$('#automatisation .steps li');
-  const hudItems = $$('#hud li'); const hudBar = $('#hudBar'); const hud = $('#hud');
+  const frameEl = $('.frame'); const hudItems = $$('#hud li'); const hudBar = $('#hudBar'); const hud = $('#hud');
   const header = $('#top'); const fade = $('#fadeOut'); const cue = $('.scroll-cue');
   const pos = new THREE.Vector3(), tgt = new THREE.Vector3();
   let lastP = -1, firstFrame = true, sh = null;
@@ -301,7 +361,7 @@ async function initCine() {
     if (cue) cue.style.opacity = R(1 - seg(p, 0, chapters[0].b * .3));
     for (let j = 1; j < LAST; j++) {
       const c = chapters[j]; const l = seg(p, c.a, c.b);
-      const vin = seg(l, TRANS - .1, TRANS + .1), vout = seg(l, .9, 1);
+      const vin = seg(l, TRANS - .02, TRANS + .08), vout = seg(l, .93, 1);
       stylePanel(panels[j], PANEL_IN[j], vin, vout, sides[j]);
     }
     // repère de progression
@@ -311,6 +371,8 @@ async function initCine() {
     hudBar.style.transform = `scaleX(${R(seg(p, chapters[1].a, chapters[LAST].a))})`;
     // fondu final vers les sections suivantes
     const c7 = chapters[LAST]; fade.style.opacity = R(ease(seg(p, c7.a + (c7.b - c7.a) * .55, c7.b)));
+    // les filets du cadre s'effacent avec la scène : ils ne doivent pas traverser le formulaire ni le pied de page
+    if (frameEl) { const fo = R(1 - seg(p, c7.a + (c7.b - c7.a) * .55, c7.b)); if (frameEl._o !== fo) { frameEl._o = fo; frameEl.style.opacity = fo; frameEl.style.visibility = fo < .01 ? 'hidden' : ''; } }
 
     S.render();
     if (firstFrame) { firstFrame = false; introStart = clock(); screens[0].t0 = introStart; doc.classList.add('scene-ready'); }
@@ -325,16 +387,21 @@ async function initCine() {
     } catch (e) { /* défilement natif */ }
   }
   initBooking(lenisRef);
-  // ancres : on vise le moment où l'objet est cadré
-  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
-    if (a.hasAttribute('data-booking')) return;
-    const id = a.getAttribute('href').slice(1); const el = document.getElementById(id); if (!el) return;
-    e.preventDefault();
-    let y = el.getBoundingClientRect().top + scrollY;
+  // ancres : saut en fondu vers l'image de départ de la section (caméra arrivée, texte entièrement affiché)
+  initNav(id => {
+    if (id === 'top' || id === 'contenu') return 0;
+    const el = document.getElementById(id); if (!el) return null;
     const ci = secs.indexOf(el);
-    if (ci > 0) y = trackTop + chapters[ci].a * trackLen + (chapters[ci].b - chapters[ci].a) * trackLen * (TRANS + .12);
-    if (lenisRef.current) lenisRef.current.scrollTo(y, { duration: Math.min(4, 1.2 + Math.abs(y - scrollY) / vh * .18) }); else scrollTo({ top: y, behavior: 'smooth' });
-  }));
+    if (ci > 0) return Math.round(trackTop + (chapters[ci].a + (chapters[ci].b - chapters[ci].a) * (TRANS + .12)) * trackLen);
+    if (ci === 0) return 0;
+    return Math.round(el.getBoundingClientRect().top + scrollY);
+  }, y => {
+    if (lenisRef.current) lenisRef.current.scrollTo(y, { immediate: true, force: true }); else scrollTo(0, y);
+    window.scrollTo(0, y);
+    mouse.sx = mouse.x; mouse.sy = mouse.y;                  // aucune parallaxe en rattrapage
+    update(true);
+  });
+  initForm();
   function raf(t) { if (lenisRef.current) lenisRef.current.raf(t); update(false); requestAnimationFrame(raf); }
   addEventListener('resize', () => { measure(); update(true); });
   measure(); update(true);
@@ -364,5 +431,12 @@ async function initCine() {
   initStacked();
   initDeviceMocks();
   initBooking({ current: null });
+  initNav(id => {
+    if (id === 'top' || id === 'contenu') return 0;
+    const el = document.getElementById(id); if (!el) return null;
+    const hd = $('#top'); const off = hd ? hd.getBoundingClientRect().height : 0;
+    return Math.max(0, Math.round(el.getBoundingClientRect().top + scrollY - off - 8));
+  }, y => window.scrollTo({ top: y, behavior: 'instant' }));
+  initForm();
   window.__rmReady = true;
 })();

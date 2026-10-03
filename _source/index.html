@@ -193,19 +193,18 @@ window.RM_I18N={"lang": "fr", "modalTitle": "Appel découverte", "modalSub": "Ch
       <p class="location">Bureaux à Sherbrooke, Montréal et Québec.</p>
     </div>
     <!-- Formulaire : même point de réception Formspree que le site actuel. À remplacer par un envoi direct dans GHL si Alexandre le décide. -->
-    <form class="form" action="https://formspree.io/f/mjgknole" method="POST">
+    <form class="form" action="https://formspree.io/f/mjgknole" method="POST" novalidate data-err-name="Indiquez votre nom." data-err-email="Entrez un courriel valide, par exemple nom@entreprise.ca." data-fix="Vérifiez les champs indiqués.">
       <input type="hidden" name="langue" value="fr">
       <div class="form__row">
-        <label><span>Nom</span><input name="nom" autocomplete="name" required></label>
-        <label><span>Courriel</span><input type="email" name="courriel" autocomplete="email" required></label>
+        <div class="field"><input id="f-nom" name="nom" autocomplete="name" required placeholder=" " aria-describedby="e-nom"><label for="f-nom">Nom</label><small class="field__err" id="e-nom"></small></div>
+        <div class="field"><input id="f-courriel" type="email" name="courriel" autocomplete="email" required placeholder=" " aria-describedby="e-courriel"><label for="f-courriel">Courriel</label><small class="field__err" id="e-courriel"></small></div>
       </div>
-      <div class="form__row">
-        <label><span>Téléphone</span><input type="tel" name="telephone" autocomplete="tel"></label>
-        <label><span>Service souhaité</span><select name="service"><option>Application sur mesure</option><option>Automatisation</option><option>ERP et CRM</option><option>Intégration IA</option><option>Site web</option><option>Stratégie marketing</option><option>Je ne sais pas encore</option></select></label>
-      </div>
-      <label><span>Vos objectifs</span><textarea name="objectifs" rows="4"></textarea></label>
-      <p class="form__legal">En envoyant ce formulaire, vous acceptez que Roy Marketing utilise vos coordonnées pour vous répondre. Voir notre <a href="/politique-de-confidentialite">politique de confidentialité</a>.</p>
-      <button class="btn btn--dark" type="submit">Envoyer</button>
+      <div class="field"><input id="f-tel" type="tel" name="telephone" autocomplete="tel" placeholder=" "><label for="f-tel">Téléphone <em>facultatif</em></label></div>
+      <fieldset class="chips"><legend>Service souhaité</legend><div class="chips__list"><label class="chip"><input type="radio" name="service" value="Application sur mesure"><span>Application sur mesure</span></label><label class="chip"><input type="radio" name="service" value="Automatisation"><span>Automatisation</span></label><label class="chip"><input type="radio" name="service" value="ERP et CRM"><span>ERP et CRM</span></label><label class="chip"><input type="radio" name="service" value="Intégration IA"><span>Intégration IA</span></label><label class="chip"><input type="radio" name="service" value="Site web"><span>Site web</span></label><label class="chip"><input type="radio" name="service" value="Stratégie marketing"><span>Stratégie marketing</span></label><label class="chip"><input type="radio" name="service" value="Je ne sais pas encore"><span>Je ne sais pas encore</span></label></div></fieldset>
+      <div class="field field--area"><textarea id="f-obj" name="objectifs" rows="4" placeholder="Parlez-nous de votre entreprise et de ce que vous aimeriez simplifier."></textarea><label for="f-obj">Vos objectifs</label></div>
+      <p class="form__legal">En envoyant ce formulaire, vous acceptez que Roy Marketing utilise vos coordonnées pour vous répondre. Voir notre <a href="/politique-de-confidentialite/">politique de confidentialité</a>.</p>
+      <p class="form__status" role="status" aria-live="polite"></p>
+      <button class="send" type="submit" data-sending="Envoi en cours"><span class="send__label">Envoyer</span><span class="send__spin" aria-hidden="true"></span><svg class="send__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </form>
   </div>
 </section>
@@ -216,9 +215,12 @@ window.RM_I18N={"lang": "fr", "modalTitle": "Appel découverte", "modalSub": "Ch
   <div class="wrap foot__grid">
     <div class="foot__brand"><span class="brand__name">ROY MARKETING<i>.</i></span><span>Bureaux à Sherbrooke, Montréal et Québec.</span></div>
     <div class="foot__nap"><a href="tel:+18192019042">819-201-9042</a><a href="mailto:info@roymarketing.ca">info@roymarketing.ca</a></div>
-    <div class="foot__legal"><a href="/politique-de-confidentialite">Politique de confidentialité</a><button type="button" class="rm-consent-manage" data-consent-manage>Gérer les témoins</button><span>© 2026 Roy Marketing</span></div>
+    <div class="foot__legal"><a href="/politique-de-confidentialite/">Politique de confidentialité</a><button type="button" class="rm-consent-manage" data-consent-manage>Gérer les témoins</button><span>© 2026 Roy Marketing</span></div>
   </div>
 </footer>
+
+<a class="totop" id="toTop" href="#top" aria-label="Retour au début"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Retour au début</span></a>
+<div class="jumpfade" id="jumpFade" aria-hidden="true"></div>
 
 <div class="hud" id="hud" aria-hidden="true"><ol><li data-i="1">Applications</li><li data-i="2">Automatisation</li><li data-i="3">ERP et CRM</li><li data-i="4">IA</li><li data-i="5">Web</li></ol><div class="hud__bar"><span id="hudBar"></span></div></div>
 
