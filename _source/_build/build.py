@@ -57,8 +57,17 @@ def page(d, root):
 <meta property="og:title" content="{e("ogTitle")}">
 <meta property="og:description" content="{e("ogDesc")}">
 <meta property="og:url" content="{d["canonical"]}">
-<!-- TODO avant mise en ligne : image Open Graph 1200 x 630 qui existe vraiment (og-image.jpg renvoie une 404 sur le site actuel). -->
 <meta property="og:image" content="https://roymarketing.ca/assets/img/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{e("ogImageAlt")}">
+<meta property="og:locale:alternate" content="{d["ogLocaleAlt"]}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e("ogTitle")}">
+<meta name="twitter:description" content="{e("ogDesc")}">
+<meta name="twitter:image" content="https://roymarketing.ca/assets/img/og-image.jpg">
+<meta name="twitter:image:alt" content="{e("ogImageAlt")}">
 <link rel="icon" href="{root}assets/brand/favicon/favicon.ico" sizes="32x32">
 <link rel="icon" href="{root}assets/brand/favicon/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{root}assets/brand/favicon/apple-touch-icon-180.png">
@@ -77,6 +86,12 @@ def page(d, root):
   "name": "Roy Marketing",
   "url": "https://roymarketing.ca/",
   "logo": "https://roymarketing.ca/assets/brand/logo/png/mark/mark-dark-on-light-512.png",
+  "image": {{
+    "@type": "ImageObject",
+    "url": "https://roymarketing.ca/assets/img/og-image.jpg",
+    "width": 1200,
+    "height": 630
+  }},
   "description": "{ea(d["ogDesc"])}",
   "telephone": "+18192019042",
   "email": "info@roymarketing.ca",
@@ -101,7 +116,7 @@ def page(d, root):
   }}
 }}
 </script>
-<!-- TODO schema, à confirmer par Alexandre avant mise en ligne : heures d'ouverture (lun. au ven., 9 h à 17 h, non vérifiées), liens sameAs (Facebook, Instagram, LinkedIn, non vérifiés), image Open Graph, fiche Google Business Profile quand elle existera. -->
+<!-- TODO schema, à confirmer par Alexandre : heures d'ouverture (lun. au ven., 9 h à 17 h, non vérifiées), liens sameAs (Facebook, Instagram, LinkedIn, non vérifiés) et la fiche Google Business Profile. Pas d'adresse civique publiée : le schema reste limité à la ville. -->
 <script>
 /* Une seule version : défilement natif, sections empilées (mobile) ou en alternance (bureau). */
 document.documentElement.classList.add('js');
