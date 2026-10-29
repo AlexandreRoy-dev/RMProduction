@@ -50,8 +50,8 @@ export function buildPhone(root, logoSrc, lang = 'fr') {
   root.innerHTML = `
   <div class="pu-scr pu-lock" data-s="lock">
     <div class="date">${T.day}</div><div class="time">9:41</div>
-    <div class="pu-notif" data-e="n1" style="top:12.2em"><div class="ap"><img src="${logoSrc}" alt=""></div><div style="flex:1"><div class="hd"><span>${T.app}</span><span>${T.now}</span></div><b>${T.newLead}</b><p>${T.formReq}</p></div></div>
-    <div class="pu-notif" data-e="n2" style="top:18.1em"><div class="ap"><img src="${logoSrc}" alt=""></div><div style="flex:1"><div class="hd"><span>${T.auto}</span><span>${T.now}</span></div><b>${T.welcome}</b><p>${T.welcomeSub}</p></div></div>
+    <div class="pu-notif" data-e="n1" style="top:12.2em"><div class="ap"><img src="${logoSrc}" alt="" width="40" height="33" loading="lazy" decoding="async"></div><div style="flex:1"><div class="hd"><span>${T.app}</span><span>${T.now}</span></div><b>${T.newLead}</b><p>${T.formReq}</p></div></div>
+    <div class="pu-notif" data-e="n2" style="top:18.1em"><div class="ap"><img src="${logoSrc}" alt="" width="40" height="33" loading="lazy" decoding="async"></div><div style="flex:1"><div class="hd"><span>${T.auto}</span><span>${T.now}</span></div><b>${T.welcome}</b><p>${T.welcomeSub}</p></div></div>
   </div>
   <div class="pu-scr pu-app" data-s="lead">
     <div class="pu-top"><h4>${T.crm}</h4><span class="chip">${T.newLeads}</span></div>

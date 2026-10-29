@@ -4,3 +4,5 @@
 exclude:
   - _source
   - README.md
+  - seo-local
+  - _seo-reports

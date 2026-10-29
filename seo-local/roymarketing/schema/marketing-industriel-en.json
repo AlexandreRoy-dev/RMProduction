@@ -1,0 +1,87 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://roymarketing.ca/en/industrial-marketing/#service",
+      "name": "Industrial and B2B marketing",
+      "serviceType": "Industrial marketing",
+      "description": "A website and tools that match your plant: bilingual technical website, product and capability pages, qualified quote requests and custom software for manufacturers and B2B companies.",
+      "provider": {
+        "@id": "https://roymarketing.ca/#entreprise"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Sherbrooke",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Québec"
+        }
+      },
+      "url": "https://roymarketing.ca/en/industrial-marketing/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://roymarketing.ca/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Industrial and B2B marketing",
+          "item": "https://roymarketing.ca/en/industrial-marketing/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://roymarketing.ca/en/industrial-marketing/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why a bilingual industrial website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your buyers, distributors and OEM customers are often outside Quebec. A technical site in French and English presents your capabilities to both markets and meets B2B buyer expectations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should a manufacturer's website include?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Clear product and capability pages (processes, equipment, materials, tolerances, certifications), past projects, and a quote request form that collects the right information from the start."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you qualify quote requests?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With a structured form (part type, quantities, materials, deadline, attached files) connected to your CRM, so your team receives complete, prioritized requests."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you build custom software for manufacturers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes: client portals, dashboards, ERP or CRM integrations and automation of repetitive tasks, designed around your processes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you run B2B advertising?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, on Google and LinkedIn or Meta depending on your buyers, tracking quote requests received rather than clicks alone."
+          }
+        }
+      ]
+    }
+  ]
+}

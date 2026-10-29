@@ -1,0 +1,41 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://roymarketing.ca/site-web-courtier-immobilier/#service",
+      "name": "Site web pour courtier immobilier",
+      "serviceType": "Conception de sites web",
+      "description": "Site web de courtier immobilier rapide et bilingue, relié au CRM, avec pages de quartier et formulaire vendeur.",
+      "provider": {
+        "@id": "https://roymarketing.ca/#entreprise"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Sherbrooke",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Québec"
+        }
+      },
+      "url": "https://roymarketing.ca/site-web-courtier-immobilier/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://roymarketing.ca/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Site web pour courtier immobilier",
+          "item": "https://roymarketing.ca/site-web-courtier-immobilier/"
+        }
+      ]
+    }
+  ]
+}

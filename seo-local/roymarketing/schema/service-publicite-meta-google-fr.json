@@ -1,0 +1,41 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://roymarketing.ca/publicite-meta-google/#service",
+      "name": "Publicité Meta et Google gérée au mois",
+      "serviceType": "Gestion de publicité en ligne",
+      "description": "Gestion mensuelle des campagnes Meta et Google Ads pour courtiers immobiliers et entreprises B2B, avec suivi des conversions.",
+      "provider": {
+        "@id": "https://roymarketing.ca/#entreprise"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Sherbrooke",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Québec"
+        }
+      },
+      "url": "https://roymarketing.ca/publicite-meta-google/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://roymarketing.ca/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Publicité Meta et Google gérée au mois",
+          "item": "https://roymarketing.ca/publicite-meta-google/"
+        }
+      ]
+    }
+  ]
+}

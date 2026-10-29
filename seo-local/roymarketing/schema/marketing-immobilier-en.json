@@ -1,0 +1,79 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://roymarketing.ca/en/real-estate-marketing/#service",
+      "name": "Real estate marketing for brokers",
+      "serviceType": "Real estate marketing",
+      "description": "More seller listings, without depending on platforms: real estate agent website, CRM, automated follow-up, ads and content for brokers, teams and agencies.",
+      "provider": {
+        "@id": "https://roymarketing.ca/#entreprise"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Sherbrooke",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Québec"
+        }
+      },
+      "url": "https://roymarketing.ca/en/real-estate-marketing/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://roymarketing.ca/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Real estate marketing for brokers",
+          "item": "https://roymarketing.ca/en/real-estate-marketing/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://roymarketing.ca/en/real-estate-marketing/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I get more seller listings without depending on platforms?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By building assets you own: a website in your name that captures home value requests, a CRM that follows up with every contact automatically, targeted ads in your areas and content that shows your local market knowledge."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with teams and agencies, or only solo brokers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All three. For a team or agency, we set up a shared CRM with lead assignment, pipelines per broker and reports for management."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you manage Facebook and Google ads for brokers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We create and manage your Meta and Google campaigns every month, with lead tracking and a clear report. Results vary with the market, the budget and the offer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you follow OACIQ advertising rules?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We include in your ads and website the mentions required by OACIQ advertising rules, such as your name as shown on your licence, your title and your agency. Compliance remains your responsibility and your agency's. We do not give legal advice: for a specific case, contact the OACIQ or your agency's executive officer."
+          }
+        }
+      ]
+    }
+  ]
+}

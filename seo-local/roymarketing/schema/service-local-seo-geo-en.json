@@ -1,0 +1,41 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://roymarketing.ca/en/local-seo-geo/#service",
+      "name": "Local SEO and GEO",
+      "serviceType": "Search engine optimization",
+      "description": "Local SEO, Google profile, citations, structured data and visibility in AI answers.",
+      "provider": {
+        "@id": "https://roymarketing.ca/#entreprise"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Sherbrooke",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Québec"
+        }
+      },
+      "url": "https://roymarketing.ca/en/local-seo-geo/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://roymarketing.ca/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Local SEO and GEO",
+          "item": "https://roymarketing.ca/en/local-seo-geo/"
+        }
+      ]
+    }
+  ]
+}
