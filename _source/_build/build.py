@@ -42,7 +42,7 @@ def page(d, root):
     og_alt_locale = "en_CA" if d["ogLocale"] == "fr_CA" else "fr_CA"
     seo = lambda k: html.escape(d[k], quote=True)
     schema_name = "accueil-fr.json" if L == "fr" else "accueil-en.json"
-    schema = open(os.path.join(os.path.dirname(ROOT), "seo-local", "roymarketing", "schema", schema_name), encoding="utf-8").read().strip()
+    schema = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "schema", schema_name), encoding="utf-8").read().strip()
     i18n_js = json.dumps({"lang": L, "modalTitle": t(d["modalTitle"]), "modalSub": t(d["modalSub"]), "modalClose": d["modalClose"], "modalAlt": t(d["modalAlt"]), "modalLoading": d["modalLoading"]}, ensure_ascii=False)
     return f'''<!DOCTYPE html>
 <html lang="{d["lang"]}">
