@@ -117,7 +117,7 @@ redirect = '''<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <title>Politique de confidentialité | Roy Marketing</title>
-<meta name="robots" content="noindex">
+<meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://roymarketing.ca/politique-de-confidentialite/">
 <meta http-equiv="refresh" content="0; url=/politique-de-confidentialite/">
 <script>location.replace('/politique-de-confidentialite/' + location.hash);</script>

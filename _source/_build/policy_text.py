@@ -43,7 +43,7 @@ FR = """
 <ul>
 <li><strong>GitHub Pages</strong> (GitHub, Microsoft) héberge le site. Le serveur peut consigner l'adresse IP, le navigateur et les pages demandées.</li>
 <li><strong>Formspree</strong> reçoit le contenu du formulaire de contact et nous le transmet par courriel.</li>
-<li><strong>GoHighLevel</strong> (LeadConnector) fournit le calendrier de réservation et le logiciel de suivi commercial (CRM) dans lequel une demande peut être consignée pour le suivi par courriel, téléphone ou texto.</li>
+<li><strong>GoHighLevel</strong> (LeadConnector) fournit le calendrier de réservation.</li>
 <li><strong>Meta Platforms</strong> : le site prévoit un emplacement pour le pixel Meta. Ce script ne se charge que si vous acceptez les témoins marketing. Aucun identifiant de pixel n'est configuré à la date de cette politique.</li>
 </ul>
 <!-- À VÉRIFIER : identifiant du pixel Meta (toujours absent ?), utilisation éventuelle de publicités à formulaire (lead ads) Facebook ou Instagram pour Roy Marketing, et tout autre outil connecté à GoHighLevel. -->
@@ -125,7 +125,7 @@ EN = """
 <ul>
 <li><strong>GitHub Pages</strong> (GitHub, Microsoft) hosts the website. The server may log the IP address, browser and pages requested.</li>
 <li><strong>Formspree</strong> receives the contact form content and forwards it to us by email.</li>
-<li><strong>GoHighLevel</strong> (LeadConnector) provides the booking calendar and the sales follow-up software (CRM) where a request may be recorded for follow-up by email, phone or text message.</li>
+<li><strong>GoHighLevel</strong> (LeadConnector) provides the booking calendar.</li>
 <li><strong>Meta Platforms</strong>: the website includes a placeholder for the Meta pixel. This script only loads if you accept marketing cookies. No pixel ID is configured as of the date of this policy.</li>
 </ul>
 <!-- TO VERIFY: Meta pixel ID (still none?), any Facebook or Instagram lead ads for Roy Marketing, and other tools connected to GoHighLevel. -->
