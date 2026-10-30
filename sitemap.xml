@@ -1,27 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://roymarketing.ca/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://roymarketing.ca/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://roymarketing.ca/"/>
   </url>
   <url>
     <loc>https://roymarketing.ca/en/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://roymarketing.ca/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://roymarketing.ca/"/>
+  </url>
+  <url>
+    <loc>https://roymarketing.ca/marketing-immobilier/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://roymarketing.ca/marketing-immobilier/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/real-estate-marketing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://roymarketing.ca/marketing-immobilier/"/>
+  </url>
+  <url>
+    <loc>https://roymarketing.ca/en/real-estate-marketing/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://roymarketing.ca/marketing-immobilier/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/real-estate-marketing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://roymarketing.ca/marketing-immobilier/"/>
+  </url>
+  <url>
+    <loc>https://roymarketing.ca/marketing-industriel/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://roymarketing.ca/marketing-industriel/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/industrial-marketing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://roymarketing.ca/marketing-industriel/"/>
+  </url>
+  <url>
+    <loc>https://roymarketing.ca/en/industrial-marketing/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://roymarketing.ca/marketing-industriel/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/industrial-marketing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://roymarketing.ca/marketing-industriel/"/>
   </url>
   <url>
     <loc>https://roymarketing.ca/politique-de-confidentialite/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://roymarketing.ca/politique-de-confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/privacy-policy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://roymarketing.ca/politique-de-confidentialite/"/>
   </url>
   <url>
     <loc>https://roymarketing.ca/en/privacy-policy/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://roymarketing.ca/politique-de-confidentialite/"/>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/privacy-policy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://roymarketing.ca/politique-de-confidentialite/"/>
   </url>
 </urlset>

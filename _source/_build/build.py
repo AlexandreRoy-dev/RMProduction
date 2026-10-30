@@ -38,30 +38,45 @@ def page(d, root):
     steps = '<ol class="steps">' + "".join(f'<li data-step="{j}"><b>{ea(a)}</b><span>{ea(b)}</span></li>' for j, (a, b) in enumerate(d["c2s"])) + "</ol>"
     opts = "".join(f'<label class="chip"><input type="radio" name="service" value="{ea(o)}"><span>{ea(o)}</span></label>' for o in d["fOpts"])
     other = "en" if L == "fr" else "fr"
+    other_hl = "en-CA" if other == "en" else "fr-CA"
+    og_alt_locale = "en_CA" if d["ogLocale"] == "fr_CA" else "fr_CA"
+    seo = lambda k: html.escape(d[k], quote=True)
+    schema_name = "accueil-fr.json" if L == "fr" else "accueil-en.json"
+    schema = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "schema", schema_name), encoding="utf-8").read().strip()
     i18n_js = json.dumps({"lang": L, "modalTitle": t(d["modalTitle"]), "modalSub": t(d["modalSub"]), "modalClose": d["modalClose"], "modalAlt": t(d["modalAlt"]), "modalLoading": d["modalLoading"]}, ensure_ascii=False)
     return f'''<!DOCTYPE html>
 <html lang="{d["lang"]}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{e("title")}</title>
-<meta name="description" content="{e("metaDesc")}">
+<title>{seo("title")}</title>
+<meta name="description" content="{seo("metaDesc")}">
 <link rel="canonical" href="{d["canonical"]}">
 <link rel="alternate" hreflang="fr-CA" href="https://roymarketing.ca/">
 <link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/">
 <link rel="alternate" hreflang="x-default" href="https://roymarketing.ca/">
-<meta name="theme-color" content="#F3F1EC">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="{d["ogLocale"]}">
 <meta property="og:site_name" content="Roy Marketing">
-<meta property="og:title" content="{e("ogTitle")}">
-<meta property="og:description" content="{e("ogDesc")}">
+<meta property="og:locale" content="{d["ogLocale"]}">
+<meta property="og:locale:alternate" content="{og_alt_locale}">
+<meta property="og:title" content="{seo("ogTitle")}">
+<meta property="og:description" content="{seo("ogDesc")}">
 <meta property="og:url" content="{d["canonical"]}">
-<!-- TODO avant mise en ligne : image Open Graph 1200 x 630 qui existe vraiment (og-image.jpg renvoie une 404 sur le site actuel). -->
-<meta property="og:image" content="https://roymarketing.ca/assets/img/og-image.jpg">
-<link rel="icon" href="{root}assets/brand/favicon/favicon.ico" sizes="32x32">
-<link rel="icon" href="{root}assets/brand/favicon/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="{root}assets/brand/favicon/apple-touch-icon-180.png">
+<meta property="og:image" content="{d["ogImage"]}">
+<meta property="og:image:secure_url" content="{d["ogImage"]}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{seo("ogImageAlt")}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{seo("ogTitle")}">
+<meta name="twitter:description" content="{seo("ogDesc")}">
+<meta name="twitter:image" content="{d["ogImage"]}">
+<meta name="twitter:image:alt" content="{seo("ogImageAlt")}">
+<link rel="icon" href="/assets/brand/favicon/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="/assets/brand/favicon/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/favicon/apple-touch-icon.png" sizes="180x180">
+<link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#F9F9F7">
 <link rel="preload" href="{root}assets/brand/fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}assets/brand/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -70,38 +85,8 @@ def page(d, root):
 <link rel="stylesheet" href="{root}css/screens.css">
 <link rel="stylesheet" href="{root}css/consent.css">
 <script type="application/ld+json">
-{{
-  "@context": "https://schema.org",
-  "@type": ["MarketingAgency", "LocalBusiness"],
-  "@id": "https://roymarketing.ca/#entreprise",
-  "name": "Roy Marketing",
-  "url": "https://roymarketing.ca/",
-  "logo": "https://roymarketing.ca/assets/brand/logo/png/mark/mark-dark-on-light-512.png",
-  "description": "{ea(d["ogDesc"])}",
-  "telephone": "+18192019042",
-  "email": "info@roymarketing.ca",
-  "founder": {{ "@type": "Person", "name": "Alexandre Roy" }},
-  "address": {{ "@type": "PostalAddress", "addressLocality": "Sherbrooke", "addressRegion": "QC", "addressCountry": "CA" }},
-  "areaServed": [
-    {{ "@type": "City", "name": "Sherbrooke" }},
-    {{ "@type": "City", "name": "Montréal" }},
-    {{ "@type": "City", "name": "Québec" }}
-  ],
-  "knowsLanguage": ["fr-CA", "en-CA"],
-  "hasOfferCatalog": {{
-    "@type": "OfferCatalog",
-    "name": "Services",
-    "itemListElement": [
-      {{ "@type": "Offer", "itemOffered": {{ "@type": "Service", "name": "Applications sur mesure" }} }},
-      {{ "@type": "Offer", "itemOffered": {{ "@type": "Service", "name": "Automatisation" }} }},
-      {{ "@type": "Offer", "itemOffered": {{ "@type": "Service", "name": "ERP et CRM" }} }},
-      {{ "@type": "Offer", "itemOffered": {{ "@type": "Service", "name": "Intégration IA" }} }},
-      {{ "@type": "Offer", "itemOffered": {{ "@type": "Service", "name": "Création de sites web" }} }}
-    ]
-  }}
-}}
+{schema}
 </script>
-<!-- TODO schema, à confirmer par Alexandre avant mise en ligne : heures d'ouverture (lun. au ven., 9 h à 17 h, non vérifiées), liens sameAs (Facebook, Instagram, LinkedIn, non vérifiés), image Open Graph, fiche Google Business Profile quand elle existera. -->
 <script>
 /* Une seule version : défilement natif, sections empilées (mobile) ou en alternance (bureau). */
 document.documentElement.classList.add('js');
@@ -114,7 +99,7 @@ window.RM_I18N={i18n_js};window.RM_ROOT="{root}";
 
 <header class="top" id="top">
   <a class="brand" href="#top" aria-label="{e("brandHome")}">
-    <img src="{root}assets/brand/logo/mark/mark-dark-on-light.svg" width="40" height="33" alt="">
+    <img src="{root}assets/brand/logo/mark/mark-dark-on-light.svg" width="40" height="33" alt="Roy Marketing">
     <span class="brand__txt"><span class="brand__name">ROY MARKETING<i>.</i></span><span class="brand__tag">{e("tagline")}</span></span>
   </a>
   <nav class="nav" aria-label="{e("navLabel")}">
@@ -127,7 +112,7 @@ window.RM_I18N={i18n_js};window.RM_ROOT="{root}";
     <a href="tel:+18192019042">819-201-9042</a>
     <a href="mailto:info@roymarketing.ca">info@roymarketing.ca</a>
   </div>
-  <a class="lang" href="{d['switchHref']}" hreflang="{other}" lang="{other}" aria-label="{e("switchLabel")}">{e("switchShort")}</a>
+  <a class="lang" href="{d['switchHref']}" hreflang="{other_hl}" lang="{other}" aria-label="{e("switchLabel")}">{e("switchShort")}</a>
   {BOOKING_NOTE}
   <a class="btn btn--dark top__cta" href="#contact" data-booking>{e("cta")}</a>
 </header>
@@ -140,7 +125,7 @@ window.RM_I18N={i18n_js};window.RM_ROOT="{root}";
     <figure class="dm dm--ipad dm--hero" role="img" aria-label="{e("altHero")}"><div class="dm__scr" data-screen="laptop" data-offset="0"></div></figure>
     <div class="panel panel--hero">
       <p class="label label--lines"><span class="ln"></span>{e("heroEyebrow")}<span class="ln"></span></p>
-      <h1 class="h1"><span class="h-a">{e("heroH1a")}</span> <span class="h-b">{e("heroH1b")}<i>.</i></span></h1>
+      <h1 class="h1"><span class="h-a">{e("heroH1a")}</span> <span class="h-b">{e("heroH1b")}</span></h1>
       {tagline2}
       <p class="lead">{e("heroLead")}</p>
       <div class="actions">
@@ -194,7 +179,7 @@ window.RM_I18N={i18n_js};window.RM_ROOT="{root}";
   <div class="wrap foot__grid">
     <div class="foot__brand"><span class="brand__name">ROY MARKETING<i>.</i></span><span>{e("location")}</span></div>
     <div class="foot__nap"><a href="tel:+18192019042">819-201-9042</a><a href="mailto:info@roymarketing.ca">info@roymarketing.ca</a></div>
-    <div class="foot__legal"><a href="{d["privacyHref"]}">{e("privacy")}</a><button type="button" class="rm-consent-manage" data-consent-manage>{e("cookies")}</button><span>© 2026 Roy Marketing</span></div>
+    <div class="foot__legal"><a href="{d["niche1Href"]}">{e("niche1")}</a><a href="{d["niche2Href"]}">{e("niche2")}</a><a href="{d["privacyHref"]}">{e("privacy")}</a><button type="button" class="rm-consent-manage" data-consent-manage>{e("cookies")}</button><span>© 2026 Roy Marketing</span></div>
   </div>
 </footer>
 

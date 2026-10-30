@@ -10,7 +10,7 @@ FR = """
 <p>Cette politique explique quels renseignements personnels Roy Marketing recueille sur ce site, pourquoi, avec qui ils peuvent être communiqués et comment exercer vos droits. Elle est rédigée en langage clair et tient compte de la Loi sur la protection des renseignements personnels dans le secteur privé du Québec, telle que modifiée par la Loi 25, ainsi que de la Loi canadienne anti-pourriel (LCAP).</p>
 
 <h2>Qui nous sommes</h2>
-<p>Roy Marketing conçoit des applications sur mesure, des automatisations, des solutions ERP et CRM, des intégrations d'intelligence artificielle et des sites web pour les PME. L'entreprise a des bureaux à Sherbrooke, Montréal et Québec et elle est exploitée par Alexandre Roy.</p>
+<p>Roy Marketing conçoit des applications sur mesure, des automatisations, des solutions ERP et CRM, des intégrations d'intelligence artificielle et des sites web pour les PME. L'entreprise est basée à Sherbrooke et elle est exploitée par Alexandre Roy.</p>
 <ul><li>Site : roymarketing.ca</li><li>Téléphone : <a href="tel:+18192019042">819-201-9042</a></li><li>Courriel général : <a href="mailto:info@roymarketing.ca">info@roymarketing.ca</a></li></ul>
 
 <div class="policy__card">
@@ -92,7 +92,7 @@ EN = """
 <p>This policy explains what personal information Roy Marketing collects on this website, why, who it may be shared with and how to exercise your rights. It is written in plain language and reflects Quebec's Act respecting the protection of personal information in the private sector, as amended by Law 25, and Canada's Anti-Spam Legislation (CASL). The French version prevails in case of discrepancy.</p>
 
 <h2>Who we are</h2>
-<p>Roy Marketing builds custom applications, automations, ERP and CRM solutions, AI integrations and websites for small and medium businesses. The company has offices in Sherbrooke, Montréal and Québec City and is operated by Alexandre Roy.</p>
+<p>Roy Marketing builds custom applications, automations, ERP and CRM solutions, AI integrations and websites for small and medium businesses. The company is based in Sherbrooke and is operated by Alexandre Roy.</p>
 <ul><li>Website: roymarketing.ca</li><li>Phone: <a href="tel:+18192019042">819-201-9042</a></li><li>General email: <a href="mailto:info@roymarketing.ca">info@roymarketing.ca</a></li></ul>
 
 <div class="policy__card">

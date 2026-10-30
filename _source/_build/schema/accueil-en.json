@@ -1,0 +1,84 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://roymarketing.ca/#entreprise",
+      "name": "Roy Marketing",
+      "legalName": "Roy Marketing Inc.",
+      "url": "https://roymarketing.ca/en/",
+      "logo": "https://roymarketing.ca/assets/brand/logo/png/mark/mark-dark-on-light-512.png",
+      "image": "https://roymarketing.ca/assets/img/og-image-en.jpg",
+      "telephone": "+1-819-201-9042",
+      "email": "info@roymarketing.ca",
+      "areaServed": {
+        "@type": "City",
+        "name": "Sherbrooke",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Québec"
+        }
+      },
+      "knowsLanguage": [
+        "fr-CA",
+        "en-CA"
+      ],
+      "founder": {
+        "@id": "https://roymarketing.ca/#alexandre-roy"
+      },
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61581535466026"
+      ],
+      "knowsAbout": [
+        "Real estate marketing",
+        "Marketing for real estate brokers",
+        "Industrial marketing",
+        "B2B marketing for manufacturers",
+        "Websites",
+        "CRM for realtors",
+        "GoHighLevel",
+        "Meta and Google ads",
+        "Local SEO",
+        "Generative engine optimization",
+        "Custom software"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://roymarketing.ca/en/real-estate-marketing/#service"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://roymarketing.ca/en/industrial-marketing/#service"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://roymarketing.ca/en/#site",
+      "url": "https://roymarketing.ca/en/",
+      "name": "Roy Marketing",
+      "inLanguage": "en-CA",
+      "publisher": {
+        "@id": "https://roymarketing.ca/#entreprise"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://roymarketing.ca/#alexandre-roy",
+      "name": "Alexandre Roy",
+      "jobTitle": "President",
+      "worksFor": {
+        "@id": "https://roymarketing.ca/#entreprise"
+      }
+    }
+  ]
+}

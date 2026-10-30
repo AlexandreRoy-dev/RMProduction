@@ -3,24 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Roy Marketing | Web and marketing agency, Sherbrooke, Montréal, Québec City</title>
-<meta name="description" content="Custom software, automation, ERP and CRM, AI and websites for small and mid-sized businesses. Offices in Sherbrooke, Montréal and Québec City. 819 201-9042.">
+<title>Real estate and industrial marketing, Quebec | Roy Marketing</title>
+<meta name="description" content="Marketing for real estate brokers and manufacturers in Quebec: websites, CRM, Meta and Google ads, custom software. Based in Sherbrooke, Quebec, Canada.">
 <link rel="canonical" href="https://roymarketing.ca/en/">
 <link rel="alternate" hreflang="fr-CA" href="https://roymarketing.ca/">
 <link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/">
 <link rel="alternate" hreflang="x-default" href="https://roymarketing.ca/">
-<meta name="theme-color" content="#F3F1EC">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="en_CA">
 <meta property="og:site_name" content="Roy Marketing">
-<meta property="og:title" content="Roy Marketing | Systems that work for you">
-<meta property="og:description" content="Custom software, automation, ERP and CRM, AI and websites for Québec businesses.">
+<meta property="og:locale" content="en_CA">
+<meta property="og:locale:alternate" content="fr_CA">
+<meta property="og:title" content="Roy Marketing | Real estate and industrial marketing">
+<meta property="og:description" content="Marketing for real estate brokers and manufacturers in Quebec: websites, CRM, Meta and Google ads, custom software. Based in Sherbrooke, Quebec, Canada.">
 <meta property="og:url" content="https://roymarketing.ca/en/">
-<!-- TODO avant mise en ligne : image Open Graph 1200 x 630 qui existe vraiment (og-image.jpg renvoie une 404 sur le site actuel). -->
-<meta property="og:image" content="https://roymarketing.ca/assets/img/og-image.jpg">
-<link rel="icon" href="../assets/brand/favicon/favicon.ico" sizes="32x32">
-<link rel="icon" href="../assets/brand/favicon/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="../assets/brand/favicon/apple-touch-icon-180.png">
+<meta property="og:image" content="https://roymarketing.ca/assets/img/og-image-en.jpg">
+<meta property="og:image:secure_url" content="https://roymarketing.ca/assets/img/og-image-en.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Roy Marketing, a web and marketing agency in Sherbrooke, Quebec. Real estate and industrial marketing. Strategy, web and automation.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Roy Marketing | Real estate and industrial marketing">
+<meta name="twitter:description" content="Marketing for real estate brokers and manufacturers in Quebec: websites, CRM, Meta and Google ads, custom software. Based in Sherbrooke, Quebec, Canada.">
+<meta name="twitter:image" content="https://roymarketing.ca/assets/img/og-image-en.jpg">
+<meta name="twitter:image:alt" content="Roy Marketing, a web and marketing agency in Sherbrooke, Quebec. Real estate and industrial marketing. Strategy, web and automation.">
+<link rel="icon" href="/assets/brand/favicon/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="/assets/brand/favicon/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand/favicon/apple-touch-icon.png" sizes="180x180">
+<link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#F9F9F7">
 <link rel="preload" href="../assets/brand/fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/brand/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -31,36 +41,89 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": ["MarketingAgency", "LocalBusiness"],
-  "@id": "https://roymarketing.ca/#entreprise",
-  "name": "Roy Marketing",
-  "url": "https://roymarketing.ca/",
-  "logo": "https://roymarketing.ca/assets/brand/logo/png/mark/mark-dark-on-light-512.png",
-  "description": "Custom software, automation, ERP and CRM, AI and websites for Québec businesses.",
-  "telephone": "+18192019042",
-  "email": "info@roymarketing.ca",
-  "founder": { "@type": "Person", "name": "Alexandre Roy" },
-  "address": { "@type": "PostalAddress", "addressLocality": "Sherbrooke", "addressRegion": "QC", "addressCountry": "CA" },
-  "areaServed": [
-    { "@type": "City", "name": "Sherbrooke" },
-    { "@type": "City", "name": "Montréal" },
-    { "@type": "City", "name": "Québec" }
-  ],
-  "knowsLanguage": ["fr-CA", "en-CA"],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Services",
-    "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Applications sur mesure" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatisation" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ERP et CRM" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Intégration IA" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Création de sites web" } }
-    ]
-  }
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://roymarketing.ca/#entreprise",
+      "name": "Roy Marketing",
+      "legalName": "Roy Marketing Inc.",
+      "url": "https://roymarketing.ca/en/",
+      "logo": "https://roymarketing.ca/assets/brand/logo/png/mark/mark-dark-on-light-512.png",
+      "image": "https://roymarketing.ca/assets/img/og-image-en.jpg",
+      "telephone": "+1-819-201-9042",
+      "email": "info@roymarketing.ca",
+      "areaServed": {
+        "@type": "City",
+        "name": "Sherbrooke",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Québec"
+        }
+      },
+      "knowsLanguage": [
+        "fr-CA",
+        "en-CA"
+      ],
+      "founder": {
+        "@id": "https://roymarketing.ca/#alexandre-roy"
+      },
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61581535466026"
+      ],
+      "knowsAbout": [
+        "Real estate marketing",
+        "Marketing for real estate brokers",
+        "Industrial marketing",
+        "B2B marketing for manufacturers",
+        "Websites",
+        "CRM for realtors",
+        "GoHighLevel",
+        "Meta and Google ads",
+        "Local SEO",
+        "Generative engine optimization",
+        "Custom software"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://roymarketing.ca/en/real-estate-marketing/#service"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://roymarketing.ca/en/industrial-marketing/#service"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://roymarketing.ca/en/#site",
+      "url": "https://roymarketing.ca/en/",
+      "name": "Roy Marketing",
+      "inLanguage": "en-CA",
+      "publisher": {
+        "@id": "https://roymarketing.ca/#entreprise"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://roymarketing.ca/#alexandre-roy",
+      "name": "Alexandre Roy",
+      "jobTitle": "President",
+      "worksFor": {
+        "@id": "https://roymarketing.ca/#entreprise"
+      }
+    }
+  ]
 }
 </script>
-<!-- TODO schema, à confirmer par Alexandre avant mise en ligne : heures d'ouverture (lun. au ven., 9 h à 17 h, non vérifiées), liens sameAs (Facebook, Instagram, LinkedIn, non vérifiés), image Open Graph, fiche Google Business Profile quand elle existera. -->
 <script>
 /* Une seule version : défilement natif, sections empilées (mobile) ou en alternance (bureau). */
 document.documentElement.classList.add('js');
@@ -73,7 +136,7 @@ window.RM_I18N={"lang": "en", "modalTitle": "Discovery call", "modalSub": "Pick 
 
 <header class="top" id="top">
   <a class="brand" href="#top" aria-label="Roy Marketing, home">
-    <img src="../assets/brand/logo/mark/mark-dark-on-light.svg" width="40" height="33" alt="">
+    <img src="../assets/brand/logo/mark/mark-dark-on-light.svg" width="40" height="33" alt="Roy Marketing">
     <span class="brand__txt"><span class="brand__name">ROY MARKETING<i>.</i></span><span class="brand__tag">Strategy • Web • Automation</span></span>
   </a>
   <nav class="nav" aria-label="Main navigation">
@@ -86,7 +149,7 @@ window.RM_I18N={"lang": "en", "modalTitle": "Discovery call", "modalSub": "Pick 
     <a href="tel:+18192019042">819-201-9042</a>
     <a href="mailto:info@roymarketing.ca">info@roymarketing.ca</a>
   </div>
-  <a class="lang" href="../" hreflang="fr" lang="fr" aria-label="Français">FR</a>
+  <a class="lang" href="../" hreflang="fr-CA" lang="fr" aria-label="Français">FR</a>
   <!-- Lien de réservation : voir js/config.js (BOOKING_URL). -->
   <a class="btn btn--dark top__cta" href="#contact" data-booking>Book a discovery call</a>
 </header>
@@ -99,7 +162,7 @@ window.RM_I18N={"lang": "en", "modalTitle": "Discovery call", "modalSub": "Pick 
     <figure class="dm dm--ipad dm--hero" role="img" aria-label="Top view of a white desk: laptop, espresso cup, mouse and plant."><div class="dm__scr" data-screen="laptop" data-offset="0"></div></figure>
     <div class="panel panel--hero">
       <p class="label label--lines"><span class="ln"></span>Your technology partner<span class="ln"></span></p>
-      <h1 class="h1"><span class="h-a">Systems</span> <span class="h-b">that work for you<i>.</i></span></h1>
+      <h1 class="h1"><span class="h-a">Real estate and industrial marketing,</span> <span class="h-b">from Sherbrooke across Quebec</span></h1>
       <p class="tagline2">Custom tools for local businesses.</p>
       <p class="lead">Business technology, software and automation for growing companies. Custom applications, CRM, artificial intelligence and websites, guided by a clear marketing strategy: we build the levers that move your business forward.</p>
       <div class="actions">
@@ -173,7 +236,7 @@ window.RM_I18N={"lang": "en", "modalTitle": "Discovery call", "modalSub": "Pick 
       </ul>
       <!-- Lien de réservation : voir js/config.js (BOOKING_URL). -->
       <a class="pill pill--lg" href="#contact" data-booking>Book a discovery call</a>
-      <p class="location">Offices in Sherbrooke, Montréal and Québec City.</p>
+      <p class="location">Based in Sherbrooke.</p>
     </div>
     <!-- Formulaire : même point de réception Formspree que le site actuel. À remplacer par un envoi direct dans GHL si Alexandre le décide. -->
     <form class="form" action="https://formspree.io/f/mjgknole" method="POST" novalidate data-err-name="Please enter your name." data-err-email="Enter a valid email, for example name@company.ca." data-fix="Please check the highlighted fields.">
@@ -196,9 +259,9 @@ window.RM_I18N={"lang": "en", "modalTitle": "Discovery call", "modalSub": "Pick 
 
 <footer class="foot">
   <div class="wrap foot__grid">
-    <div class="foot__brand"><span class="brand__name">ROY MARKETING<i>.</i></span><span>Offices in Sherbrooke, Montréal and Québec City.</span></div>
+    <div class="foot__brand"><span class="brand__name">ROY MARKETING<i>.</i></span><span>Based in Sherbrooke.</span></div>
     <div class="foot__nap"><a href="tel:+18192019042">819-201-9042</a><a href="mailto:info@roymarketing.ca">info@roymarketing.ca</a></div>
-    <div class="foot__legal"><a href="/en/privacy-policy/">Privacy policy</a><button type="button" class="rm-consent-manage" data-consent-manage>Manage cookies</button><span>© 2026 Roy Marketing</span></div>
+    <div class="foot__legal"><a href="/en/real-estate-marketing/">Real estate marketing</a><a href="/en/industrial-marketing/">Industrial marketing</a><a href="/en/privacy-policy/">Privacy policy</a><button type="button" class="rm-consent-manage" data-consent-manage>Manage cookies</button><span>© 2026 Roy Marketing</span></div>
   </div>
 </footer>
 
