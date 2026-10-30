@@ -11,14 +11,11 @@
       "image": "https://roymarketing.ca/assets/img/og-image.jpg",
       "telephone": "+1-819-201-9042",
       "email": "info@roymarketing.ca",
-      "areaServed": {
-        "@type": "City",
-        "name": "Sherbrooke",
-        "containedInPlace": {
-          "@type": "AdministrativeArea",
-          "name": "Québec"
-        }
-      },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Québec" },
+        { "@type": "Country", "name": "Canada" },
+        { "@type": "Country", "name": "États-Unis" }
+      ],
       "knowsLanguage": [
         "fr-CA",
         "en-CA"

@@ -4,19 +4,19 @@ DATE_FR = "3 octobre 2026"
 DATE_EN = "October 3, 2026"
 
 FR = """
-<p class="label">Sherbrooke, Québec</p>
+<p class="label">Québec, Canada</p>
 <h1 class="h2 h2--xl">Politique de confidentialité</h1>
 <p class="policy__date">Dernière mise à jour : {date}</p>
 <p>Cette politique explique quels renseignements personnels Roy Marketing recueille sur ce site, pourquoi, avec qui ils peuvent être communiqués et comment exercer vos droits. Elle est rédigée en langage clair et tient compte de la Loi sur la protection des renseignements personnels dans le secteur privé du Québec, telle que modifiée par la Loi 25, ainsi que de la Loi canadienne anti-pourriel (LCAP).</p>
 
 <h2>Qui nous sommes</h2>
-<p>Roy Marketing conçoit des applications sur mesure, des automatisations, des solutions ERP et CRM, des intégrations d'intelligence artificielle et des sites web pour les PME. L'entreprise est basée à Sherbrooke et elle est exploitée par Alexandre Roy.</p>
+<p>Roy Marketing conçoit des applications sur mesure, des automatisations, des solutions ERP et CRM, des intégrations d'intelligence artificielle et des sites web pour les PME. L'entreprise est une firme québécoise et elle est exploitée par Alexandre Roy.</p>
 <ul><li>Site : roymarketing.ca</li><li>Téléphone : <a href="tel:+18192019042">819-201-9042</a></li><li>Courriel général : <a href="mailto:info@roymarketing.ca">info@roymarketing.ca</a></li></ul>
 
 <div class="policy__card">
 <p class="label">Responsable de la protection des renseignements personnels</p>
 <p class="policy__name">Alexandre Roy</p>
-<p>Sherbrooke (Québec) Canada<br><a href="mailto:alex@roymarketing.ca">alex@roymarketing.ca</a><br><a href="tel:+18192019042">819-201-9042</a></p>
+<p>Québec, Canada<br><a href="mailto:alex@roymarketing.ca">alex@roymarketing.ca</a><br><a href="tel:+18192019042">819-201-9042</a></p>
 <p>Écrivez à cette adresse pour toute question sur cette politique ou pour exercer un droit décrit plus bas.</p>
 </div>
 
@@ -81,24 +81,24 @@ FR = """
 <div class="policy__rule" aria-hidden="true"></div>
 <p class="label">Contact</p>
 <p class="policy__name">Roy Marketing</p>
-<p>Alexandre Roy, responsable de la protection des renseignements personnels<br>Sherbrooke (Québec) Canada<br><a href="mailto:alex@roymarketing.ca">alex@roymarketing.ca</a> · <a href="tel:+18192019042">819-201-9042</a></p>
+<p>Alexandre Roy, responsable de la protection des renseignements personnels<br>Québec, Canada<br><a href="mailto:alex@roymarketing.ca">alex@roymarketing.ca</a> · <a href="tel:+18192019042">819-201-9042</a></p>
 <p>Pour un projet, utilisez le <a href="/#contact">formulaire de la page d'accueil</a>.</p>
 """
 
 EN = """
-<p class="label">Sherbrooke, Quebec</p>
+<p class="label">Quebec, Canada</p>
 <h1 class="h2 h2--xl">Privacy policy</h1>
 <p class="policy__date">Last updated: {date}</p>
 <p>This policy explains what personal information Roy Marketing collects on this website, why, who it may be shared with and how to exercise your rights. It is written in plain language and reflects Quebec's Act respecting the protection of personal information in the private sector, as amended by Law 25, and Canada's Anti-Spam Legislation (CASL). The French version prevails in case of discrepancy.</p>
 
 <h2>Who we are</h2>
-<p>Roy Marketing builds custom applications, automations, ERP and CRM solutions, AI integrations and websites for small and medium businesses. The company is based in Sherbrooke and is operated by Alexandre Roy.</p>
+<p>Roy Marketing builds custom applications, automations, ERP and CRM solutions, AI integrations and websites for small and medium businesses. The company is a Quebec-based firm and is operated by Alexandre Roy.</p>
 <ul><li>Website: roymarketing.ca</li><li>Phone: <a href="tel:+18192019042">819-201-9042</a></li><li>General email: <a href="mailto:info@roymarketing.ca">info@roymarketing.ca</a></li></ul>
 
 <div class="policy__card">
 <p class="label">Person in charge of the protection of personal information</p>
 <p class="policy__name">Alexandre Roy</p>
-<p>Sherbrooke, Quebec, Canada<br><a href="mailto:alex@roymarketing.ca">alex@roymarketing.ca</a><br><a href="tel:+18192019042">819-201-9042</a></p>
+<p>Quebec, Canada<br><a href="mailto:alex@roymarketing.ca">alex@roymarketing.ca</a><br><a href="tel:+18192019042">819-201-9042</a></p>
 <p>Write to this address with any question about this policy or to exercise a right described below.</p>
 </div>
 
@@ -163,6 +163,6 @@ EN = """
 <div class="policy__rule" aria-hidden="true"></div>
 <p class="label">Contact</p>
 <p class="policy__name">Roy Marketing</p>
-<p>Alexandre Roy, person in charge of the protection of personal information<br>Sherbrooke, Quebec, Canada<br><a href="mailto:alex@roymarketing.ca">alex@roymarketing.ca</a> · <a href="tel:+18192019042">819-201-9042</a></p>
+<p>Alexandre Roy, person in charge of the protection of personal information<br>Quebec, Canada<br><a href="mailto:alex@roymarketing.ca">alex@roymarketing.ca</a> · <a href="tel:+18192019042">819-201-9042</a></p>
 <p>For a project, use the <a href="/en/#contact">form on the home page</a>.</p>
 """

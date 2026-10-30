@@ -15,9 +15,9 @@ def page(lang, body, root, path, alt_path, title, desc, nav, foot):
     og_locale = "fr_CA" if lang == "fr" else "en_CA"
     og_alt = "en_CA" if lang == "fr" else "fr_CA"
     og_image = "https://roymarketing.ca/assets/img/og-image.jpg" if lang == "fr" else "https://roymarketing.ca/assets/img/og-image-en.jpg"
-    og_alt_text = ("Roy Marketing, agence web et marketing à Sherbrooke, Québec. Marketing immobilier et industriel. Stratégie, web et automatisation."
+    og_alt_text = ("Roy Marketing, agence web et marketing au Québec, au Canada et aux États-Unis. Marketing immobilier et industriel. Stratégie, web et automatisation."
                    if lang == "fr" else
-                   "Roy Marketing, a web and marketing agency in Sherbrooke, Quebec. Real estate and industrial marketing. Strategy, web and automation.")
+                   "Roy Marketing, a web and marketing agency in Quebec, Canada and the United States. Real estate and industrial marketing. Strategy, web and automation.")
     home_url = "https://roymarketing.ca/" if lang == "fr" else "https://roymarketing.ca/en/"
     home_name = "Accueil" if lang == "fr" else "Home"
     url = "https://roymarketing.ca" + path
@@ -104,11 +104,11 @@ def page(lang, body, root, path, alt_path, title, desc, nav, foot):
 fr = page('fr', FR.format(date=DATE_FR), '../', '/politique-de-confidentialite/', '/en/privacy-policy/', 'Politique de confidentialité | Roy Marketing',
           "Politique de confidentialité de Roy Marketing : renseignements recueillis, usages, témoins, conservation et droits prévus par la Loi 25 en vigueur au Québec.",
           {"skip": "Aller au contenu", "home": "/", "homeL": "Roy Marketing, retour à l'accueil", "tag": "Stratégie • Web • Automatisation", "homeT": "Accueil"},
-          {"loc": "Basés à Sherbrooke.", "cookies": "Gérer les témoins"})
+          {"loc": "Québec, Canada et États-Unis.", "cookies": "Gérer les témoins"})
 en = page('en', EN.format(date=DATE_EN), '../../', '/en/privacy-policy/', '/politique-de-confidentialite/', 'Privacy policy | Roy Marketing',
           "Roy Marketing privacy policy: personal information collected, how it is used, cookies, retention and your rights under Quebec Law 25 on privacy protection.",
           {"skip": "Skip to content", "home": "/en/", "homeL": "Roy Marketing, back to home", "tag": "Strategy • Web • Automation", "homeT": "Home"},
-          {"loc": "Based in Sherbrooke.", "cookies": "Manage cookies"})
+          {"loc": "Quebec, Canada and the United States.", "cookies": "Manage cookies"})
 for rel, html in [('politique-de-confidentialite/index.html', fr), ('en/privacy-policy/index.html', en)]:
     os.makedirs(os.path.join(ROOT, os.path.dirname(rel)), exist_ok=True)
     open(os.path.join(ROOT, rel), 'w', encoding='utf-8').write(html); print('écrit', rel)
