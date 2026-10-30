@@ -1,6 +1,6 @@
 # Roy Marketing: brand kit (roymarketing.ca v2 prototype)
 
-Roy Marketing, Sherbrooke (Québec). Site language: French only (`lang="fr-CA"`).
+Roy Marketing, Québec, Canada. Site language: French only (`lang="fr-CA"`).
 Phone: **819-201-9042** (never 819-452-1975, the old number still printed on the old reference visual).
 Tagline: **STRATÉGIE • WEB • AUTOMATISATION** (offer: strategy, websites, custom software and automation).
 Slogan: **Des outils sur mesure pour les PME d'ici.**
