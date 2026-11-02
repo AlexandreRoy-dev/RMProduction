@@ -13,7 +13,8 @@
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="top">
   <a class="mark" href="/maquettes/c2/" aria-label="Roy Marketing, accueil"><img src="/assets/brand/logo/mark/mark-light-on-dark.svg" width="26" height="22" alt=""><span class="wm">ROY MARKETING<span class="dot">.</span></span></a>
-  <nav class="nav" aria-label="Navigation">
+  <button class="menu" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  <nav class="nav" id="site-nav" aria-label="Navigation">
     <a href="#offres">Services</a>
     <a href="#referencement">Référencement IA</a>
     <a href="#methode">Méthode</a>
@@ -23,6 +24,10 @@
 </header>
 <main id="contenu">
 <section class="hero">
+  <h1 class="cross">
+    <span>Plus de mandats vendeurs,</span>
+    <span>sans dépendre des plateformes.</span>
+  </h1>
   <div class="photo">
     <picture>
       <source type="image/webp" srcset="../img/tree-800.webp 800w, ../img/tree-1200.webp 1200w, ../img/tree-1600.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw">
@@ -49,10 +54,6 @@
       <a class="cue" href="#offres">Voir nos services</a>
     </div>
   </div>
-  <h1 class="cross">
-    <span class="ln"><span class="l">Plus de mandats </span><span class="r">vendeurs,</span></span>
-    <span class="ln"><span class="l">sans dépendre </span><span class="r">des plateformes.</span></span>
-  </h1>
 </section>
 
 <div id="offres">
@@ -187,5 +188,22 @@
   </div>
 </footer>
 <script src="../motion.js"></script>
+<script>
+(function () {
+  var btn = document.querySelector(".menu");
+  var nav = document.getElementById("site-nav");
+  if (!btn || !nav) return;
+  btn.addEventListener("click", function () {
+    var open = nav.classList.toggle("is-open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  nav.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      nav.classList.remove("is-open");
+      btn.setAttribute("aria-expanded", "false");
+    });
+  });
+})();
+</script>
 </body>
 </html>
