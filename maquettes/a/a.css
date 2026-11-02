@@ -1,5 +1,12 @@
 @font-face {
   font-family: "Cormorant Garamond";
+  src: url("../fonts/cormorant-300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
   src: url("../fonts/cormorant-400.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
@@ -58,9 +65,8 @@ a { color: inherit; }
   text-decoration: none; color: inherit;
   font: 500 13px/1 var(--sans); letter-spacing: 0;
 }
-.wm { letter-spacing: 0.2em; }
+.wm { font-size: 15px; letter-spacing: 0.1em; }
 .mark img { width: 28px; height: 23px; }
-.mark i { color: var(--green); font-style: normal; letter-spacing: 0; margin-left: -0.16em; }
 .nav { display: flex; gap: 22px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; }
 .nav a { text-decoration: none; }
 .nav a:hover { color: var(--muted); }
@@ -79,14 +85,18 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 }
 .hero {
   position: relative; min-height: 100svh; min-height: 640px; height: 100svh;
-  display: grid; align-items: end; color: var(--ivory);
+  display: grid; align-items: start; color: var(--ivory);
 }
-.hero picture, .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero picture, .hero img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 8% 0%;
+  transform: scale(1.55); transform-origin: left top;
+}
 .hero .veil {
   position: absolute; inset: 0;
-  background: linear-gradient(90deg, rgba(17,17,17,.72) 0%, rgba(17,17,17,.28) 48%, rgba(17,17,17,.12) 100%);
+  background: linear-gradient(180deg, rgba(17,17,17,.62) 0%, rgba(17,17,17,.38) 36%, rgba(17,17,17,.08) 68%);
 }
-.hero .copy { position: relative; z-index: 1; padding: 120px 7vw 8vh; max-width: 760px; }
+.hero .copy { position: relative; z-index: 1; padding: 132px 6vw 0; max-width: 1280px; align-self: start; }
 .eye {
   margin: 0 0 18px;
   font: 500 12px/1.3 var(--sans);
@@ -96,12 +106,32 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 }
 h1 {
   margin: 0;
-  font: 500 clamp(52px, 5.4vw, 80px)/0.96 var(--serif);
+  font-weight: 300;
+  font-size: clamp(54px, 8.2vw, 120px);
+  line-height: 0.9;
   letter-spacing: -0.03em;
+  font-family: var(--serif);
   color: var(--ivory);
-  max-width: 11em;
 }
-.lede { margin: 22px 0 0; max-width: 36em; font-size: 17px; color: var(--ivory); }
+h1 span { display: block; white-space: nowrap; }
+.lede {
+  margin: 22px 0 0;
+  max-width: 44rem;
+  font-size: 18px;
+  color: var(--ivory);
+  text-wrap: pretty;
+}
+.cue {
+  align-self: center;
+  color: var(--ivory);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 3px;
+}
+.cue span { display: inline-block; margin-left: 8px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .sec { padding: 88px 7vw; }
 .kicker {
@@ -170,7 +200,10 @@ h2 {
   .top { padding: 16px 18px; }
   .hero .copy, .sec { padding-left: 18px; padding-right: 18px; }
   .hero .copy { padding-bottom: 48px; }
-  h1 { font-size: clamp(48px, 14vw, 72px); }
+  h1 { font-size: clamp(40px, 11vw, 56px); }
+  h1 span { white-space: normal; }
+  .hero .copy { padding-top: 96px; max-width: none; }
+  .hero picture, .hero img { object-position: 40% 0%; }
   .split, .steps, .row { grid-template-columns: 1fr; }
   .row img { height: 200px; }
   .row .go { justify-self: start; }
