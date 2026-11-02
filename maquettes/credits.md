@@ -10,7 +10,7 @@ Les fichiers JPG et WebP livrés ont été réenregistrés sans métadonnées.
 | Fichier | Sujet | Page | Auteur | Maquettes |
 |---|---|---|---|---|
 | dusk | Façade contemporaine au crépuscule | https://unsplash.com/photos/modern-luxury-home-with-large-windows-at-dusk-G48h926L2qo | Michael Brown (@vettexan) | A |
-| tree | Maison contemporaine et grand arbre | https://images.unsplash.com/photo-1600585154340-be6161a56a0c | R ARCHITECTURE (@rarchitecture_melbourne) | A, C |
+| tree | Maison contemporaine et grand arbre. Sur C2, image provisoire assombrie, en attendant les photos Adobe Stock. | https://images.unsplash.com/photo-1600585154340-be6161a56a0c | R ARCHITECTURE (@rarchitecture_melbourne) | A, C, C2 |
 | facade | Entrée contemporaine, panneaux sombres et bois | https://images.unsplash.com/photo-1600585154526-990dced4db0d | R ARCHITECTURE (@rarchitecture_melbourne) | A, B |
 | night | Maison contemporaine la nuit | https://images.unsplash.com/photo-1600585153490-76fb20a32601 | R ARCHITECTURE (@rarchitecture_melbourne) | A, C |
 | living | Salon et cuisine ouverts | https://images.unsplash.com/photo-1600607687939-ce8a6c25118c | R ARCHITECTURE (@rarchitecture_melbourne) | A, C |
@@ -20,3 +20,5 @@ Les fichiers JPG et WebP livrés ont été réenregistrés sans métadonnées.
 | bath | Salle de bain en pierre sombre | https://images.unsplash.com/photo-1600566752355-35792bedcfea | R ARCHITECTURE (@rarchitecture_melbourne) | B, C |
 
 Les photos R ARCHITECTURE appartiennent à la même série Unsplash que photo-1600585154340-be6161a56a0c et photo-1600607687939-ce8a6c25118c, dont l'auteur est R ARCHITECTURE (@rarchitecture_melbourne). Chaque photo n'apparaît qu'une fois sur une même maquette.
+
+Placeholder : la seule photo de la maquette C2 (tree) est provisoire. Elle sera remplacée par un visuel Adobe Stock fourni par Alexandre.
