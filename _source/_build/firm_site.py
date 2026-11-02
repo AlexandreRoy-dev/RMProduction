@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """Génère le site immobilier seulement à partir du copy deck et du schéma SEO."""
-import html, json, re, shutil
+import csv, html, json, re, shutil
 from pathlib import Path
 
 ROOT = Path("/workspace")
-COPY = Path("/tmp/rm-refonte/content-planner/seo-roymarketing/refonte")
-SCHEMA = Path("/tmp/rm-refonte/seo-local/roymarketing/immobilier-seulement/schema")
+COPY = Path("/tmp/rm-v2/content-planner/seo-roymarketing/refonte")
+SCHEMA = Path("/tmp/rm-v2/seo-local/roymarketing/immobilier-seulement/schema")
+MAPCSV = Path("/tmp/rm-v2/seo-local/roymarketing/immobilier-seulement/page-map.csv")
 BOOK = "https://api.leadconnectorhq.com/widget/booking/3PXAPGRrJXvrP7teaEYS"
 OG_FR = "https://roymarketing.ca/assets/img/og-image.jpg"
 OG_EN = "https://roymarketing.ca/assets/img/og-image-en.jpg"
@@ -15,22 +16,22 @@ ALT_EN = "Roy Marketing, a real estate marketing firm. Websites, Google and AI s
 # id, lang, url path, title, meta, h1, md, schema, index_mode (index|gate|noindex|legal)
 PAGES = [
 ("accueil","fr","/","Firme de marketing immobilier pour courtiers | Roy Marketing",
- "Firme de marketing immobilier : sites web, CRM et publicité pour courtiers, équipes et agences. Plus de mandats, au Québec, au Canada et aux États-Unis.",
+ "Firme de marketing immobilier pour courtiers et équipes : sites web, référencement Google et IA, CRM et publicité. Au Québec, au Canada et aux États-Unis.",
  "Plus de mandats vendeurs, sans dépendre des plateformes.","accueil-fr.md","accueil-fr.json","index"),
 ("accueil","en","/en/","Real estate marketing firm for brokers | Roy Marketing",
- "Real estate marketing firm: websites, CRM and advertising for brokers, teams and agencies. More seller listings, in Quebec, Canada and the United States.",
+ "Real estate marketing firm for brokers and teams: websites, Google and AI search, CRM and advertising. In Quebec, across Canada and in the United States.",
  "More seller listings, without relying on the portals.","home-en.md","accueil-en.json","index"),
 ("ref","fr","/referencement-google-ia/","Référencement Google et IA pour courtiers | Roy Marketing",
  "Référencement Google et IA pour courtiers : SEO, fiche Google et carte, données structurées et contenu clair pour être cité par ChatGPT, Gemini et Perplexity.",
  "Référencement Google et IA pour courtiers immobiliers","referencement-google-ia-fr.md","service-ref-fr.json","gate"),
 ("ref","en","/en/google-ai-search/","Google and AI search for real estate brokers | Roy Marketing",
  "Google and AI search for real estate brokers: SEO, Google Business Profile and Map Pack, structured data and clear content that ChatGPT and Gemini can cite.",
- "Google and AI search visibility for real estate brokers","google-ai-search-visibility-en.md","service-ref-en.json","gate"),
+ "Google and AI search visibility for real estate brokers","google-ai-search-en.md","service-ref-en.json","gate"),
 ("site","fr","/site-web-courtier-immobilier/","Site web pour courtier immobilier, bilingue | Roy Marketing",
- "Site web pour courtier immobilier : rapide, à votre image, avec inscriptions, pages de secteur et demande d'évaluation reliée à votre CRM. Français, anglais.",
+ "Site web pour courtier immobilier : rapide, à votre image, avec inscriptions, pages de secteur et demande d'estimation reliée à votre CRM. Français, anglais.",
  "Un site web de courtier qui génère des demandes","site-web-courtier-fr.md","service-site-fr.json","gate"),
 ("site","en","/en/real-estate-agent-website/","Real estate agent website design, bilingual | Roy Marketing",
- "Real estate agent website design: fast, on brand, with listings, neighbourhood pages and a home value request form connected to your CRM. French and English.",
+ "Real estate agent website design: fast, on brand, with listings, area pages and a home estimate request form connected to your CRM. French and English.",
  "A real estate agent website that brings in requests","real-estate-agent-website-en.md","service-site-en.json","gate"),
 ("crm","fr","/crm-courtier-immobilier/","CRM et suivi automatisé pour courtiers | Roy Marketing",
  "CRM pour courtier immobilier : on travaille avec tous les CRM. Pipelines vendeurs et acheteurs, relances texto et courriel, rendez-vous en ligne, formation.",
@@ -92,6 +93,10 @@ NAV_EN = [
 ]
 PAIR = {a[2]: b[2] for a,b in zip([p for p in PAGES if p[1]=="fr"], [p for p in PAGES if p[1]=="en"])}
 PAIR.update({v:k for k,v in list(PAIR.items())})
+MAP = {}
+if MAPCSV.exists():
+    for _row in csv.DictReader(MAPCSV.open(encoding="utf-8")):
+        MAP[(_row["id"], _row["lang"])] = _row
 
 def esc(s):
     return html.escape(s, quote=True)
@@ -442,91 +447,66 @@ def contact_form(lang):
 <li>You receive a written plan, with steps and pricing.</li></ol></div></section>'''
 
 def build_one(spec):
+    import layout
     pid, lang, path, title, meta, h1, md, schema, mode = spec
-    faqs = faq_map(schema)
+    row = MAP.get((pid, lang))
+    if row:
+        title, meta, h1 = row["title"], row["meta"], row["h1"]
+        spec = (pid, lang, path, title, meta, h1, md, schema, mode)
+    schema_faqs = list(faq_map(schema).items())
     raw = (COPY/md).read_text(encoding="utf-8")
-    eyebrow, _h1md, sub, blocks = parse(raw, faqs)
-    # drop hero-only noise already captured; remove qa from blocks and reappend from faqs in schema order for the faq section
-    body_bits=[]
-    faq_bits=[]
-    in_faq=False
-    for b in blocks:
-        if b[0]=="h2" and b[1].lower().startswith("question"):
-            in_faq=True
-        if b[0]=="qa":
-            in_faq=True
-            continue
-        if in_faq and b[0] in ("h2","h3") and "question" not in b[1].lower() and "faq" not in b[1].lower():
-            in_faq=False
-        if in_faq:
-            continue
-        body_bits.append(b)
-    # hero
+    parsed = layout.parse_md(raw)
+    diffs = layout.faq_diff(parsed["faqs"], schema_faqs)
+    if diffs:
+        print("FAQ DIFF", path, len(diffs))
+        for kind, q, a, b in diffs:
+            print(" ", kind)
+            print("  Q", q)
+            print("  MD", a)
+            print("  JSON", b)
+    else:
+        print("FAQ OK", path, len(schema_faqs))
     cta = "Planifier une consultation" if lang=="fr" else "Book a consultation"
     art = house(lang) if pid=="accueil" else ""
     grid = " hero-grid" if art else ""
-    hero = f'''<section class="hero"><div class="wrap{grid}"><div>
-<p class="eyebrow">{esc(eyebrow)}</p>
-<h1>{esc(h1)}</h1>
-<p class="lede">{esc(sub)}</p>
-<div class="actions"><a class="btn" href="{BOOK}" data-book>{cta}</a></div>
-<!-- Bouton portfolio masqué jusqu'à un accord écrit du client.
-<a href="#realisations">{"Voir nos réalisations" if lang=="fr" else "See our work"}</a>
--->
-</div>{art}</div></section>'''
-    # split body: if first h2s
-    rendered = render_blocks(body_bits, lang).strip()
-    main = ('<section class="section"><div class="wrap">'+rendered+'</div></section>') if rendered else ""
-    if pid=="contact":
-        main = f'''<section class="hero"><div class="wrap"><p class="eyebrow">{esc(eyebrow)}</p><h1>{esc(h1)}</h1><p class="lede">{esc(sub)}</p>
-<div class="actions"><a class="btn" href="{BOOK}" data-book>{cta}</a></div></div></section>'''+contact_form(lang)
-        faq_html=""
-        text_for_count = " ".join(x for x in (eyebrow, h1, sub) if x) + " " + re.sub("<[^>]+>", " ", contact_form(lang))
+    intro_html = ""
+    if parsed["intro"]:
+        intro_html = "".join(
+            '<p class="intro">%s</p>' % layout.inline(part)
+            for part in parsed["intro"].split("\n\n") if part.strip()
+        )
+    secondary = ""
+    if parsed["secondary"]:
+        secondary = '<a class="btn btn-ghost" href="#le-systeme">%s</a>' % layout.esc(parsed["secondary"])
+    hero = (
+        '<section class="hero"><div class="wrap%s"><div>'
+        '<p class="eyebrow">%s</p><h1>%s</h1><p class="lede">%s</p>%s'
+        '<div class="actions"><a class="btn" href="%s" data-book>%s</a>%s</div>'
+        '</div>%s</div></section>'
+    ) % (
+        grid, layout.esc(parsed["eyebrow"]), layout.esc(h1), layout.esc(parsed["sub"]),
+        intro_html, BOOK, layout.esc(cta), secondary, art,
+    )
+    body, bits = layout.render_blocks(parsed, lang, BOOK, cta, schema_faqs)
+    count_text = " ".join([parsed["eyebrow"], h1, parsed["sub"], parsed["intro"], *bits])
+    nwords = layout.count_words(count_text)
+    if mode == "noindex":
+        robots = "noindex, follow"
+    elif nwords >= 300:
+        robots = "index, follow"
     else:
-        # FAQ from schema, exact
-        if faqs:
-            label = "Questions fréquentes" if lang=="fr" else "Frequently asked questions"
-            if pid!="faq":
-                qas="".join(f"<h3>{esc(q)}</h3><p>{esc(a)}</p>" for q,a in faqs.items())
-                more = f'<p><a href="{"/faq/" if lang=="fr" else "/en/faq/"}">{"Voir toutes les questions" if lang=="fr" else "See all questions"}</a></p>' if pid=="accueil" else ""
-                faq_html=f'<section class="section faq"><div class="wrap"><h2>{label}</h2>{qas}{more}</div></section>'
-            else:
-                qas="".join(f"<h3>{esc(q)}</h3><p>{esc(a)}</p>" for q,a in faqs.items())
-                faq_html=f'<section class="section faq"><div class="wrap"><h2>{label}</h2>{qas}</div></section>'
-                main=""
-                hero=f'''<section class="hero"><div class="wrap"><p class="eyebrow">{esc(eyebrow)}</p><h1>{esc(h1)}</h1><p class="lede">{esc(sub)}</p>
-<div class="actions"><a class="btn" href="{BOOK}" data-book>{cta}</a></div></div></section>'''
-        else:
-            faq_html=""
-        hero_text = " ".join(x for x in (eyebrow, h1, sub) if x)
-        if pid=="faq":
-            text_for_count = hero_text + " " + " ".join(q+" "+a for q,a in faqs.items())
-        elif pid!="contact":
-            text_for_count = hero_text + " " + re.sub("<[^>]+>"," ", main)
-    nwords=len(words(text_for_count))
-    has_faq=bool(faqs)
-    if mode=="index":
-        robots="index, follow"
-    elif mode=="legal":
-        robots="index, follow"
-    elif mode=="noindex":
-        robots="noindex, follow"
-    else:
-        robots="index, follow" if (nwords>=300 and has_faq) else "noindex, follow"
-    # hidden proofs comment
-    hidden='''<!-- Section Réalisations masquée jusqu'à accord écrit d'un client. -->''' if lang=="fr" else '''<!-- Work section hidden until a client agrees in writing. -->'''
-    html_doc=page_html(spec, hero+main+hidden, robots, faq_html if pid!="faq" else faq_html)
-    rel = "index.html" if path in ("/","/en/") else path.strip("/")+"/index.html"
-    if path=="/en/":
-        rel="en/index.html"
-    out=ROOT/rel
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html_doc, encoding="utf-8")
-    src=ROOT/"_source"/rel
-    src.parent.mkdir(parents=True, exist_ok=True)
-    src.write_text(html_doc, encoding="utf-8")
-    print(f"{path} words={nwords} robots={robots} faq={len(faqs)}")
+        robots = "noindex, follow"
+    html_doc = page_html(spec, hero + body, robots, "")
+    rel = "index.html" if path in ("/", "/en/") else path.strip("/") + "/index.html"
+    if path == "/en/":
+        rel = "en/index.html"
+    for base in (ROOT, ROOT/"_source"):
+        out = base/rel
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(html_doc, encoding="utf-8")
+    print(f"{path} words={nwords} robots={robots} faq={len(schema_faqs)}")
     return path, nwords, robots
+
 
 def stubs():
     items=[

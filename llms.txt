@@ -5,7 +5,7 @@
 Roy Marketing Inc. travaille exclusivement en immobilier. Notre objectif : que le nom de nos clients apparaisse quand un vendeur demande à Google ou à une IA quel courtier choisir. Nous travaillons avec tous les CRM. Aucune garantie de classement. Président : Alexandre Roy. Contact : 819-201-9042, info@roymarketing.ca.
 
 ## Services
-- [Site web pour courtier immobilier](https://roymarketing.ca/site-web-courtier-immobilier/): Site web pour courtier immobilier, rapide et à votre image : inscriptions, pages de secteur, demande d'évaluation et formulaires reliés à votre CRM, en français et en anglais.
+- [Site web pour courtier immobilier](https://roymarketing.ca/site-web-courtier-immobilier/): Site web pour courtier immobilier, rapide et à votre image : inscriptions, pages de secteur, demande d'estimation et formulaires reliés à votre CRM, en français et en anglais.
 - [Référencement Google et IA pour courtiers](https://roymarketing.ca/referencement-google-ia/): Référencement Google et IA pour courtiers immobiliers : SEO, fiche Google Business Profile et carte, cohérence des informations, données structurées, llms.txt et FAQ pour être compris et cité par les assistants IA.
 - [CRM et suivi automatisé pour courtiers](https://roymarketing.ca/crm-courtier-immobilier/): Configuration et automatisation de votre CRM, quel qu'il soit : pipelines vendeurs et acheteurs, réponse instantanée par texto et courriel, rendez-vous en ligne, formation.
 - [Publicité immobilière Facebook, Instagram et Google](https://roymarketing.ca/publicite-courtier-immobilier/): Campagnes Facebook, Instagram et Google gérées au mois pour courtiers, avec pages d'atterrissage et suivi de chaque demande reçue.
@@ -13,7 +13,7 @@ Roy Marketing Inc. travaille exclusivement en immobilier. Notre objectif : que l
 
 ## English
 - [Home](https://roymarketing.ca/en/): real estate marketing firm for brokers, teams and agencies.
-- [Real estate agent website](https://roymarketing.ca/en/real-estate-agent-website/): Real estate agent website, fast and on brand: listings, neighbourhood pages, home value request and forms connected to your CRM, in French and English.
+- [Real estate agent website](https://roymarketing.ca/en/real-estate-agent-website/): Real estate agent website, fast and on brand: listings, neighbourhood pages, home estimate request and forms connected to your CRM, in French and English.
 - [Google and AI search visibility for real estate brokers](https://roymarketing.ca/en/google-ai-search/): Google and AI search visibility for real estate brokers: SEO, Google Business Profile and Map Pack, consistent information, structured data, llms.txt and FAQs so AI assistants can understand and cite you.
 - [CRM and automated follow-up for real estate agents](https://roymarketing.ca/en/real-estate-crm/): Setup and automation of your CRM, whichever one you use: seller and buyer pipelines, instant text and email replies, online booking, training.
 - [Real estate advertising on Facebook, Instagram and Google](https://roymarketing.ca/en/real-estate-ads/): Facebook, Instagram and Google campaigns managed monthly for brokers, with landing pages and tracking of every lead received.
