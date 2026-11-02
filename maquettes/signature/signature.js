@@ -44,9 +44,8 @@
     var play = video.play();
     if (play && play.catch) play.catch(function () {});
   }
-  window.addEventListener("load", function () {
-    window.requestAnimationFrame(armVideo);
-  });
+  if (document.readyState === "complete") armVideo();
+  else window.addEventListener("load", function () { window.requestAnimationFrame(armVideo); });
 
   var veil = document.querySelector(".veil");
   document.querySelectorAll("a[data-sig]").forEach(function (link) {

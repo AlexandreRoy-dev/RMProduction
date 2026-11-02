@@ -7,19 +7,51 @@
 <title>Firme de marketing immobilier pour courtiers | Roy Marketing</title>
 <link rel="canonical" href="/maquettes/signature/">
 <link rel="preload" as="image" href="/maquettes/signature/media/hero-poster.webp" type="image/webp" fetchpriority="high">
-<link rel="preload" as="font" type="font/woff2" href="/maquettes/fonts/montserrat-300.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/maquettes/fonts/montserrat-300-sub.woff2" crossorigin>
 <style>
-@font-face{font-family:Montserrat;src:url("/maquettes/fonts/montserrat-300.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:Montserrat;src:url("/maquettes/fonts/montserrat-300-sub.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Montserrat Fallback";src:local("Arial"),local("Liberation Sans");font-weight:300;size-adjust:103%;ascent-override:96.8%;descent-override:25.1%;line-gap-override:0%}
+*{box-sizing:border-box}
 body{margin:0;background:#07100D;color:#F2F0EA}
+.top{position:fixed;z-index:40;top:12px;left:12px;right:12px;height:60px;display:flex;align-items:center;padding:8px 8px 8px 16px;border-radius:999px;background:rgba(7,16,13,.52);border:1px solid rgba(242,240,234,.16)}
+.wm{font:300 15px/1 Montserrat,"Montserrat Fallback",Arial,sans-serif;letter-spacing:.12em;color:#F2F0EA;text-decoration:none}
+.dot{color:#1B8B6B;font-size:1.38em}
+.nav,.top .pill,.scroll-ind,.phare,.hero-rule{display:none}
+.menu{display:inline-flex;margin-left:auto;align-items:center;min-height:44px;padding:0 16px;border:0;border-radius:999px;background:#F2F0EA;color:#07100D;font:300 11px/1 Montserrat,"Montserrat Fallback",Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase}
 .hero{position:relative;height:100svh;overflow:hidden}
 .hero-media{position:absolute;inset:0}
 .hero-media img{width:100%;height:100svh;object-fit:cover;object-position:78% center}
 .hero-media video{display:none}
 .hero-copy{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 18px 28px}
-.hero h1{margin:0;font:300 34px/.95 Montserrat,Arial,sans-serif;letter-spacing:.01em;text-transform:uppercase}
-.desk{display:none}
-.hero .note{margin:12px 0 0;font:400 14px/1.4 Arial,sans-serif;color:#E4DFD4}
+.eye{margin:0 0 16px;font:300 12px/1.3 Montserrat,"Montserrat Fallback",Arial,sans-serif;letter-spacing:.26em;text-transform:uppercase}
+.hero h1{margin:0;font:300 34px/.95 Montserrat,"Montserrat Fallback",Arial,sans-serif;letter-spacing:.01em;text-transform:uppercase}
+.hero h1 .mask,.hero h1 .mask>span{display:block}
+.hero h1 .mask>span{white-space:nowrap}
+.hero h1 .desk{display:none}
+.top a{color:#F2F0EA;text-decoration:none}
+.top a.btn{color:#07100D}
+.cue{color:#F2F0EA;text-decoration:none;font:300 12px/1 Montserrat,"Montserrat Fallback",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:3px}
+.hero .note{margin:16px 0 0;min-height:2.9em;font:400 14px/1.45 Arial,sans-serif;color:#E4DFD4}
+.actions{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:center;margin-top:26px}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;background:#F2F0EA;color:#07100D;text-decoration:none;font:300 12px/1 Montserrat,"Montserrat Fallback",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+@media(min-width:861px){
+.top{top:18px;left:50%;right:auto;transform:translateX(-50%);width:min(1180px,calc(100% - 40px));height:60px;padding:8px 8px 8px 26px}
+.wm{font-size:22px;letter-spacing:.16em}
+.nav{display:flex;margin-left:auto;gap:8px 20px;font:300 11px/1 Montserrat,"Montserrat Fallback",Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase}
+.menu{display:none}
+.top .pill{display:inline-flex}
+.hero-copy{padding:0 48px 118px}
+.hero h1{font-size:clamp(36px,4.58vw,66px);letter-spacing:.012em}
+.hero h1 .mask>span{white-space:normal}
+.hero h1 .desk{display:block}
+.hero h1 .mob{display:none}
+.hero .note{min-height:0}
+.hero-media img{object-position:center 42%}
+.scroll-ind{display:grid}
+.phare,.hero-rule{display:block}
+}
 </style>
+<script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("motion");</script>
 <link rel="stylesheet" href="/maquettes/signature/signature.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="/maquettes/signature/fonts-body.css" media="print" onload="this.media='all'">
 <noscript>
@@ -211,9 +243,19 @@ body{margin:0;background:#07100D;color:#F2F0EA}
     <a href="/politique-de-confidentialite/">Politique de confidentialité</a>
   </div>
 </footer>
-<script src="/maquettes/signature/vendor/gsap.min.js" defer></script>
-<script src="/maquettes/signature/vendor/ScrollTrigger.min.js" defer></script>
-<script src="/maquettes/signature/vendor/lenis.min.js" defer></script>
-<script src="/maquettes/signature/signature.js" defer></script>
+<script>
+window.addEventListener("load", function () {
+  var files = ["/maquettes/signature/vendor/gsap.min.js", "/maquettes/signature/vendor/ScrollTrigger.min.js", "/maquettes/signature/vendor/lenis.min.js", "/maquettes/signature/signature.js"];
+  function next() {
+    var src = files.shift();
+    if (!src) return;
+    var s = document.createElement("script");
+    s.src = src;
+    s.onload = next;
+    document.body.appendChild(s);
+  }
+  next();
+});
+</script>
 </body>
 </html>
