@@ -11,16 +11,55 @@ def count_words(s):
     s = re.sub(r"[\[\]*→#]", " ", s)
     return len(re.findall(r"[0-9A-Za-zÀ-ÿœŒ'’\-]+", s))
 
+# The path in parentheses is replaced by the name already written beside it.
+PATH_LABELS = [
+    ("site web (/site-web-courtier-immobilier/)", "/site-web-courtier-immobilier/", "site web"),
+    ("référencement Google et IA (/referencement-google-ia/)", "/referencement-google-ia/", "référencement Google et IA"),
+    ("CRM (/crm-courtier-immobilier/)", "/crm-courtier-immobilier/", "CRM"),
+    ("publicité (/publicite-courtier-immobilier/)", "/publicite-courtier-immobilier/", "publicité"),
+    ("contenu (/contenu-video-courtier-immobilier/)", "/contenu-video-courtier-immobilier/", "contenu"),
+    ("un site web pour courtier qui sert de base à votre référencement (/site-web-courtier-immobilier/)", "/site-web-courtier-immobilier/", "site web pour courtier", "un ", " qui sert de base à votre référencement"),
+    ("un CRM qui fait la démarche d'avis à votre place (/crm-courtier-immobilier/)", "/crm-courtier-immobilier/", "CRM", "un ", " qui fait la démarche d'avis à votre place"),
+    ("website (/en/real-estate-agent-website/)", "/en/real-estate-agent-website/", "website"),
+    ("Google and AI search (/en/google-ai-search/)", "/en/google-ai-search/", "Google and AI search"),
+    ("CRM (/en/real-estate-crm/)", "/en/real-estate-crm/", "CRM"),
+    ("advertising (/en/real-estate-ads/)", "/en/real-estate-ads/", "advertising"),
+    ("content (/en/real-estate-content-video/)", "/en/real-estate-content-video/", "content"),
+    ("a real estate agent website that serves as the base of your search visibility (/en/real-estate-agent-website/)", "/en/real-estate-agent-website/", "real estate agent website", "a ", " that serves as the base of your search visibility"),
+    ("a CRM that runs your review requests for you (/en/real-estate-crm/)", "/en/real-estate-crm/", "CRM", "a ", " that runs your review requests for you"),
+]
+
 def inline(text):
-    parts = re.split(r"(\(/[a-z0-9/\-]+/\))", text)
+    chunks = []
+    i = 0
+    while i < len(text):
+        earliest = None
+        earliest_at = None
+        for row in PATH_LABELS:
+            at = text.find(row[0], i)
+            if at != -1 and (earliest_at is None or at < earliest_at):
+                earliest = row
+                earliest_at = at
+        if earliest is None:
+            chunks.append(("text", text[i:]))
+            break
+        if earliest_at > i:
+            chunks.append(("text", text[i:earliest_at]))
+        href, label = earliest[1], earliest[2]
+        before = earliest[3] if len(earliest) > 3 else ""
+        after = earliest[4] if len(earliest) > 4 else ""
+        if before:
+            chunks.append(("text", before))
+        chunks.append(("a", href, label))
+        if after:
+            chunks.append(("text", after))
+        i = earliest_at + len(earliest[0])
     out = []
-    for part in parts:
-        m = re.fullmatch(r"\((/[a-z0-9/\-]+/)\)", part)
-        if m:
-            href = m.group(1)
-            out.append('(<a href="%s">%s</a>)' % (esc(href), esc(href)))
+    for part in chunks:
+        if part[0] == "text":
+            out.append(esc(part[1]))
         else:
-            out.append(esc(part))
+            out.append('<a href="%s">%s</a>' % (esc(part[1]), esc(part[2])))
     s = "".join(out)
     s = s.replace("info@roymarketing.ca", '<a href="mailto:info@roymarketing.ca">info@roymarketing.ca</a>')
     s = s.replace("819-201-9042", '<a href="tel:+18192019042">819-201-9042</a>')

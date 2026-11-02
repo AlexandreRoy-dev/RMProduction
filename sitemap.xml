@@ -98,18 +98,4 @@
     <xhtml:link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/faq/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://roymarketing.ca/faq/"/>
   </url>
-  <url>
-    <loc>https://roymarketing.ca/politique-de-confidentialite/</loc>
-    <lastmod>2026-11-02</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://roymarketing.ca/politique-de-confidentialite/"/>
-    <xhtml:link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/privacy-policy/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://roymarketing.ca/politique-de-confidentialite/"/>
-  </url>
-  <url>
-    <loc>https://roymarketing.ca/en/privacy-policy/</loc>
-    <lastmod>2026-11-02</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://roymarketing.ca/politique-de-confidentialite/"/>
-    <xhtml:link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/privacy-policy/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://roymarketing.ca/politique-de-confidentialite/"/>
-  </url>
 </urlset>

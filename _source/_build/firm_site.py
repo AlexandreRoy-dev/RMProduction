@@ -301,7 +301,7 @@ def page_html(spec, body_html, robots, faq_html):
     pid, lang, path, title, meta, h1, md, schema, mode = spec
     fr = lang=="fr"
     other = PAIR[path]
-    canon = "https://roymarketing.ca" + ("" if path=="/" else path)
+    canon = "https://roymarketing.ca/" if path=="/" else "https://roymarketing.ca" + path
     fr_url = "https://roymarketing.ca" + (path if fr else other)
     en_url = "https://roymarketing.ca" + (other if fr else path)
     if path=="/":
@@ -372,7 +372,7 @@ def page_html(spec, body_html, robots, faq_html):
 <body>
 <a class="skip" href="#contenu">{skip}</a>
 <header class="top" id="top">
-  <a class="brand" href="{home}"><img src="/assets/brand/logo/mark/mark-dark-on-light.svg" width="40" height="33" alt="Roy Marketing"><b>ROY MARKETING</b></a>
+  <a class="brand" href="{home}" aria-label="{"Roy Marketing, accueil" if fr else "Roy Marketing, home"}"><img src="/assets/brand/logo/mark/mark-dark-on-light.svg" width="40" height="33" alt=""><b>ROY MARKETING</b></a>
   <button class="menu" type="button" aria-expanded="false" aria-controls="nav">{menu}</button>
   <nav class="nav" id="nav" aria-label="{"Navigation" if fr else "Navigation"}">{nav_html}</nav>
   <div class="top-actions">
@@ -611,14 +611,6 @@ def sitemap(rows):
             if not rob.get(page_path,"").startswith("index"):
                 continue
             done.add(loc)
-            lines += ["  <url>", f"    <loc>{loc}</loc>", "    <lastmod>2026-11-02</lastmod>",
-                      f'    <xhtml:link rel="alternate" hreflang="fr-CA" href="{fr}"/>',
-                      f'    <xhtml:link rel="alternate" hreflang="en-CA" href="{en}"/>',
-                      f'    <xhtml:link rel="alternate" hreflang="x-default" href="{fr}"/>',
-                      "  </url>"]
-    # privacy
-    for fr,en in [("https://roymarketing.ca/politique-de-confidentialite/","https://roymarketing.ca/en/privacy-policy/")]:
-        for loc in (fr,en):
             lines += ["  <url>", f"    <loc>{loc}</loc>", "    <lastmod>2026-11-02</lastmod>",
                       f'    <xhtml:link rel="alternate" hreflang="fr-CA" href="{fr}"/>',
                       f'    <xhtml:link rel="alternate" hreflang="en-CA" href="{en}"/>',

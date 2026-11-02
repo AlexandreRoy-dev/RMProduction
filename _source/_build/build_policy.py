@@ -15,9 +15,9 @@ def page(lang, body, root, path, alt_path, title, desc, nav, foot):
     og_locale = "fr_CA" if lang == "fr" else "en_CA"
     og_alt = "en_CA" if lang == "fr" else "fr_CA"
     og_image = "https://roymarketing.ca/assets/img/og-image.jpg" if lang == "fr" else "https://roymarketing.ca/assets/img/og-image-en.jpg"
-    og_alt_text = ("Roy Marketing, agence web et marketing au Québec, au Canada et aux États-Unis. Marketing immobilier. Stratégie, web et automatisation."
+    og_alt_text = ("Firme de marketing immobilier. Plus de mandats vendeurs, sans dépendre des plateformes."
                    if lang == "fr" else
-                   "Roy Marketing, a web and marketing agency in Quebec, Canada and the United States. Real estate marketing. Strategy, web and automation.")
+                   "Real estate marketing firm. More seller listings, without relying on the portals.")
     home_url = "https://roymarketing.ca/" if lang == "fr" else "https://roymarketing.ca/en/"
     home_name = "Accueil" if lang == "fr" else "Home"
     url = "https://roymarketing.ca" + path
@@ -40,7 +40,7 @@ def page(lang, body, root, path, alt_path, title, desc, nav, foot):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://roymarketing.ca{path}">
 <link rel="alternate" hreflang="fr-CA" href="https://roymarketing.ca/politique-de-confidentialite/">
 <link rel="alternate" hreflang="en-CA" href="https://roymarketing.ca/en/privacy-policy/">
@@ -79,7 +79,7 @@ def page(lang, body, root, path, alt_path, title, desc, nav, foot):
 <a class="skip" href="#contenu">{nav["skip"]}</a>
 <header class="top is-solid" id="top">
   <a class="brand" href="{nav["home"]}" aria-label="{nav["homeL"]}">
-    <img src="{root}assets/brand/logo/mark/mark-dark-on-light.svg" width="40" height="33" alt="Roy Marketing">
+    <img src="{root}assets/brand/logo/mark/mark-dark-on-light.svg" width="40" height="33" alt="">
     <span class="brand__txt"><span class="brand__name">ROY MARKETING<i>.</i></span><span class="brand__tag">{nav["tag"]}</span></span>
   </a>
   <nav class="nav" aria-label="Navigation"><a href="{nav["home"]}">{nav["homeT"]}</a><a href="{nav["home"]}#contact">Contact</a></nav>
@@ -101,11 +101,11 @@ def page(lang, body, root, path, alt_path, title, desc, nav, foot):
 </html>
 '''
 
-fr = page('fr', FR.format(date=DATE_FR), '../', '/politique-de-confidentialite/', '/en/privacy-policy/', 'Politique de confidentialité | Roy Marketing',
+fr = page('fr', FR.format(date=DATE_FR), '../', '/politique-de-confidentialite/', '/en/privacy-policy/', 'Politique de confidentialité, Loi 25 | Roy Marketing',
           "Politique de confidentialité de Roy Marketing : renseignements recueillis, usages, témoins, conservation et droits prévus par la Loi 25 en vigueur au Québec.",
           {"skip": "Aller au contenu", "home": "/", "homeL": "Roy Marketing, retour à l'accueil", "tag": "Stratégie • Web • Automatisation", "homeT": "Accueil"},
           {"loc": "Québec, Canada et États-Unis.", "cookies": "Gérer les témoins"})
-en = page('en', EN.format(date=DATE_EN), '../../', '/en/privacy-policy/', '/politique-de-confidentialite/', 'Privacy policy | Roy Marketing',
+en = page('en', EN.format(date=DATE_EN), '../../', '/en/privacy-policy/', '/politique-de-confidentialite/', 'Privacy policy, Quebec Law 25 compliance | Roy Marketing',
           "Roy Marketing privacy policy: personal information collected, how it is used, cookies, retention and your rights under Quebec Law 25 on privacy protection.",
           {"skip": "Skip to content", "home": "/en/", "homeL": "Roy Marketing, back to home", "tag": "Strategy • Web • Automation", "homeT": "Home"},
           {"loc": "Quebec, Canada and the United States.", "cookies": "Manage cookies"})
