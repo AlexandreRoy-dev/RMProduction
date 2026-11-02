@@ -226,16 +226,19 @@ h2 {
   letter-spacing: 0.015em;
   text-transform: uppercase;
 }
-.prose { max-width: 66ch; }
-.prose p, .offer p, .step p, .faq p, .foot p { color: var(--body); font-size: 16px; }
+.prose, .prose p, p.prose, .offer p, .step p, .faq p, .foot p { color: #E4DFD4; font-size: 16px; }
+.prose { max-width: 66ch; overflow: visible; height: auto; }
 .prose p { margin: 0 0 14px; }
 .prose p:last-child { margin: 0; }
 .prose a { color: var(--text); }
 .split {
-  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: end;
+  display: grid; grid-template-columns: 7fr 5fr; gap: 48px; align-items: start;
+  overflow: visible;
 }
-.frame { overflow: hidden; aspect-ratio: 4 / 5; background: #040806; }
-.frame img { width: 100%; height: 100%; object-fit: cover; }
+.split > div { overflow: visible; min-height: 0; height: auto; }
+.split h2 { max-width: none; font-size: clamp(40px, 5vw, 74px); }
+.frame { overflow: hidden; aspect-ratio: 16 / 10; background: #040806; align-self: start; }
+.frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 68%; }
 .pin { position: relative; background: var(--bg); padding: 72px 0 36px; }
 .pin::after {
   content: "";
@@ -269,9 +272,10 @@ h2 {
   overflow: visible;
   padding: 28px 28px 32px;
   border: 1px solid var(--line);
-  display: flex; flex-direction: column; justify-content: space-between; gap: 28px;
+  display: flex; flex-direction: column; justify-content: flex-start; gap: 0;
   min-height: 340px;
 }
+.offer .actions { margin-top: auto; }
 .offer:last-child { margin-right: 7vw; }
 .offer .num {
   margin: 0 0 14px;
@@ -280,7 +284,7 @@ h2 {
   color: var(--period);
 }
 .offer h2 {
-  margin: 0;
+  margin: 0 0 16px;
   max-width: 12em;
   font-size: 30px;
   line-height: 1.08;
@@ -337,7 +341,9 @@ html.is-capture .top { position: absolute; }
 html.is-shot, html.is-shot body { scrollbar-width: none; }
 html.is-shot::-webkit-scrollbar,
 html.is-shot *::-webkit-scrollbar { width: 0; height: 0; display: none; }
-html.motion .reveal { opacity: 0; transform: translateY(28px); }
+html.motion .reveal { opacity: 0; }
+html.is-capture .reveal,
+html.is-capture .line > i { opacity: 1; transform: none; animation: none; }
 html.motion .line { display: block; overflow: visible; }
 html.motion .line > i { display: block; font-style: normal; }
 html.motion .clip img { clip-path: inset(14% 14% 14% 14%); }
@@ -386,7 +392,7 @@ html.motion .hero .actions { animation: risein .5s cubic-bezier(.16, 1, .3, 1) .
   .hero .note { min-height: 2.9em; }
   .wm { font-size: 15px; letter-spacing: 0.1em; }
   .hero-copy { padding: 0 18px 28px; }
-  .hero h1 { font-size: 30px; letter-spacing: 0.01em; }
+  .hero h1 { font-size: 30px; line-height: 1.05; letter-spacing: 0.01em; }
   .hero h1 .mask > span { white-space: nowrap; }
   .hero-media img, .hero-media video { object-position: 78% center; }
   .scroll-ind, .phare, .hero-rule { display: none; }
