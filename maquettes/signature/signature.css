@@ -1,4 +1,11 @@
 @font-face {
+  font-family: "Montserrat H1";
+  src: url("/maquettes/fonts/montserrat-300-h1.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
   font-family: Montserrat;
   src: url("/maquettes/fonts/montserrat-300-sub.woff2") format("woff2");
   font-weight: 300;
@@ -71,13 +78,13 @@ a { color: inherit; }
 }
 .top.is-solid { background: rgba(7, 16, 13, 0.9); }
 .mark { text-decoration: none; color: var(--text); flex: none; }
-.wm { font: 300 22px/1 var(--display); letter-spacing: 0.16em; }
+.wm { font: 700 22px/1 var(--display); letter-spacing: 0.1em; }
 .dot {
-  color: var(--period);
-  font-size: 1.38em;
+  color: #1B8B6B;
+  font-size: 1.5em;
   line-height: 0;
   display: inline-block;
-  transform: translateY(0.02em);
+  transform: translateY(0.04em);
 }
 .nav {
   display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px 20px;
@@ -102,6 +109,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 .btn:hover { background: #fff; }
 .top .pill { flex: none; border-radius: 999px; min-height: 44px; }
 .top a.btn { color: var(--bg); }
+html.js .top .pill { visibility: hidden; }
+html.js .top .pill.is-on { visibility: visible; }
 .cue {
   color: var(--text); text-decoration: none;
   font: 300 12px/1 var(--display); letter-spacing: 0.14em; text-transform: uppercase;
@@ -144,12 +153,13 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   font: 300 12px/1.3 var(--display);
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--text);
+  color: #E4DFD4;
+  opacity: 0.8;
 }
 .hero h1 {
   margin: 0;
   width: 100%;
-  font: 300 clamp(36px, 4.58vw, 66px)/0.95 var(--display);
+  font: 300 clamp(36px, 4.58vw, 66px)/0.95 "Montserrat H1", "Montserrat Fallback", Arial, sans-serif;
   letter-spacing: 0.012em;
   text-transform: uppercase;
 }
@@ -180,7 +190,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   position: absolute; right: 36px; bottom: 22px; z-index: 3;
   width: 260px; padding: 14px 16px 16px;
   border-radius: 16px;
-  background: rgba(7, 16, 13, 0.38);
+  background: rgba(7, 16, 13, 0.96);
   border: 1px solid rgba(242, 240, 234, 0.22);
   backdrop-filter: blur(14px);
   text-decoration: none;
@@ -190,7 +200,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   font: 300 11px/1 var(--display);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--period);
+  color: #1B8B6B;
 }
 .phare strong {
   display: block; margin-top: 8px;
@@ -210,8 +220,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 }
 h2 {
   margin: 0 0 20px;
-  max-width: 14em;
-  font: 300 clamp(48px, 6vw, 92px)/0.96 var(--display);
+  max-width: 16em;
+  overflow: visible;
+  font: 300 clamp(48px, 6vw, 92px)/1.2 var(--display);
   letter-spacing: 0.015em;
   text-transform: uppercase;
 }
@@ -234,7 +245,7 @@ h2 {
 }
 .pin-head {
   display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
-  padding: 0 7vw 22px;
+  padding: 0 7vw 36px;
 }
 .pin-head h2 { margin: 0; }
 .hint {
@@ -322,9 +333,13 @@ html.has-cursor .cursor { display: block; }
   pointer-events: none; mix-blend-mode: difference;
 }
 html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; }
+html.is-capture .top { position: absolute; }
+html.is-shot, html.is-shot body { scrollbar-width: none; }
+html.is-shot::-webkit-scrollbar,
+html.is-shot *::-webkit-scrollbar { width: 0; height: 0; display: none; }
 html.motion .reveal { opacity: 0; transform: translateY(28px); }
-html.motion .line { display: block; overflow: hidden; }
-html.motion .line > i { display: block; font-style: normal; transform: translateY(110%); }
+html.motion .line { display: block; overflow: visible; }
+html.motion .line > i { display: block; font-style: normal; }
 html.motion .clip img { clip-path: inset(14% 14% 14% 14%); }
 html.motion .draw { transform: scaleX(0); }
 html.motion .hero-media video.is-ready { animation: vfade 1.2s ease both; }
@@ -369,9 +384,9 @@ html.motion .hero .actions { animation: risein .5s cubic-bezier(.16, 1, .3, 1) .
     padding: 8px 8px 8px 16px;
   }
   .hero .note { min-height: 2.9em; }
-  .wm { font-size: 15px; letter-spacing: 0.12em; }
+  .wm { font-size: 15px; letter-spacing: 0.1em; }
   .hero-copy { padding: 0 18px 28px; }
-  .hero h1 { font-size: 34px; letter-spacing: 0.01em; }
+  .hero h1 { font-size: 30px; letter-spacing: 0.01em; }
   .hero h1 .mask > span { white-space: nowrap; }
   .hero-media img, .hero-media video { object-position: 78% center; }
   .scroll-ind, .phare, .hero-rule { display: none; }
@@ -389,4 +404,7 @@ html.motion .hero .actions { animation: risein .5s cubic-bezier(.16, 1, .3, 1) .
   .frame { aspect-ratio: 16 / 10; }
   .band { min-height: 52vh; }
   .band-copy { padding: 28vh 18px 32px; }
+}
+@media (min-width: 380px) and (max-width: 860px) {
+  .hero h1 { font-size: 32px; }
 }

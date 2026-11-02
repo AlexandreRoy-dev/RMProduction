@@ -13,6 +13,17 @@
     });
   }
 
+  var heroCta = document.querySelector(".hero .actions .btn");
+  var pill = document.querySelector(".top .pill");
+  if (heroCta && pill && "IntersectionObserver" in window) {
+    var watchCta = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        pill.classList.toggle("is-on", !entry.isIntersecting);
+      });
+    }, { threshold: 0 });
+    watchCta.observe(heroCta);
+  }
+
   var head = document.querySelector(".top");
   function onScroll() {
     if (head) head.classList.toggle("is-solid", window.scrollY > 24);
@@ -79,12 +90,14 @@
     gsap.ticker.lagSmoothing(0);
   }
 
-  gsap.utils.toArray(".line > i").forEach(function (node) {
-    gsap.to(node, {
-      y: 0, duration: 1.05, ease: "power3.out",
-      scrollTrigger: { trigger: node, start: "top 86%" }
+  if (!root.classList.contains("is-capture")) {
+    gsap.utils.toArray(".line > i").forEach(function (node) {
+      gsap.fromTo(node, { y: 16 }, {
+        y: 0, duration: 1.05, ease: "power3.out",
+        scrollTrigger: { trigger: node, start: "top 86%" }
+      });
     });
-  });
+  }
   gsap.utils.toArray(".reveal").forEach(function (node) {
     gsap.to(node, {
       opacity: 1, y: 0, duration: 1, ease: "power2.out",
