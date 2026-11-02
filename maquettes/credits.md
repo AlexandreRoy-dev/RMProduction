@@ -31,9 +31,10 @@ Fichiers servis, noms stables (remplaçables sans changer le code) :
 |---|---|
 | maquettes/signature/media/hero.mp4 | hero-16x9.mp4, H.264, 1920x1080, 14,5 s, sans audio |
 | maquettes/signature/media/hero.webm | hero-16x9.webm, VP9 |
-| maquettes/signature/media/hero-mobile.mp4 | hero-9x16.mp4 |
-| maquettes/signature/media/hero-poster.webp | hero-poster.jpg converti |
+| maquettes/signature/media/hero-mobile.mp4 | hero-9x16.mp4, recadrage 9:16 sur la façade éclairée |
+| maquettes/signature/media/hero-poster.webp | hero-poster.jpg converti, WebP sous 60 Ko |
 | maquettes/signature/media/hero-poster.avif | hero-poster.jpg converti |
+| maquettes/signature/media/band.webp | Image fixe du plan 1 (villa), bandeau pleine largeur |
 
 Les quatre plans d'origine sont des images générées pour Roy Marketing (Grok Imagine, GenerateVideo), le 2 novembre 2026. Aucun plan de stock. Aucun auteur tiers, aucune attribution. Aucune personne réelle, aucune marque, aucun logo, aucun texte, aucune enseigne.
 
@@ -44,4 +45,4 @@ Les quatre plans d'origine sont des images générées pour Roy Marketing (Grok 
 | 3 | src/shot3-facade-entrance.mp4 | Généré, texte vers vidéo, 1080p, 5 s | Idem |
 | 4 | src/shot4-kitchen.mp4 | Généré, texte vers vidéo, 1080p, 5 s | Idem |
 
-Plans : villa de verre la nuit, salon vide la nuit, façade de pierre la nuit, cuisine vide la nuit. Image provisoire, en attendant Adobe Stock.
+Plans : villa de verre la nuit, salon vide la nuit, façade de pierre la nuit, cuisine vide la nuit. Les quatre plans sont conservés. Les seuls dédoublements visibles sont les fondus courts entre les plans. Image provisoire, en attendant Adobe Stock.

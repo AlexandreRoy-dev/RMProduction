@@ -6,17 +6,19 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Référencement Google et IA pour courtiers | Roy Marketing</title>
 <link rel="canonical" href="/maquettes/signature/referencement-google-ia/">
-<link rel="preload" as="image" href="/maquettes/signature/media/hero-poster.avif" type="image/avif" fetchpriority="high">
+<link rel="preload" as="image" href="/maquettes/signature/media/hero-poster.webp" type="image/webp" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="/maquettes/fonts/montserrat-300.woff2" crossorigin>
 <style>
 @font-face{font-family:Montserrat;src:url("/maquettes/fonts/montserrat-300.woff2") format("woff2");font-weight:300;font-display:swap}
 body{margin:0;background:#07100D;color:#F2F0EA}
-.hero{position:relative;height:100svh}
+.hero{position:relative;height:100svh;overflow:hidden}
 .hero-media{position:absolute;inset:0}
-.hero-media img{width:100%;height:100svh;object-fit:cover}
-.hero-copy{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 18px 48px}
-.hero h1{margin:0;font:300 40px/1.05 Montserrat,Arial,sans-serif}
-.hero .lede{margin:16px 0 0;font:300 18px/1.45 Montserrat,Arial,sans-serif}
+.hero-media img{width:100%;height:100svh;object-fit:cover;object-position:78% center}
+.hero-media video{display:none}
+.hero-copy{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 18px 28px}
+.hero h1{margin:0;font:300 34px/.95 Montserrat,Arial,sans-serif;letter-spacing:.01em;text-transform:uppercase}
+.desk{display:none}
+.hero .note{margin:12px 0 0;font:400 14px/1.4 Arial,sans-serif;color:#E4DFD4}
 </style>
 <link rel="stylesheet" href="/maquettes/signature/signature.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="/maquettes/signature/fonts-body.css" media="print" onload="this.media='all'">
@@ -39,28 +41,42 @@ body{margin:0;background:#07100D;color:#F2F0EA}
     <a href="/a-propos/">À propos</a>
     <a href="/contact/">Contact</a>
   </nav>
+  <a class="btn pill" href="https://api.leadconnectorhq.com/widget/booking/3PXAPGRrJXvrP7teaEYS">Planifier une consultation</a>
 </header>
 <main id="contenu">
 <section class="hero">
   <div class="hero-media">
-    <img src="/maquettes/signature/media/hero-poster.avif" width="1920" height="1080" alt="Maison contemporaine la nuit, intérieurs éclairés" fetchpriority="high">
-    <video id="hero-video" muted playsinline loop preload="none" width="1280" height="720"></video>
+    <img src="/maquettes/signature/media/hero-poster.webp" width="1920" height="1080" alt="Maison contemporaine la nuit, intérieurs éclairés" fetchpriority="high">
+    <video id="hero-video" muted playsinline loop preload="none" width="1920" height="1080"></video>
   </div>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
   <div class="hero-copy">
     <p class="eye">Référencement Google et IA</p>
     <h1>
-      <span class="line">Référencement Google et IA</span>
-      <span class="line">pour courtiers immobiliers</span>
+      <span class="mask desk"><span>Référencement Google</span></span>
+      <span class="mask desk"><span>et IA pour courtiers</span></span>
+      <span class="mask mob"><span>Référencement</span></span>
+      <span class="mask mob"><span>Google et IA</span></span>
+      <span class="mask mob"><span>pour courtiers</span></span>
     </h1>
-    <p class="lede">Quand un vendeur demande à Google ou à une IA quel courtier choisir, votre nom doit apparaître.</p>
-    <p class="lede">Beaucoup de courtiers veulent maintenant apparaître dans les réponses des IA. Nous travaillons votre site, votre fiche Google et vos informations en ligne pour que Google et les assistants IA comprennent qui vous êtes.</p>
+    <p class="note">Pour que votre nom apparaisse dans Google et dans les réponses des IA.</p>
     <div class="actions">
       <a class="btn" href="https://api.leadconnectorhq.com/widget/booking/3PXAPGRrJXvrP7teaEYS">Planifier une consultation</a>
+      <a class="cue" href="#suite">Lire la suite</a>
     </div>
   </div>
+  <a class="scroll-ind" href="#suite" aria-label="Défiler vers la suite">
+    <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1.5v10M3 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+  </a>
+  <span class="hero-rule" aria-hidden="true"></span>
+  <a class="phare" href="/maquettes/signature/" data-sig>
+    <span>Signature</span>
+    <strong>Retour à l'accueil</strong>
+  </a>
 </section>
 
-<section class="block">
+<section class="block" id="suite">
   <div class="split">
     <div>
       <p class="kicker">01</p>
@@ -72,6 +88,13 @@ body{margin:0;background:#07100D;color:#F2F0EA}
     <figure class="frame clip">
       <img src="/maquettes/img/facade-1600.webp" width="1600" height="2400" alt="Entrée d'une maison contemporaine, panneaux sombres et bois" data-parallax loading="lazy" decoding="async">
     </figure>
+  </div>
+</section>
+
+<section class="band">
+  <img src="/maquettes/signature/media/band.webp" width="1800" height="1013" alt="Villa de verre la nuit, piscine et intérieurs éclairés" decoding="async">
+  <div class="band-copy">
+    <h2>Votre nom doit apparaître quand un vendeur cherche.</h2>
   </div>
 </section>
 

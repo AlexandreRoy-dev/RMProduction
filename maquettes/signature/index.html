@@ -6,17 +6,19 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Firme de marketing immobilier pour courtiers | Roy Marketing</title>
 <link rel="canonical" href="/maquettes/signature/">
-<link rel="preload" as="image" href="/maquettes/signature/media/hero-poster.avif" type="image/avif" fetchpriority="high">
+<link rel="preload" as="image" href="/maquettes/signature/media/hero-poster.webp" type="image/webp" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="/maquettes/fonts/montserrat-300.woff2" crossorigin>
 <style>
 @font-face{font-family:Montserrat;src:url("/maquettes/fonts/montserrat-300.woff2") format("woff2");font-weight:300;font-display:swap}
 body{margin:0;background:#07100D;color:#F2F0EA}
-.hero{position:relative;height:100svh}
+.hero{position:relative;height:100svh;overflow:hidden}
 .hero-media{position:absolute;inset:0}
-.hero-media img{width:100%;height:100svh;object-fit:cover}
-.hero-copy{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 18px 48px}
-.hero h1{margin:0;font:300 40px/1.05 Montserrat,Arial,sans-serif}
-.hero .lede{margin:16px 0 0;font:300 18px/1.45 Montserrat,Arial,sans-serif}
+.hero-media img{width:100%;height:100svh;object-fit:cover;object-position:78% center}
+.hero-media video{display:none}
+.hero-copy{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 18px 28px}
+.hero h1{margin:0;font:300 34px/.95 Montserrat,Arial,sans-serif;letter-spacing:.01em;text-transform:uppercase}
+.desk{display:none}
+.hero .note{margin:12px 0 0;font:400 14px/1.4 Arial,sans-serif;color:#E4DFD4}
 </style>
 <link rel="stylesheet" href="/maquettes/signature/signature.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="/maquettes/signature/fonts-body.css" media="print" onload="this.media='all'">
@@ -39,28 +41,43 @@ body{margin:0;background:#07100D;color:#F2F0EA}
     <a href="/a-propos/">À propos</a>
     <a href="/contact/">Contact</a>
   </nav>
+  <a class="btn pill" href="https://api.leadconnectorhq.com/widget/booking/3PXAPGRrJXvrP7teaEYS">Planifier une consultation</a>
 </header>
 <main id="contenu">
 <section class="hero">
   <div class="hero-media">
-    <img src="/maquettes/signature/media/hero-poster.avif" width="1920" height="1080" alt="Maison contemporaine la nuit, intérieurs éclairés" fetchpriority="high">
-    <video id="hero-video" muted playsinline loop preload="none" width="1280" height="720"></video>
+    <img src="/maquettes/signature/media/hero-poster.webp" width="1920" height="1080" alt="Maison contemporaine la nuit, intérieurs éclairés" fetchpriority="high">
+    <video id="hero-video" muted playsinline loop preload="none" width="1920" height="1080"></video>
   </div>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
   <div class="hero-copy">
     <p class="eye">Firme de marketing immobilier</p>
     <h1>
-      <span class="line">Plus de mandats vendeurs,</span>
-      <span class="line">sans dépendre des plateformes.</span>
+      <span class="mask desk"><span>Plus de mandats vendeurs,</span></span>
+      <span class="mask desk"><span>sans dépendre des plateformes.</span></span>
+      <span class="mask mob"><span>Plus de mandats</span></span>
+      <span class="mask mob"><span>vendeurs, sans</span></span>
+      <span class="mask mob"><span>dépendre des</span></span>
+      <span class="mask mob"><span>plateformes.</span></span>
     </h1>
-    <p class="lede">Sites web, référencement Google et IA, CRM et publicité pour courtiers, équipes et agences. Au Québec, au Canada et aux États-Unis.</p>
+    <p class="note">Sites, référencement Google et IA, CRM et publicité pour courtiers.</p>
     <div class="actions">
       <a class="btn" href="https://api.leadconnectorhq.com/widget/booking/3PXAPGRrJXvrP7teaEYS">Planifier une consultation</a>
       <a class="cue" href="#offres">Voir nos services</a>
     </div>
   </div>
+  <a class="scroll-ind" href="#suite" aria-label="Défiler vers la suite">
+    <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1.5v10M3 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+  </a>
+  <span class="hero-rule" aria-hidden="true"></span>
+  <a class="phare" href="/maquettes/signature/referencement-google-ia/" data-sig>
+    <span>Service phare</span>
+    <strong>Référencement Google et IA</strong>
+  </a>
 </section>
 
-<section class="block">
+<section class="block" id="suite">
   <div class="split">
     <div>
       <p class="kicker">01</p>
@@ -76,10 +93,14 @@ body{margin:0;background:#07100D;color:#F2F0EA}
 </section>
 
 <section class="pin" id="offres">
+  <div class="pin-head">
+    <h2>Services</h2>
+    <p class="hint hint-x">Défiler pour les six offres →</p>
+  </div>
   <div class="pin-track">
     <article class="offer">
       <p class="num">01</p>
-      <h2>Création de site web</h2>
+      <h2>Création de<br>site web</h2>
       <p>Un site rapide, élégant et bilingue, avec vos inscriptions, vos pages de secteur et une page de demande d'estimation reliée directement à votre CRM.</p>
       <div class="actions"><a class="cue" href="/site-web-courtier-immobilier/">Site web pour courtier</a></div>
     </article>
@@ -112,6 +133,13 @@ body{margin:0;background:#07100D;color:#F2F0EA}
       <p>Des campagnes Facebook, Instagram et Google qui rejoignent les vendeurs de vos secteurs, avec une page d'atterrissage par campagne et un suivi de chaque demande.</p>
       <div class="actions"><a class="cue" href="/publicite-courtier-immobilier/">Publicité immobilière</a></div>
     </article>
+  </div>
+</section>
+
+<section class="band">
+  <img src="/maquettes/signature/media/band.webp" width="1800" height="1013" alt="Villa de verre la nuit, piscine et intérieurs éclairés" decoding="async">
+  <div class="band-copy">
+    <h2>Nous bâtissons des actifs à votre nom.</h2>
   </div>
 </section>
 

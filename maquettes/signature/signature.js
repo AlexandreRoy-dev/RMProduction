@@ -45,7 +45,7 @@
     if (play && play.catch) play.catch(function () {});
   }
   window.addEventListener("load", function () {
-    window.setTimeout(armVideo, 4000);
+    window.requestAnimationFrame(armVideo);
   });
 
   var veil = document.querySelector(".veil");
@@ -111,20 +111,18 @@
     });
   });
 
-  var track = document.querySelector(".pin-track");
-  if (track && window.matchMedia("(min-width: 900px)").matches) {
-    var getDist = function () { return Math.max(0, track.scrollWidth - window.innerWidth); };
-    gsap.to(track, {
-      x: function () { return -getDist(); },
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".pin",
-        start: "top top",
-        end: function () { return "+=" + getDist(); },
-        pin: true,
-        scrub: 0.8,
-        invalidateOnRefresh: true
-      }
+  var heroMedia = document.querySelector(".hero-media");
+  var heroTitle = document.querySelector(".hero h1");
+  if (heroMedia) {
+    gsap.fromTo(heroMedia, { scale: 1 }, {
+      scale: 1.08, ease: "none",
+      scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
+    });
+  }
+  if (heroTitle) {
+    gsap.to(heroTitle, {
+      y: 36, ease: "none",
+      scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
     });
   }
 
@@ -136,14 +134,5 @@
         dot.style.transform = "translate3d(" + event.clientX + "px," + event.clientY + "px,0)";
       }, { passive: true });
     }
-    document.querySelectorAll(".btn, .cue").forEach(function (el) {
-      el.addEventListener("mousemove", function (event) {
-        var box = el.getBoundingClientRect();
-        var x = (event.clientX - (box.left + box.width / 2)) * 0.18;
-        var y = (event.clientY - (box.top + box.height / 2)) * 0.28;
-        el.style.transform = "translate(" + x + "px," + y + "px)";
-      });
-      el.addEventListener("mouseleave", function () { el.style.transform = ""; });
-    });
   }
 })();
