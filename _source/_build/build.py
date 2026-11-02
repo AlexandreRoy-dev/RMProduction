@@ -1,4 +1,6 @@
-"""Génère index.html (fr) et en/index.html à partir de i18n/*.json. Usage : python3 _build/build.py"""
+"""Ancien générateur. Le site public est produit par firm_site.py."""
+import sys
+sys.exit("Le site immobilier est généré par firm_site.py")
 import json, os, html, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BOOKING_NOTE = "<!-- Lien de réservation : voir js/config.js (BOOKING_URL). -->"
@@ -156,7 +158,7 @@ window.RM_I18N={i18n_js};window.RM_ROOT="{root}";
       <a class="pill pill--lg" href="#contact" data-booking>{e("cta")}</a>
       <p class="location">{e("location")}</p>
     </div>
-    <!-- Formulaire : même point de réception Formspree que le site actuel. À remplacer par un envoi direct dans GHL si Alexandre le décide. -->
+    <!-- Formulaire : même point de réception Formspree que le site actuel. À remplacer par un envoi direct dans le calendrier de réservation si Alexandre le décide. -->
     <form class="form" action="https://formspree.io/f/mjgknole" method="POST" novalidate data-err-name="{ea(d["fErrName"])}" data-err-email="{ea(d["fErrEmail"])}" data-fix="{ea(d["fFix"])}">
       <input type="hidden" name="langue" value="{L}">
       <div class="form__row">

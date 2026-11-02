@@ -6,15 +6,26 @@
       "@id": "https://roymarketing.ca/#entreprise",
       "name": "Roy Marketing",
       "legalName": "Roy Marketing Inc.",
-      "url": "https://roymarketing.ca/en/",
+      "url": "https://roymarketing.ca/",
+      "description": "Roy Marketing, a real estate marketing firm: websites, Google and AI search visibility, CRM and advertising for brokers, teams and agencies, across Quebec, Canada and the United States.",
+      "slogan": "More seller listings, without relying on the portals.",
       "logo": "https://roymarketing.ca/assets/brand/logo/png/mark/mark-dark-on-light-512.png",
-      "image": "https://roymarketing.ca/assets/img/og-image-en.jpg",
+      "image": "https://roymarketing.ca/assets/img/og-image.jpg",
       "telephone": "+1-819-201-9042",
       "email": "info@roymarketing.ca",
       "areaServed": [
-        { "@type": "AdministrativeArea", "name": "Quebec" },
-        { "@type": "Country", "name": "Canada" },
-        { "@type": "Country", "name": "United States" }
+        {
+          "@type": "AdministrativeArea",
+          "name": "Quebec"
+        },
+        {
+          "@type": "Country",
+          "name": "Canada"
+        },
+        {
+          "@type": "Country",
+          "name": "United States"
+        }
       ],
       "knowsLanguage": [
         "fr-CA",
@@ -29,14 +40,14 @@
       "knowsAbout": [
         "Real estate marketing",
         "Marketing for real estate brokers",
-        "Industrial marketing",
-        "B2B marketing for manufacturers",
-        "Websites",
+        "Real estate agent websites",
+        "Search engine optimization",
+        "AI search optimization (GEO)",
+        "Google Business Profile",
         "CRM for realtors",
-        "Meta and Google ads",
-        "Local SEO",
-        "Generative engine optimization",
-        "Custom software"
+        "Facebook and Google ads",
+        "Real estate content and video",
+        "OACIQ advertising rules"
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -45,13 +56,31 @@
           {
             "@type": "Offer",
             "itemOffered": {
-              "@id": "https://roymarketing.ca/en/real-estate-marketing/#service"
+              "@id": "https://roymarketing.ca/en/real-estate-agent-website/#service"
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
-              "@id": "https://roymarketing.ca/en/industrial-marketing/#service"
+              "@id": "https://roymarketing.ca/en/google-ai-search/#service"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://roymarketing.ca/en/real-estate-crm/#service"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://roymarketing.ca/en/real-estate-ads/#service"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://roymarketing.ca/en/real-estate-content-video/#service"
             }
           }
         ]
@@ -68,13 +97,58 @@
       }
     },
     {
+      "@type": "WebPage",
+      "@id": "https://roymarketing.ca/en/#page",
+      "url": "https://roymarketing.ca/en/",
+      "name": "Real estate marketing firm for brokers | Roy Marketing",
+      "description": "Real estate marketing firm: websites, CRM and advertising for brokers, teams and agencies. More seller listings, in Quebec, Canada and the United States.",
+      "inLanguage": "en-CA",
+      "isPartOf": {
+        "@id": "https://roymarketing.ca/en/#site"
+      },
+      "about": {
+        "@id": "https://roymarketing.ca/#entreprise"
+      }
+    },
+    {
       "@type": "Person",
       "@id": "https://roymarketing.ca/#alexandre-roy",
       "name": "Alexandre Roy",
       "jobTitle": "President",
       "worksFor": {
         "@id": "https://roymarketing.ca/#entreprise"
-      }
+      },
+      "url": "https://roymarketing.ca/en/about/"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://roymarketing.ca/en/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I get more seller listings without relying on the portals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By building assets you own: a website in your name that captures home value requests, search visibility on Google and in AI answers, a CRM that follows up with every contact automatically and targeted ads in your areas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with teams and agencies, or only solo brokers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All three. For a team or agency, we set up a shared CRM with lead assignment, pipelines per broker and reports for management."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where do you work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We work with brokers across Quebec, Canada and the United States, in French and English."
+          }
+        }
+      ]
     }
   ]
 }

@@ -15,9 +15,9 @@ def page(lang, body, root, path, alt_path, title, desc, nav, foot):
     og_locale = "fr_CA" if lang == "fr" else "en_CA"
     og_alt = "en_CA" if lang == "fr" else "fr_CA"
     og_image = "https://roymarketing.ca/assets/img/og-image.jpg" if lang == "fr" else "https://roymarketing.ca/assets/img/og-image-en.jpg"
-    og_alt_text = ("Roy Marketing, agence web et marketing au Québec, au Canada et aux États-Unis. Marketing immobilier et industriel. Stratégie, web et automatisation."
+    og_alt_text = ("Roy Marketing, agence web et marketing au Québec, au Canada et aux États-Unis. Marketing immobilier. Stratégie, web et automatisation."
                    if lang == "fr" else
-                   "Roy Marketing, a web and marketing agency in Quebec, Canada and the United States. Real estate and industrial marketing. Strategy, web and automation.")
+                   "Roy Marketing, a web and marketing agency in Quebec, Canada and the United States. Real estate marketing. Strategy, web and automation.")
     home_url = "https://roymarketing.ca/" if lang == "fr" else "https://roymarketing.ca/en/"
     home_name = "Accueil" if lang == "fr" else "Home"
     url = "https://roymarketing.ca" + path

@@ -7,14 +7,25 @@
       "name": "Roy Marketing",
       "legalName": "Roy Marketing Inc.",
       "url": "https://roymarketing.ca/",
+      "description": "Roy Marketing, firme de marketing immobilier : sites web, référencement Google et IA, CRM et publicité pour courtiers, équipes et agences, au Québec, au Canada et aux États-Unis.",
+      "slogan": "Plus de mandats vendeurs, sans dépendre des plateformes.",
       "logo": "https://roymarketing.ca/assets/brand/logo/png/mark/mark-dark-on-light-512.png",
       "image": "https://roymarketing.ca/assets/img/og-image.jpg",
       "telephone": "+1-819-201-9042",
       "email": "info@roymarketing.ca",
       "areaServed": [
-        { "@type": "AdministrativeArea", "name": "Québec" },
-        { "@type": "Country", "name": "Canada" },
-        { "@type": "Country", "name": "États-Unis" }
+        {
+          "@type": "AdministrativeArea",
+          "name": "Québec"
+        },
+        {
+          "@type": "Country",
+          "name": "Canada"
+        },
+        {
+          "@type": "Country",
+          "name": "États-Unis"
+        }
       ],
       "knowsLanguage": [
         "fr-CA",
@@ -29,14 +40,14 @@
       "knowsAbout": [
         "Marketing immobilier",
         "Marketing pour courtiers immobiliers",
-        "Marketing industriel",
-        "Marketing B2B manufacturier",
-        "Sites web",
+        "Sites web pour courtiers",
+        "Référencement Google",
+        "Référencement IA (GEO)",
+        "Google Business Profile",
         "CRM pour courtiers immobiliers",
-        "Publicité Meta et Google",
-        "SEO local",
-        "GEO",
-        "Logiciels sur mesure"
+        "Publicité Facebook et Google",
+        "Contenu et vidéo immobilière",
+        "Règles de publicité de l'OACIQ"
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -45,13 +56,31 @@
           {
             "@type": "Offer",
             "itemOffered": {
-              "@id": "https://roymarketing.ca/marketing-immobilier/#service"
+              "@id": "https://roymarketing.ca/site-web-courtier-immobilier/#service"
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
-              "@id": "https://roymarketing.ca/marketing-industriel/#service"
+              "@id": "https://roymarketing.ca/referencement-google-ia/#service"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://roymarketing.ca/crm-courtier-immobilier/#service"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://roymarketing.ca/publicite-courtier-immobilier/#service"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://roymarketing.ca/contenu-video-courtier-immobilier/#service"
             }
           }
         ]
@@ -68,13 +97,58 @@
       }
     },
     {
+      "@type": "WebPage",
+      "@id": "https://roymarketing.ca/#page",
+      "url": "https://roymarketing.ca/",
+      "name": "Firme de marketing immobilier pour courtiers | Roy Marketing",
+      "description": "Firme de marketing immobilier : sites web, CRM et publicité pour courtiers, équipes et agences. Plus de mandats, au Québec, au Canada et aux États-Unis.",
+      "inLanguage": "fr-CA",
+      "isPartOf": {
+        "@id": "https://roymarketing.ca/#site"
+      },
+      "about": {
+        "@id": "https://roymarketing.ca/#entreprise"
+      }
+    },
+    {
       "@type": "Person",
       "@id": "https://roymarketing.ca/#alexandre-roy",
       "name": "Alexandre Roy",
       "jobTitle": "Président",
       "worksFor": {
         "@id": "https://roymarketing.ca/#entreprise"
-      }
+      },
+      "url": "https://roymarketing.ca/a-propos/"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://roymarketing.ca/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Comment obtenir plus de mandats vendeurs sans dépendre des plateformes ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En bâtissant vos propres actifs : un site web à votre nom qui capte les demandes d'estimation, un référencement qui vous rend visible sur Google et dans les réponses des IA, un CRM qui relance chaque contact automatiquement et de la publicité ciblée dans vos secteurs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Travaillez-vous avec des équipes et des agences, ou seulement avec des courtiers seuls ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Avec les trois. Pour une équipe ou une agence, nous configurons un CRM partagé avec attribution des demandes, des pipelines par courtier et des rapports pour la direction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Où travaillez-vous ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nous accompagnons des courtiers partout au Québec, au Canada et aux États-Unis, en français et en anglais."
+          }
+        }
+      ]
     }
   ]
 }
