@@ -22,3 +22,26 @@ Les fichiers JPG et WebP livrés ont été réenregistrés sans métadonnées.
 Les photos R ARCHITECTURE appartiennent à la même série Unsplash que photo-1600585154340-be6161a56a0c et photo-1600607687939-ce8a6c25118c, dont l'auteur est R ARCHITECTURE (@rarchitecture_melbourne). Chaque photo n'apparaît qu'une fois sur une même maquette.
 
 Placeholder : la seule photo de la maquette C2 (tree) est provisoire. Elle sera remplacée par un visuel Adobe Stock fourni par Alexandre.
+
+## Vidéo, maquette Signature
+
+Fichiers servis, noms stables (remplaçables sans changer le code) :
+
+| Fichier servi | Origine dans la livraison |
+|---|---|
+| maquettes/signature/media/hero.mp4 | hero-16x9.mp4, H.264, 1920x1080, 14,5 s, sans audio |
+| maquettes/signature/media/hero.webm | hero-16x9.webm, VP9 |
+| maquettes/signature/media/hero-mobile.mp4 | hero-9x16.mp4 |
+| maquettes/signature/media/hero-poster.webp | hero-poster.jpg converti |
+| maquettes/signature/media/hero-poster.avif | hero-poster.jpg converti |
+
+Les quatre plans d'origine sont des images générées pour Roy Marketing (Grok Imagine, GenerateVideo), le 2 novembre 2026. Aucun plan de stock. Aucun auteur tiers, aucune attribution. Aucune personne réelle, aucune marque, aucun logo, aucun texte, aucune enseigne.
+
+| Ordre | Fichier source | Origine | Droits |
+|---|---|---|---|
+| 1 | src/shot1-villa-pool.mp4 | Généré, texte vers vidéo, 1080p, 5 s | Original, Roy Marketing, usage commercial |
+| 2 | src/shot2-living-room.mp4 | Généré, texte vers vidéo, 1080p, 5 s | Idem |
+| 3 | src/shot3-facade-entrance.mp4 | Généré, texte vers vidéo, 1080p, 5 s | Idem |
+| 4 | src/shot4-kitchen.mp4 | Généré, texte vers vidéo, 1080p, 5 s | Idem |
+
+Plans : villa de verre la nuit, salon vide la nuit, façade de pierre la nuit, cuisine vide la nuit. Image provisoire, en attendant Adobe Stock.
