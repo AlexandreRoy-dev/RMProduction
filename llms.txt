@@ -1,27 +1,24 @@
 # Roy Marketing
 
-Contact : 819-201-9042, info@roymarketing.ca. Zone desservie : Sherbrooke. Président : Alexandre Roy.
+> Firme de marketing immobilier. Sites web, référencement Google et IA, CRM, publicité, contenu et image de marque pour courtiers, équipes et agences immobilières, au Québec, au Canada et aux États-Unis.
 
-## Créneaux
-- [Marketing immobilier](https://roymarketing.ca/marketing-immobilier/): plus de mandats vendeurs, sans dépendre des plateformes. Site web de courtier, CRM, suivi automatisé, publicité et contenu.
-- [Marketing industriel](https://roymarketing.ca/marketing-industriel/): un site et des outils à la hauteur de votre usine. Site technique bilingue, fiches produits et capacités, demandes de soumission qualifiées.
+Roy Marketing Inc. travaille exclusivement en immobilier. Objectif : que le nom de nos clients apparaisse quand un vendeur demande à Google ou à une IA quel courtier choisir. Nous travaillons avec le CRM que le courtier utilise déjà. 100+ courtiers accompagnés. Fondateur et président : Alexandre Roy. Contact : 819-201-9042, info@roymarketing.ca.
 
-## English
-- [Home](https://roymarketing.ca/en/)
-- [Real estate marketing](https://roymarketing.ca/en/real-estate-marketing/)
-- [Industrial marketing](https://roymarketing.ca/en/industrial-marketing/)
-- [Privacy policy](https://roymarketing.ca/en/privacy-policy/)
+Aucune garantie de classement : personne ne contrôle les résultats de Google ni les réponses des IA. Nous travaillons sur ce qui les influence : le site, la fiche Google, la cohérence des informations et la qualité du contenu.
+
+## Services
+- [Référencement Google et IA pour courtiers](https://roymarketing.ca/referencement-google-ia/): Référencement Google et IA pour courtiers : SEO, fiche Google, carte, données structurées et contenu clair pour être cité par ChatGPT, Gemini, Perplexity.
+- [Site web pour courtier immobilier, bilingue](https://roymarketing.ca/site-web-courtier-immobilier/): Site web pour courtier immobilier : rapide, à votre image, avec inscriptions, pages de secteur et demande d’estimation reliée au CRM. Français, anglais.
+- [CRM et suivi automatisé pour courtiers](https://roymarketing.ca/crm-courtier-immobilier/): CRM pour courtier immobilier : on travaille avec tous les CRM. Pipelines vendeur et acheteur, relances texto et courriel, rendez-vous en ligne, formation.
+- [Publicité Facebook et Google pour courtiers](https://roymarketing.ca/publicite-courtier-immobilier/): Publicité immobilière gérée au mois : campagnes Facebook, Instagram et Google qui rejoignent les vendeurs, pages d’atterrissage et suivi de chaque demande.
+- [Contenu et vidéo pour courtiers immobiliers](https://roymarketing.ca/contenu-video-courtier-immobilier/): Contenu et vidéo pour courtiers immobiliers : guides du vendeur, publications planifiées et vidéos courtes sous-titrées qui montrent votre marché.
+- [Image de marque pour courtier immobilier](https://roymarketing.ca/image-de-marque-courtier-immobilier/): Image de marque pour courtier immobilier : logo, couleurs, typographie et gabarits cohérents sur votre site, vos réseaux, vos annonces et vos documents.
 
 ## Entreprise
-- [Accueil](https://roymarketing.ca/)
+- [Accueil](https://roymarketing.ca/): Firme de marketing immobilier pour courtiers et équipes : sites web, référencement Google et IA, CRM et publicité. Au Québec, au Canada et aux États-Unis.
+- [FAQ](https://roymarketing.ca/faq/): Questions fréquentes sur le marketing immobilier de Roy Marketing : territoire, langues, CRM, publicité, règles de l’OACIQ, déroulement et prix.
+- [À propos](https://roymarketing.ca/a-propos/): Roy Marketing, firme de marketing immobilier fondée par Alexandre Roy : sites web, CRM et publicité pour courtiers au Québec, au Canada et aux États-Unis.
+- [Implication sociale](https://roymarketing.ca/implication-sociale/): Un don d’une valeur de 10 000 $ à la Fondation Honorer Aimer, qui accompagne les personnes endeuillées, en fin de vie et les proches aidants.
+- [Contact](https://roymarketing.ca/contact/): Parlez-nous de votre pratique de courtier : planifiez une consultation avec Roy Marketing par téléphone au 819-201-9042, par courriel ou par formulaire.
 - [Politique de confidentialité](https://roymarketing.ca/politique-de-confidentialite/)
 - [Facebook](https://www.facebook.com/profile.php?id=61581535466026)
-
-## Services en soutien, pages non publiées
-- Site web pour courtier immobilier
-- CRM pour courtiers immobiliers
-- Création de sites web
-- Publicité Meta et Google gérée au mois
-- SEO local et GEO
-- Logiciels sur mesure
-- À propos
