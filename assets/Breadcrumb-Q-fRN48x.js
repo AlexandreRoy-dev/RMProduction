@@ -1,0 +1,1 @@
+import{j as r,L as c}from"./index-bhM25kpd.js";function t({items:i}){const n=[["Accueil","/"],...i];return r.jsx("nav",{className:"rm-crumbs","aria-label":"Fil d’Ariane",children:r.jsx("ol",{children:n.map(([a,e],s)=>r.jsx("li",{children:s<n.length-1?r.jsx(c,{to:e,children:a}):r.jsx("span",{"aria-current":"page",children:a})},e+s))})})}export{t as B};
